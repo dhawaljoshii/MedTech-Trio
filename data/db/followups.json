@@ -1,0 +1,49 @@
+[
+  {
+    "id": "mky63vrfst5y6welkaj",
+    "patientId": "mkfdsfoxp6svvzd106e",
+    "doctorName": "Dr. Patil",
+    "task": "Walk 15 min",
+    "status": "pending",
+    "createdAt": "2026-01-28T15:16:05.643Z",
+    "completedAt": null
+  },
+  {
+    "id": "ml40kks3dyb5fbvl0q5",
+    "patientId": "mkfdsfoxp6svvzd106e",
+    "doctorName": "Dr. Patil",
+    "task": "walk 15 min",
+    "status": "pending",
+    "createdAt": "2026-02-01T17:27:43.923Z",
+    "completedAt": null
+  },
+  {
+    "id": "ml40ko03hyr9ghy3og4",
+    "patientId": "mkfdsfoxp6svvzd106e",
+    "doctorName": "Dr. Patil",
+    "task": "drink water",
+    "status": "pending",
+    "createdAt": "2026-02-01T17:27:48.099Z",
+    "completedAt": null
+  },
+  {
+    "id": "ml42ew60itf2z4tysr",
+    "patientId": "mkfdsfoxp6svvzd106e",
+    "doctorName": "Doctor",
+    "task": "Leg lifts",
+    "status": "pending",
+    "surgeryId": "ml42dgxauyl3dw3sqg",
+    "createdAt": "2026-02-01T18:19:17.976Z",
+    "completedAt": null
+  },
+  {
+    "id": "ml5fdfu5r93zf0bafqf",
+    "patientId": "mkfdsfoxp6svvzd106e",
+    "doctorName": "Doctor",
+    "task": "Take Blood Thinner everyday",
+    "status": "pending",
+    "surgeryId": "ml42dgxa3fkpl7pu2rv",
+    "createdAt": "2026-02-02T17:09:51.341Z",
+    "completedAt": null
+  }
+]

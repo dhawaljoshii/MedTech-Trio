@@ -1,0 +1,122 @@
+[
+    {
+        "question": "What are the common signs of high stress?",
+        "answer": "Common signs of high stress include irritability, anger, tearfulness, feeling worried, anxious, or scared, and difficulty sleeping. Reflecting on stress causes and making lifestyle changes, talking to friends and family, or seeking professional advice from your GP if the situation doesn't improve, can be helpful."
+    },
+    {
+        "question": "How can I prevent cancer?",
+        "answer": "While there's no definitive cure to prevent cancer, avoiding habits like smoking and excessive alcohol consumption, and generally taking care of your body, can reduce your risk."
+    },
+    {
+        "question": "What should I do if I have trouble sleeping?",
+        "answer": "Healthcare providers recommend 7-9 hours of sleep per night. Common culprits for poor sleep include caffeine, nicotine, and certain medications. Eliminating caffeine after noon, trying relaxation techniques like warm baths or lavender oil, or using melatonin can help."
+    },
+    {
+        "question": "What are the symptoms of a heart attack?",
+        "answer": "Symptoms can include nausea, pain radiating down one or both arms, excessive drowsiness, anxiety, chest tightness, back or jaw pain, shortness of breath, dizziness, and cold sweats. Women may experience different symptoms such as pain during sleep, sudden extreme fatigue, drenching sweats, elbow and neck pain, and nausea or vomiting. Seek immediate emergency help if these symptoms occur."
+    },
+    {
+        "question": "How much water should I drink?",
+        "answer": "Ideally, urine should be as clear as possible. Dark-colored urine can indicate dehydration, suggesting you need to drink more water (around 2 liters or eight mid-sized glasses per day)."
+    },
+    {
+        "question": "What is the best way to lose belly fat?",
+        "answer": "You cannot 'spot' reduce fat. The most effective way to lose excess body fat is by reducing calorie intake or increasing exercise levels to burn more calories. Paying attention to sugar, fat, and carbohydrate content in your diet, and reducing alcohol consumption, is beneficial."
+    },
+    {
+        "question": "When should I see a doctor for a cold?",
+        "answer": "Colds are caused by viruses, and there's no cure. Over-the-counter medications can help. However, if you develop a cough, high fever, or facial pain, it's advisable to see a doctor to rule out more severe issues."
+    },
+    {
+        "question": "What helps with period pain?",
+        "answer": "Over-the-counter painkillers can be a first step. If period pain is severe and affects daily life, consult your GP as various treatment options may be available."
+    },
+    {
+        "question": "How often should I have a wellness exam?",
+        "answer": "Annual wellness exams are recommended to help healthcare providers identify potential health issues early and keep track of your overall health."
+    },
+    {
+        "question": "What are the symptoms of Diabetes?",
+        "answer": "Common symptoms include increased thirst and frequent urination, unexplained weight loss or gain, extreme fatigue, blurred vision, slow-healing sores, frequent infections (gum, skin, vaginal), numbness or tingling in hands/feet, and increased hunger. In Type 1 diabetes, symptoms often appear rapidly."
+    },
+    {
+        "question": "How is Diabetes treated?",
+        "answer": "Treatment involves lifestyle changes (healthy diet, physical activity, weight management) and medication. Type 1 requires lifelong insulin. Type 2 may be managed with medications like metformin or insulin alongside lifestyle adjustments. Regular monitoring of blood sugar is essential."
+    },
+    {
+        "question": "What is Hypertension (High Blood Pressure)?",
+        "answer": "Hypertension is when the force of blood against artery walls is consistently too high (usually 140/90 mmHg or higher). It is often called a 'silent killer' because it typically has no symptoms."
+    },
+    {
+        "question": "What are the symptoms of high blood pressure?",
+        "answer": "High blood pressure rarely causes symptoms. In very severe cases, it can cause headaches, blurred vision, chest pain, dizziness, difficulty breathing, or nausea. The only way to know for sure is to get your blood pressure checked regularly."
+    },
+    {
+        "question": "How can I lower my blood pressure?",
+        "answer": "Lifestyle changes are key: adopt a healthy diet (more fruits/veggies, less salt), exercise regularly, quit smoking, and limit alcohol. Medications like diuretics, beta-blockers, or ACE inhibitors may also be prescribed by a doctor."
+    },
+    {
+        "question": "What are the symptoms of the Flu?",
+        "answer": "Flu symptoms often appear suddenly and include high fever (38°C+), chills, body aches, extreme fatigue, dry cough, sore throat, headache, and runny/stuffy nose. Some people may experience diarrhea or vomiting."
+    },
+    {
+        "question": "How is the Flu treated?",
+        "answer": "Most healthy people can manage the flu at home with rest, fluids (water, soup), and over-the-counter pain relievers (acetaminophen, ibuprofen) for fever/aches. Stay home for at least 24 hours after your fever is gone. Antiviral drugs may be prescribed for high-risk individuals."
+    },
+    {
+        "question": "What is Asthma?",
+        "answer": "Asthma is a chronic inflammatory disease of the airways. The airways become inflamed, swollen, and narrow, making breathing difficult."
+    },
+    {
+        "question": "What are common Asthma symptoms?",
+        "answer": "Symptoms include wheezing (whistling sound when breathing out), shortness of breath, chest tightness or pain, and coughing (especially at night or early morning). An asthma attack is a severe worsening of these symptoms."
+    },
+    {
+        "question": "How is Asthma managed?",
+        "answer": "Asthma is managed with inhalers: 'Reliever' inhalers (e.g., Albuterol) treat sudden symptoms, while 'Controller' inhalers (steroids) prevent inflammation daily. Identifying and avoiding triggers (pollen, smoke, pets, cold air) is also crucial."
+    },
+    {
+        "question": "What is the recommended pediatric vaccination schedule?",
+        "answer": "The CDC recommends: Hepatitis B at birth; Rotavirus, DTaP, Hib, Pneumococcal, and Polio at 2 months; Repeat doses at 4 and 6 months; Influenza starting at 6 months annually; MMR and Varicella at 12-15 months. Consult your pediatrician for a personalized catch-up schedule."
+    },
+    {
+        "question": "What happens during new patient onboarding?",
+        "answer": "During onboarding, we collect your personal information (Name, DOB, Contact Info), medical history, and insurance details. You will be asked to sign a consent form for data processing and HIPAA compliance before your first appointment."
+    },
+    {
+        "question": "How do I book a specialist consultation?",
+        "answer": "You can book a specialist consultation by specifying your symptoms. Our system will recommend the appropriate specialist (e.g., Dermatologist for skin issues, ENT for throat pain). You will modify your booking type in the registration portal."
+    },
+    {
+        "question": "What are the warning signs of postpartum complications?",
+        "answer": "Seek emergency care for: Heavy bleeding (soaking more than one pad an hour), severe headache that doesn't go away, vision changes, upper abdominal pain, trouble breathing, or fever over 100.4°F (38°C). These could be signs of hemorrhage or preeclampsia."
+    },
+    {
+        "question": "How do I prepare for surgery (Pre-operative guidance)?",
+        "answer": "Generally, do not eat or drink anything after midnight the night before surgery (NPO). Shower with antibacterial soap if instructed. Stop taking blood thinners as advised by your doctor. Arrange for someone to drive you home."
+    },
+    {
+        "question": "What should I look for after surgery (Post-surgery follow-up)?",
+        "answer": "Monitor your incision for signs of infection: increasing redness, swelling, warmth, bad-smelling discharge, or fever. Pain should improve over time. If you experience sudden chest pain or shortness of breath, call 911 (risk of blood clot)."
+    },
+    {
+        "question": "What is medication reconciliation?",
+        "answer": "Medication reconciliation is the process of comparing the medication you are currently taking with what your doctor has prescribed to ensure safety. This prevents interactions and duplications. Always bring your pill bottles to your appointment."
+    },
+    {
+        "question": "What screening is used for depression?",
+        "answer": "The PHQ-9 (Patient Health Questionnaire-9) is commonly used. It asks about interest in activities, feeling down, sleep issues, energy, appetite, failure, concentration, moving slowly, and self-harm. Scores determine severity: 5-9 Mild, 10-14 Moderate, 15+ Severe."
+    },
+    {
+        "question": "What screening is used for anxiety?",
+        "answer": "The GAD-7 (Generalized Anxiety Disorder-7) is used. It asks about feeling nervous, worrying, relaxing, restlessness, and irritability. Scores: 5-9 Mild, 10-14 Moderate, 15+ Severe."
+    },
+    {
+        "question": "What should I do if I have chest pain?",
+        "answer": "CALL 911 IMMEDIATELY. Chest pain can be a sign of a heart attack, especially if accompanied by shortness of breath, arm pain, or sweating. Do not drive yourself to the hospital."
+    },
+    {
+        "question": "How are cancer treatments coordinated?",
+        "answer": "Cancer treatment often involves a multidisciplinary team (Medical Oncologist, Radiation Oncologist, Surgeon). We coordinate your chemotherapy, radiation sessions, and surgery dates to ensure they happen in the correct sequence. Regular blood tests are also scheduled to monitor your health."
+    }
+]

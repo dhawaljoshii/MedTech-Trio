@@ -1,0 +1,24 @@
+[
+  {
+    "id": "mkoh2l3hqny2b45xl8s",
+    "patientId": "mkocpbol6d5wlgikdu6",
+    "patientName": "John Doe",
+    "doctorName": "Dr. AI",
+    "diagnosis": "Angina",
+    "medicines": "Aspirin",
+    "notes": "Rest",
+    "attachments": [],
+    "createdAt": "2026-01-21T20:25:19.181Z"
+  },
+  {
+    "id": "mkoifyy97gfbgk7okyj",
+    "patientId": "test_p1",
+    "patientName": "John",
+    "doctorName": "Dr. Test",
+    "doctorType": "General",
+    "medicines": "",
+    "notes": "Patient advised rest",
+    "attachments": [],
+    "createdAt": "2026-01-21T21:03:43.281Z"
+  }
+]

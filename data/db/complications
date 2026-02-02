@@ -1,0 +1,22 @@
+[
+  {
+    "id": "ml436j9hnsnwxr477nh",
+    "patientId": "mkfdsfoxp6svvzd106e",
+    "surgeryId": "ml42dgxauyl3dw3sqg",
+    "description": "Severe swelling and redness around the incision site.",
+    "status": "resolved",
+    "solution": "take rest and book an appointment",
+    "reportedAt": "2026-02-01T18:40:47.621Z",
+    "resolvedAt": "2026-02-01T18:51:31.200Z"
+  },
+  {
+    "id": "ml43d7d1t1a128a8rv",
+    "patientId": "mkfdsfoxp6svvzd106e",
+    "surgeryId": "ml42dgxauyl3dw3sqg",
+    "description": "pain in the insertion area",
+    "status": "pending",
+    "solution": null,
+    "reportedAt": "2026-02-01T18:45:58.789Z",
+    "resolvedAt": null
+  }
+]

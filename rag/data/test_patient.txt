@@ -1,0 +1,12 @@
+Patient Medical History Sample
+
+This is a test document to verify the RAG system's ability to ingest text files.
+Patient Name: John Doe
+Conditions:
+- Chronic Migraines: Patient experiences severe headaches 3 times a month. Triggers include stress and caffeine.
+- Seasonal Allergies: Symptoms include sneezing and itchy eyes during spring.
+Treatments:
+- Sumatriptan for migraines.
+- Cetirizine for allergies.
+
+End of Document.

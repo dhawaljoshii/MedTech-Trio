@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "category": "cardiology",
+    "text": "Chest pain may indicate heart disease or angina."
+  },
+  {
+    "id": 2,
+    "category": "cardiology",
+    "text": "Shortness of breath is a common cardiac symptom."
+  },
+  {
+    "id": 3,
+    "category": "neurology",
+    "text": "Frequent headaches can be caused by migraines."
+  },
+  {
+    "id": 4,
+    "category": "dermatology",
+    "text": "Skin rashes may be due to allergies or infections."
+  }
+]

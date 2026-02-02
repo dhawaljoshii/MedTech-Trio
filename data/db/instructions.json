@@ -1,0 +1,37 @@
+[
+  {
+    "id": "ml40kxww43dz8r4d03v",
+    "patientId": "mkfdsfoxp6svvzd106e",
+    "doctorName": "Dr. Patil",
+    "type": "pre-op",
+    "content": "dont worry",
+    "createdAt": "2026-02-01T17:28:00.945Z"
+  },
+  {
+    "id": "ml42f6ff4y6ay987xwv",
+    "patientId": "mkfdsfoxp6svvzd106e",
+    "doctorName": "Doctor",
+    "type": "regulation",
+    "content": "Ice the knee for 20 mins",
+    "surgeryId": "ml42dgxauyl3dw3sqg",
+    "createdAt": "2026-02-01T18:19:31.275Z"
+  },
+  {
+    "id": "ml5fcz885nbs3cpwzh4",
+    "patientId": "mkfdsfoxp6svvzd106e",
+    "doctorName": "Doctor",
+    "type": "regulation",
+    "content": "Do not eat anything before your urgery",
+    "surgeryId": "ml42dgxa3fkpl7pu2rv",
+    "createdAt": "2026-02-02T17:09:29.817Z"
+  },
+  {
+    "id": "ml5fef233zqf2ynte5t",
+    "patientId": "mkfdsfoxp6svvzd106e",
+    "doctorName": "Doctor",
+    "type": "regulation",
+    "content": "fast",
+    "surgeryId": "ml42dgxa3fkpl7pu2rv",
+    "createdAt": "2026-02-02T17:10:36.987Z"
+  }
+]
