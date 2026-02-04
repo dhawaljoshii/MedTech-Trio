@@ -483,5 +483,20 @@
     "reminderAt": null,
     "status": "Booked",
     "createdAt": "2026-01-28T16:37:07.172Z"
+  },
+  {
+    "id": "ml8bxjkm4dqd4hmou7n",
+    "patientId": "mkfdsfoxp6svvzd106e",
+    "patientName": "123",
+    "doctorType": "Pulmonologist",
+    "doctorName": "Dr. Patil",
+    "slot": "11:30 AM",
+    "symptoms": "Document Analysis: testXray.jpeg",
+    "appointmentType": "consultation",
+    "vaccines": [],
+    "hospitalId": null,
+    "reminderAt": null,
+    "status": "Booked",
+    "createdAt": "2026-02-04T17:56:49.366Z"
   }
 ]

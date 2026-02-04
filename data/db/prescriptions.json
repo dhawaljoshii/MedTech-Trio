@@ -20,5 +20,17 @@
     "notes": "Patient advised rest",
     "attachments": [],
     "createdAt": "2026-01-21T21:03:43.281Z"
+  },
+  {
+    "id": "ml5gbfmzo16xd3ysa8l",
+    "patientId": "mkfdsfoxp6svvzd106e",
+    "patientName": "123",
+    "doctorName": "Dr. Patil",
+    "doctorType": "General Physician",
+    "diagnosis": "Viral Fever ",
+    "medicines": "Take PCM twice a day",
+    "notes": "",
+    "attachments": [],
+    "createdAt": "2026-02-02T17:36:17.387Z"
   }
 ]

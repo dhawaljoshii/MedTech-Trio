@@ -201,6 +201,57 @@ const CHRONIC_CARE_PLANS = {
   },
 };
 
+/**
+ * Helper Functions for Message Management
+ * These utilities simplify common message operations and reduce code duplication
+ */
+
+/**
+ * Creates a bot message object
+ * @param {string} text - Message text
+ * @param {Object} options - Optional message options (options, useDropdown, typing)
+ * @returns {Object} Message object
+ */
+const createBotMessage = (text, options = {}) => ({
+  text,
+  sender: "bot",
+  ...options
+});
+
+/**
+ * Creates a user message object
+ * @param {string} text - Message text
+ * @returns {Object} Message object
+ */
+const createUserMessage = (text) => ({
+  text,
+  sender: "user"
+});
+
+/**
+ * Batch adds multiple messages to state
+ * @param {Function} setMessages - State setter function
+ * @param {Array} newMessages - Array of message objects to add
+ */
+const addMessages = (setMessages, newMessages) => {
+  setMessages(prev => [...prev, ...newMessages]);
+};
+
+/**
+ * Detects if text contains chronic condition keywords
+ * @param {string} text - Text to analyze
+ * @returns {string|null} Detected condition or null
+ */
+const detectChronicCondition = (text) => {
+  const t = text.toLowerCase();
+  for (const condition in CHRONIC_KEYWORDS) {
+    if (CHRONIC_KEYWORDS[condition].some(k => t.includes(k))) {
+      return condition;
+    }
+  }
+  return null;
+};
+
 export default function Chatbot() {
   const router = useRouter();
   const [patient, setPatient] = useState(null);
@@ -230,16 +281,6 @@ export default function Chatbot() {
     );
 
     return VACCINATION_SCHEDULE.filter(v => v.ageWeeks <= ageWeeks);
-  };
-
-  const detectChronicCondition = (text) => {
-    const t = text.toLowerCase();
-    for (const condition in CHRONIC_KEYWORDS) {
-      if (CHRONIC_KEYWORDS[condition].some(k => t.includes(k))) {
-        return condition;
-      }
-    }
-    return null;
   };
 
   const [messages, setMessages] = useState([
@@ -780,7 +821,6 @@ Level: ${level}
       router.push("/register?type=psychiatrist");
       return;
     }
-
 
 
 

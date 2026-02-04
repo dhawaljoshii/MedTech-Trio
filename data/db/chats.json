@@ -6887,5 +6887,352 @@
     ],
     "documents": [],
     "createdAt": "2026-02-02T16:24:56.921Z"
+  },
+  {
+    "id": "ml8a3kpd1thgpowk5wv",
+    "patientId": "mkfdsfoxp6svvzd106e",
+    "patientName": "123",
+    "symptoms": "i have back pain",
+    "doctorType": "general-physician",
+    "messages": [
+      {
+        "text": "Hello 123! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      }
+    ],
+    "documents": [],
+    "createdAt": "2026-02-04T17:05:31.537Z"
+  },
+  {
+    "id": "ml8a5ms8j2w58zltll",
+    "patientId": "mkfdsfoxp6svvzd106e",
+    "patientName": "123",
+    "symptoms": "i have back pain",
+    "doctorType": "general-physician",
+    "messages": [
+      {
+        "text": "Hello 123! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      },
+      {
+        "text": "i have back pain",
+        "sender": "user"
+      },
+      {
+        "text": "Analyzing your symptoms...",
+        "sender": "bot"
+      },
+      {
+        "text": "🦠 Possible condition:\n\n**Musculoskeletal strain** likely due to poor posture, overuse, or minor injury. Common in adults without red-flag symptoms (e.g., trauma, neurological deficits).\n\n⚠️ This is not a medical diagnosis.",
+        "sender": "bot"
+      },
+      {
+        "text": "Would you like to book a consultation with a doctor?",
+        "sender": "bot"
+      }
+    ],
+    "documents": [],
+    "createdAt": "2026-02-04T17:07:07.544Z"
+  },
+  {
+    "id": "ml8au1aazgvo9glqq4f",
+    "patientId": "mkfdsfoxp6svvzd106e",
+    "patientName": "123",
+    "symptoms": "excessive thirst",
+    "doctorType": "general-physician",
+    "messages": [
+      {
+        "text": "Hello 123! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      }
+    ],
+    "documents": [],
+    "createdAt": "2026-02-04T17:26:06.082Z"
+  },
+  {
+    "id": "ml8b9mkg6vjq9cyjr1u",
+    "patientId": "mkfdsfoxp6svvzd106e",
+    "patientName": "123",
+    "symptoms": "Test message 1",
+    "doctorType": "general-physician",
+    "messages": [
+      {
+        "text": "Hello 123! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      }
+    ],
+    "documents": [],
+    "createdAt": "2026-02-04T17:38:13.504Z"
+  },
+  {
+    "id": "ml8b9vqqxgnfp588tzg",
+    "patientId": "mkfdsfoxp6svvzd106e",
+    "patientName": "123",
+    "symptoms": "Test message 2Test message 3Test message 4",
+    "doctorType": "general-physician",
+    "messages": [
+      {
+        "text": "Hello 123! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      },
+      {
+        "text": "Test message 1",
+        "sender": "user"
+      },
+      {
+        "text": "Analyzing your symptoms...",
+        "sender": "bot"
+      },
+      {
+        "text": "🦠 Possible condition:\n\n**Invalid input**: No medical symptoms detected for analysis. Please describe symptoms clearly (e.g., shortness of breath, wheezing).\n\n⚠️ This is not a medical diagnosis.",
+        "sender": "bot"
+      },
+      {
+        "text": "Would you like to book a consultation with a doctor?",
+        "sender": "bot"
+      }
+    ],
+    "documents": [],
+    "createdAt": "2026-02-04T17:38:25.394Z"
+  },
+  {
+    "id": "ml8ba5529jib8nm083v",
+    "patientId": "mkfdsfoxp6svvzd106e",
+    "patientName": "123",
+    "symptoms": "This is a very long message designed to take up several lines in the chat bubble and contribute to making the chat area scrollable within its fixed frame. I am repeating this text to ensure it is long enough. This is a very long message designed to take up several lines in the chat bubble and contribute to making the chat area scrollable within its fixed frame.",
+    "doctorType": "general-physician",
+    "messages": [
+      {
+        "text": "Hello 123! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      },
+      {
+        "text": "Test message 1",
+        "sender": "user"
+      },
+      {
+        "text": "Analyzing your symptoms...",
+        "sender": "bot"
+      },
+      {
+        "text": "🦠 Possible condition:\n\n**Invalid input**: No medical symptoms detected for analysis. Please describe symptoms clearly (e.g., shortness of breath, wheezing).\n\n⚠️ This is not a medical diagnosis.",
+        "sender": "bot"
+      },
+      {
+        "text": "Would you like to book a consultation with a doctor?",
+        "sender": "bot"
+      },
+      {
+        "text": "Test message 2Test message 3Test message 4",
+        "sender": "user"
+      },
+      {
+        "text": "Analyzing your symptoms...",
+        "sender": "bot"
+      },
+      {
+        "text": "🦠 Possible condition:\n\n**Non-specific symptom report.** No clear medical condition identified from provided input. Further details required for accurate assessment.\n\n⚠️ This is not a medical diagnosis.",
+        "sender": "bot"
+      },
+      {
+        "text": "Would you like to book a consultation with a doctor?",
+        "sender": "bot"
+      }
+    ],
+    "documents": [],
+    "createdAt": "2026-02-04T17:38:37.574Z"
+  },
+  {
+    "id": "ml8bl04elmez1dk9eqf",
+    "patientId": "mkfdsfoxp6svvzd106e",
+    "patientName": "123",
+    "symptoms": "I have a headache",
+    "doctorType": "general-physician",
+    "messages": [
+      {
+        "text": "Hello 123! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      }
+    ],
+    "documents": [],
+    "createdAt": "2026-02-04T17:47:04.286Z"
+  },
+  {
+    "id": "ml8bm36j68n42b8ii3k",
+    "patientId": "mkfdsfoxp6svvzd106e",
+    "patientName": "123",
+    "symptoms": "i have pain in the back",
+    "doctorType": "general-physician",
+    "messages": [
+      {
+        "text": "Hello 123! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      }
+    ],
+    "documents": [],
+    "createdAt": "2026-02-04T17:47:54.907Z"
+  },
+  {
+    "id": "ml8bncqg3zkzt8o4v5f",
+    "patientId": "mkfdsfoxp6svvzd106e",
+    "patientName": "123",
+    "symptoms": "i have pain in the back",
+    "doctorType": "general-physician",
+    "messages": [
+      {
+        "text": "Hello 123! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      },
+      {
+        "text": "i have pain in the back",
+        "sender": "user"
+      },
+      {
+        "text": "Analyzing your symptoms...",
+        "sender": "bot"
+      },
+      {
+        "text": "🦠 Possible condition:\n\n**Mechanical back pain** (likely musculoskeletal strain or poor posture). Common and often resolves with rest, activity modification, and pain relief.\n\n⚠️ This is not a medical diagnosis.",
+        "sender": "bot"
+      },
+      {
+        "text": "Would you like to book a consultation with a doctor?",
+        "sender": "bot"
+      }
+    ],
+    "documents": [],
+    "createdAt": "2026-02-04T17:48:53.944Z"
+  },
+  {
+    "id": "ml8bocwv3tj53yxaa7j",
+    "patientId": "mkfdsfoxp6svvzd106e",
+    "patientName": "123",
+    "symptoms": "chest pain",
+    "doctorType": "cardiologist",
+    "messages": [
+      {
+        "text": "Hello 123! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      },
+      {
+        "text": "You selected ENGLISH: What symptoms are you facing today?",
+        "sender": "bot"
+      },
+      {
+        "text": "chest pain",
+        "sender": "user"
+      },
+      {
+        "text": "Are you experiencing shortness of breath?",
+        "sender": "bot"
+      },
+      {
+        "text": "Do you have pain in your left arm, jaw, or back?",
+        "sender": "bot"
+      },
+      {
+        "text": "Are you sweating heavily or feeling dizzy?",
+        "sender": "bot"
+      },
+      {
+        "text": "Has the chest pain lasted more than 20 minutes?",
+        "sender": "bot"
+      },
+      {
+        "text": "🚨 Based on your answers, this may be a medical emergency.",
+        "sender": "bot"
+      },
+      {
+        "text": "Analyzing your symptoms further...",
+        "sender": "bot"
+      },
+      {
+        "text": "🦠 Possible condition:\n\n**Acute coronary syndrome (e.g., angina or heart attack)**. Sudden chest pain with pressure, tightness, or radiating discomfort may indicate reduced blood flow to the heart. Requires immediate evaluation.\n\n⚠️ This is not a medical diagnosis.",
+        "sender": "bot"
+      },
+      {
+        "text": "Would you like to book a consultation with a doctor?",
+        "sender": "bot"
+      }
+    ],
+    "documents": [],
+    "createdAt": "2026-02-04T17:49:40.831Z"
+  },
+  {
+    "id": "ml8bwtuinj2yftj9slq",
+    "patientId": "mkfdsfoxp6svvzd106e",
+    "patientName": "123",
+    "symptoms": "Document Analysis: testXray.jpeg",
+    "doctorType": "Pulmonologist",
+    "messages": [
+      {
+        "text": "Hello 123! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      },
+      {
+        "text": "📄 Uploaded: testXray.jpeg",
+        "sender": "user"
+      },
+      {
+        "text": "🔬 **Medical Document Analysis**\n\n## Visible Structures:\n- Ribs\n- Spine\n- Lungs\n- Diaphragm\n- Heart shadow\n\n## Potential Abnormalities:\n- Increased opacity in the lower and upper zones of the right lung (indicated by arrows).\n- Possible pleural effusion or consolidation in the right lung.\n- No visible fractures or dislocations.\n\n## Observations:\n- The left lung appears clear with no signs of infiltrates or effusions.\n- The heart size appears normal.\n- The diaphragm is well-defined and appears to be in a normal position.\n\n---\n\n⚠️ **Important Disclaimer**: This AI analysis is for informational purposes only and is NOT a medical diagnosis. Please consult with a qualified healthcare professional.",
+        "sender": "bot"
+      },
+      {
+        "text": "Based on the analysis, I recommend consulting a **Pulmonologist**. Would you like to check availability?",
+        "sender": "bot"
+      }
+    ],
+    "documents": [
+      {
+        "name": "testXray.jpeg",
+        "type": "image",
+        "url": "#"
+      }
+    ],
+    "createdAt": "2026-02-04T17:56:16.026Z"
   }
 ]
