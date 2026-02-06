@@ -3,7 +3,7 @@ import { answerQuestion } from "./answer.js";
 async function testPathology() {
     // Replace this with a query specific to the content of Pathology.pdf if you know it.
     // Since I don't know the exact content, I'll try a generic query that should hit it.
-    const query = "what is immounodeficiency";
+    const query = "what are the symptoms of HIV";
     console.log(`Testing query: "${query}"`);
 
     const result = await answerQuestion(query);

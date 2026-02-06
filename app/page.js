@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import ChatBubble from "@/components/ChatBubble";
 import LanguageDropdown from "@/components/LanguageDropdown";
 import { LANGUAGES } from "@/utils/languages";
@@ -290,6 +290,14 @@ export default function Chatbot() {
   ]);
 
   const [input, setInput] = useState("");
+
+  // Ref for auto-scrolling to the latest message
+  const messagesEndRef = useRef(null);
+
+  // Auto-scroll to bottom when messages change
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
 
   // Document upload states
   const [showUploadModal, setShowUploadModal] = useState(false);
@@ -1748,6 +1756,8 @@ ${plan.monitoring.map(m => `• ${m}`).join("\n")}`,
                 )}
               </div>
             ))}
+            {/* Invisible element to scroll to */}
+            <div ref={messagesEndRef} />
           </div>
 
           <div className="chat-input-area">

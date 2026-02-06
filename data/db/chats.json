@@ -7234,5 +7234,113 @@
       }
     ],
     "createdAt": "2026-02-04T17:56:16.026Z"
+  },
+  {
+    "id": "mlaeja5pixj8tdvuoc9",
+    "patientId": "mlaej32a2pfge55lthy",
+    "patientName": "dhawal joshi",
+    "symptoms": "i have fever",
+    "doctorType": "general-physician",
+    "messages": [
+      {
+        "text": "Hello dhawal joshi! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      }
+    ],
+    "documents": [],
+    "createdAt": "2026-02-06T04:45:15.181Z"
+  },
+  {
+    "id": "mlaejhedr8v45mvo0f",
+    "patientId": "mlaej32a2pfge55lthy",
+    "patientName": "dhawal joshi",
+    "symptoms": "i have fever",
+    "doctorType": "general-physician",
+    "messages": [
+      {
+        "text": "Hello dhawal joshi! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      },
+      {
+        "text": "i have fever",
+        "sender": "user"
+      },
+      {
+        "text": "Analyzing your symptoms...",
+        "sender": "bot"
+      },
+      {
+        "text": "🦠 Possible condition:\n\n**Influenza (Flu)** likely, given fever as a primary symptom with no other chronic conditions reported.\n\n⚠️ This is not a medical diagnosis.",
+        "sender": "bot"
+      },
+      {
+        "text": "Would you like to book a consultation with a doctor?",
+        "sender": "bot"
+      }
+    ],
+    "documents": [],
+    "createdAt": "2026-02-06T04:45:24.565Z"
+  },
+  {
+    "id": "mlaep1f4wjtxxcpj3vo",
+    "patientId": "mlaej32a2pfge55lthy",
+    "patientName": "dhawal joshi",
+    "symptoms": "i am facing cough and cold",
+    "doctorType": "general-physician",
+    "messages": [
+      {
+        "text": "Hello dhawal joshi! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      }
+    ],
+    "documents": [],
+    "createdAt": "2026-02-06T04:49:43.792Z"
+  },
+  {
+    "id": "mlaep7xx4t03q6fi6pk",
+    "patientId": "mlaej32a2pfge55lthy",
+    "patientName": "dhawal joshi",
+    "symptoms": "i am facing cough and cold",
+    "doctorType": "general-physician",
+    "messages": [
+      {
+        "text": "Hello dhawal joshi! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      },
+      {
+        "text": "i am facing cough and cold",
+        "sender": "user"
+      },
+      {
+        "text": "Analyzing your symptoms...",
+        "sender": "bot"
+      },
+      {
+        "text": "🦠 Possible condition:\n\n**Common cold**. Likely viral infection causing cough, nasal congestion, and mild systemic symptoms like fatigue or low-grade fever.\n\n⚠️ This is not a medical diagnosis.",
+        "sender": "bot"
+      },
+      {
+        "text": "Would you like to book a consultation with a doctor?",
+        "sender": "bot"
+      }
+    ],
+    "documents": [],
+    "createdAt": "2026-02-06T04:49:52.245Z"
   }
 ]
