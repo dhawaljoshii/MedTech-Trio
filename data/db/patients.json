@@ -84,6 +84,12 @@
     "age": "21",
     "mobile": "07876142887",
     "email": "joshidhawal930@gmail.com",
-    "createdAt": "2026-02-06T04:45:05.986Z"
+    "createdAt": "2026-02-06T04:45:05.986Z",
+    "medicalHistory": {
+      "chronicConditions": [
+        "Diabetes",
+        "Asthma"
+      ]
+    }
   }
 ]

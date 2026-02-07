@@ -1036,6 +1036,125 @@ Level: ${level}
       return;
     }
 
+    // 💬 CONVERSATIONAL MESSAGE HANDLER
+    // Detect and respond to generic conversational messages
+    const detectConversationalIntent = (text) => {
+      const lowerText = text.toLowerCase().trim();
+
+      // Greetings
+      const greetings = ['hi', 'hello', 'hey', 'good morning', 'good afternoon', 'good evening', 'namaste', 'namaskar'];
+      if (greetings.some(g => lowerText === g || lowerText.startsWith(g + ' ') || lowerText.endsWith(' ' + g))) {
+        return 'greeting';
+      }
+
+      // Help/What does this do
+      const helpPatterns = [
+        'help', 'what can you do', 'what do you do', 'how does this work',
+        'how can you help', 'what is this', 'what does this bot do',
+        'capabilities', 'features', 'what are your features'
+      ];
+      if (helpPatterns.some(p => lowerText.includes(p))) {
+        return 'help';
+      }
+
+      // Thanks
+      const thanksPatterns = ['thank', 'thanks', 'thank you', 'appreciate', 'grateful'];
+      if (thanksPatterns.some(p => lowerText.includes(p))) {
+        return 'thanks';
+      }
+
+      // Who are you
+      const identityPatterns = ['who are you', 'what are you', 'your name', 'who made you', 'who created you'];
+      if (identityPatterns.some(p => lowerText.includes(p))) {
+        return 'identity';
+      }
+
+      // Goodbye
+      const goodbyePatterns = ['bye', 'goodbye', 'see you', 'take care', 'exit', 'quit'];
+      if (goodbyePatterns.some(p => lowerText.includes(p))) {
+        return 'goodbye';
+      }
+
+      // How are you
+      const wellbeingPatterns = ['how are you', 'how do you do', 'whats up', "what's up"];
+      if (wellbeingPatterns.some(p => lowerText.includes(p))) {
+        return 'wellbeing';
+      }
+
+      return null;
+    };
+
+    const conversationalIntent = detectConversationalIntent(userInput);
+
+    if (conversationalIntent) {
+      let responseText = '';
+
+      switch (conversationalIntent) {
+        case 'greeting':
+          responseText = language === 'hi'
+            ? `नमस्ते! मैं HealthConnect हूं। मैं आपके स्वास्थ्य संबंधी सवालों में मदद के लिए यहां हूं। 👋\n\nआप मुझे बता सकते हैं:\n• आपके लक्षण क्या हैं\n• चिकित्सा दस्तावेज़ अपलोड करें\n• डॉक्टर से अपॉइंटमेंट बुक करें\n\nआज मैं आपकी कैसे मदद कर सकता हूं?`
+            : language === 'mr'
+              ? `नमस्कार! मी HealthConnect आहे. मी तुमच्या आरोग्य प्रश्नांसाठी येथे आहे। 👋\n\nतुम्ही मला सांगू शकता:\n• तुमची लक्षणे काय आहेत\n• वैद्यकीय दस्तऐवज अपलोड करा\n• डॉक्टरकडे अपॉइंटमेंट बुक करा\n\nआज मी तुम्हाला कशी मदत करू शकतो?`
+              : language === 'ta'
+                ? `வணக்கம்! நான் HealthConnect. உங்கள் சுகாதார கேள்விகளுக்கு உதவ இங்கே இருக்கிறேன். 👋\n\nநீங்கள் என்னிடம் சொல்லலாம்:\n• உங்கள் அறிகுறிகள் என்ன\n• மருத்துவ ஆவணங்களை பதிவேற்றவும்\n• மருத்துவரிடம் நேரம் பதிவு செய்யவும்\n\nஇன்று நான் உங்களுக்கு எப்படி உதவ முடியும்?`
+                : language === 'te'
+                  ? `నమస్కారం! నేను HealthConnect. మీ ఆరోగ్య ప్రశ్నలకు సహాయం చేయడానికి ఇక్కడ ఉన్నాను। 👋\n\nమీరు నాకు చెప్పగలరు:\n• మీ లక్షణాలు ఏమిటి\n• వైద్య పత్రాలను అప్‌లోడ్ చేయండి\n• డాక్టర్‌తో అపాయింట్‌మెంట్ బుక్ చేయండి\n\nఈరోజు నేను మీకు ఎలా సహాయం చేయగలను?`
+                  : `Hello! I'm HealthConnect, your intelligent health assistant. 👋\n\nI can help you with:\n• Analyzing your symptoms\n• Understanding medical documents\n• Booking doctor appointments\n• Tracking chronic conditions\n• Vaccination schedules\n\nHow can I assist you today?`;
+          break;
+
+        case 'help':
+          responseText = language === 'hi'
+            ? `मैं आपकी निम्नलिखित तरीकों से मदद कर सकता हूं:\n\n🩺 **लक्षण विश्लेषण**\nअपने लक्षणों का वर्णन करें और मैं संभावित स्थितियों की पहचान करूंगा\n\n📄 **दस्तावेज़ विश्लेषण**\nलैब रिपोर्ट, एक्स-रे या प्रिस्क्रिप्शन अपलोड करें\n\n👨‍⚕️ **डॉक्टर बुकिंग**\nविशेषज्ञों के साथ अपॉइंटमेंट बुक करें\n\n📊 **स्वास्थ्य निगरानी**\nमधुमेह, बीपी, अस्थमा जैसी पुरानी स्थितियों को ट्रैक करें\n\n💉 **टीकाकरण**\nबच्चों के टीकाकरण कार्यक्रम की जांच करें\n\nबस अपने लक्षण बताएं या कोई दस्तावेज़ अपलोड करें!`
+            : `I can help you in several ways:\n\n🩺 **Symptom Analysis**\nDescribe your symptoms and I'll identify possible conditions\n\n📄 **Document Analysis**\nUpload lab reports, X-rays, or prescriptions for AI analysis\n\n👨‍⚕️ **Doctor Booking**\nBook appointments with specialists based on your needs\n\n📊 **Health Monitoring**\nTrack chronic conditions like diabetes, BP, asthma\n\n💉 **Vaccination**\nCheck vaccination schedules for children\n\n🌍 **Multilingual**\nSupport for English, Hindi, Marathi, Tamil, Telugu\n\nJust tell me your symptoms or upload a document to get started!`;
+          break;
+
+        case 'thanks':
+          responseText = language === 'hi'
+            ? `आपका स्वागत है! 😊 अगर आपको कुछ और चाहिए तो बेझिझक पूछें। आपका स्वास्थ्य मेरी प्राथमिकता है।`
+            : language === 'mr'
+              ? `तुमचे स्वागत आहे! 😊 तुम्हाला आणखी काही हवे असल्यास विचारा. तुमचे आरोग्य माझे प्राधान्य आहे.`
+              : language === 'ta'
+                ? `வரவேற்கிறேன்! 😊 உங்களுக்கு வேறு ஏதாவது தேவைப்பட்டால் கேளுங்கள். உங்கள் ஆரோக்கியம் எனது முன்னுரிமை.`
+                : language === 'te'
+                  ? `స్వాగతం! 😊 మీకు ఇంకా ఏదైనా కావాలంటే అడగండి. మీ ఆరోగ్యం నా ప్రాధాన్యత.`
+                  : `You're welcome! 😊 Feel free to ask if you need anything else. Your health is my priority.`;
+          break;
+
+        case 'identity':
+          responseText = language === 'hi'
+            ? `मैं HealthConnect हूं, एक AI-संचालित स्वास्थ्य सहायक। 🤖\n\nमुझे आपकी मदद करने के लिए डिज़ाइन किया गया है:\n• लक्षणों को समझना\n• चिकित्सा दस्तावेज़ों का विश्लेषण करना\n• सही विशेषज्ञों से जुड़ना\n\nमैं निदान नहीं करता, लेकिन मैं आपको सही दिशा में मार्गदर्शन करता हूं!`
+            : `I'm HealthConnect, an AI-powered health assistant. 🤖\n\nI'm designed to help you:\n• Understand symptoms\n• Analyze medical documents\n• Connect with the right specialists\n• Track health conditions\n\nI don't diagnose, but I guide you in the right direction!\n\nBuilt with advanced RAG technology and medical knowledge.`;
+          break;
+
+        case 'goodbye':
+          responseText = language === 'hi'
+            ? `अलविदा! स्वस्थ रहें! 👋\n\nजब भी आपको स्वास्थ्य सहायता की आवश्यकता हो तो वापस आएं। अपना ख्याल रखें!`
+            : language === 'mr'
+              ? `निरोप! निरोगी राहा! 👋\n\nतुम्हाला आरोग्य मदत हवी असेल तेव्हा परत या. स्वतःची काळजी घ्या!`
+              : language === 'ta'
+                ? `பிரியாவிடை! ஆரோக்கியமாக இருங்கள்! 👋\n\nஉங்களுக்கு சுகாதார உதவி தேவைப்படும்போது திரும்பி வாருங்கள். உங்களை கவனித்துக்கொள்ளுங்கள்!`
+                : language === 'te'
+                  ? `వీడ్కోలు! ఆరోగ్యంగా ఉండండి! 👋\n\nమీకు ఆరోగ్య సహాయం అవసరమైనప్పుడు తిరిగి రండి. మిమ్మల్ని జాగ్రత్తగా చూసుకోండి!`
+                  : `Goodbye! Stay healthy! 👋\n\nCome back whenever you need health assistance. Take care of yourself!`;
+          break;
+
+        case 'wellbeing':
+          responseText = language === 'hi'
+            ? `मैं बहुत अच्छा हूं, धन्यवाद! 😊 मैं आपकी मदद करने के लिए तैयार हूं।\n\nआप कैसे हैं? क्या कोई स्वास्थ्य संबंधी चिंता है जिसमें मैं मदद कर सकता हूं?`
+            : `I'm doing great, thank you for asking! 😊 I'm here and ready to help.\n\nHow are you feeling? Any health concerns I can assist with?`;
+          break;
+      }
+
+      setMessages(prev => [
+        ...prev,
+        { text: userInput, sender: 'user' },
+        { text: responseText, sender: 'bot' }
+      ]);
+
+      setInput('');
+      return;
+    }
+
     const vaccinationKeywords = [
       "vaccination",
       "vaccine",

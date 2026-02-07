@@ -7342,5 +7342,97 @@
     ],
     "documents": [],
     "createdAt": "2026-02-06T04:49:52.245Z"
+  },
+  {
+    "id": "mlcnerigtjg58k8w58",
+    "patientId": "mlaej32a2pfge55lthy",
+    "patientName": "dhawal joshi",
+    "symptoms": "hi",
+    "doctorType": "general-physician",
+    "messages": [
+      {
+        "text": "Hello dhawal joshi! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      }
+    ],
+    "documents": [],
+    "createdAt": "2026-02-07T18:29:13.288Z"
+  },
+  {
+    "id": "mlcnezsc1bl69ey24ru",
+    "patientId": "mlaej32a2pfge55lthy",
+    "patientName": "dhawal joshi",
+    "symptoms": "hello how are you",
+    "doctorType": "general-physician",
+    "messages": [
+      {
+        "text": "Hello dhawal joshi! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      },
+      {
+        "text": "hi",
+        "sender": "user"
+      },
+      {
+        "text": "Analyzing your symptoms...",
+        "sender": "bot"
+      },
+      {
+        "text": "🦠 Possible condition:\n\nInsufficient information to determine a condition. Please describe your symptoms in detail.\n\n⚠️ This is not a medical diagnosis.",
+        "sender": "bot"
+      },
+      {
+        "text": "Would you like to book a consultation with a doctor?",
+        "sender": "bot"
+      }
+    ],
+    "documents": [],
+    "createdAt": "2026-02-07T18:29:24.012Z"
+  },
+  {
+    "id": "mlcnflq7xdxcxkmiygp",
+    "patientId": "mlaej32a2pfge55lthy",
+    "patientName": "dhawal joshi",
+    "symptoms": "what is immunodeficiency",
+    "doctorType": "general-physician",
+    "messages": [
+      {
+        "text": "Hello dhawal joshi! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      }
+    ],
+    "documents": [],
+    "createdAt": "2026-02-07T18:29:52.448Z"
+  },
+  {
+    "id": "mlcnkaxvcw1h00fim6w",
+    "patientId": "mlaej32a2pfge55lthy",
+    "patientName": "dhawal joshi",
+    "symptoms": "fever and headache",
+    "doctorType": "general-physician",
+    "messages": [
+      {
+        "text": "Hello dhawal joshi! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      }
+    ],
+    "documents": [],
+    "createdAt": "2026-02-07T18:33:31.748Z"
   }
 ]
