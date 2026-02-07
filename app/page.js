@@ -123,10 +123,13 @@ const SYMPTOM_PROMPT = {
 //for chest pain triage (dertermining if your condition is emergency)
 const CHEST_PAIN_QUESTIONS = {
   en: [
-    "Are you experiencing shortness of breath?",
-    "Do you have pain in your left arm, jaw, or back?",
-    "Are you sweating heavily or feeling dizzy?",
-    "Has the chest pain lasted more than 20 minutes?",
+    "On a scale of 1-10, how severe is your chest pain? (10 being worst pain imaginable)",
+    "Is the pain crushing, squeezing, or feels like pressure on your chest?",
+    "Does the pain spread to your arm, jaw, neck, or back?",
+    "Are you experiencing shortness of breath or difficulty breathing?",
+    "Are you sweating heavily, feeling nauseous, or lightheaded?",
+    "Did the chest pain start suddenly or gradually?",
+    "Does the pain worsen with activity or deep breathing?"
   ],
 
   hi: [
@@ -369,33 +372,294 @@ export default function Chatbot() {
 
   const classifyUrgency = (symptoms) => {
     const text = symptoms.toLowerCase();
+    let score = 0;
+    const matchedKeywords = [];
 
-    const emergencyKeywords = [
-      "chest pain",
-      "breathless",
-      "shortness of breath",
-      "unconscious",
-      "faint",
-      "severe bleeding",
-      "heart pain",
+    // 🚨 EMERGENCY KEYWORDS (Score: 80-100)
+    // NOTE: Emergency keywords must be SPECIFIC and indicate life-threatening conditions
+    // Generic terms like "severe bleeding" are in URGENT category to avoid false positives
+    const emergencyKeywords = {
+      // 💔 CRITICAL CARDIAC (95-100) - Immediate life-threatening
+      criticalCardiac: [
+        "heart attack", "cardiac arrest", "myocardial infarction", "mi",
+        "crushing chest pain", "elephant on chest", "pressure in chest severe",
+        "chest pain radiating to arm", "chest pain radiating to jaw",
+        "chest pain radiating to back", "chest pain radiating to neck",
+        "chest pain with sweating", "chest pain with nausea", "chest pain with vomiting",
+        "chest pain shortness of breath", "chest pain difficulty breathing",
+        "chest pain can't breathe"
+      ],
+
+      // ❤️‍🩹 HIGH-RISK CARDIAC (85-94) - Severe cardiac symptoms
+      highRiskCardiac: [
+        "severe chest pain", "intense chest pain", "sharp chest pain stabbing",
+        "chest tightness severe", "chest pressure severe", "squeezing chest pain",
+        "chest pain left side", "chest pain center", "retrosternal pain",
+        "chest pain exertion", "chest pain activity", "chest pain walking",
+        "chest pain climbing stairs", "palpitations severe",
+        "irregular heartbeat severe", "racing heart severe", "heart racing severe"
+      ],
+
+      // 🫀 MODERATE CARDIAC (70-84) - Concerning cardiac symptoms  
+      moderateCardiac: [
+        "chest discomfort", "chest heaviness", "chest ache",
+        "chest pain mild", "chest tightness", "chest pressure",
+        "chest pain rest", "chest pain lying down",
+        "palpitations", "rapid heartbeat", "irregular heartbeat", "heart racing",
+        "chest burning", "chest pain indigestion"
+      ],
+
+      // Legacy cardiac keywords for backward compatibility
+      cardiac: [
+        "heart pain", "angina", "chest pain severe", "chest pain radiating",
+        "chest pain left arm", "chest pain jaw"
+      ],
+
+      // Neurological (90-100)
+      neurological: [
+        "stroke", "sudden weakness", "facial drooping", "face drooping",
+        "slurred speech", "can't speak", "severe headache sudden",
+        "worst headache", "vision loss sudden", "paralysis", "seizure",
+        "convulsion", "unconscious", "unresponsive", "coma"
+      ],
+
+      // Respiratory (85-95)
+      respiratory: [
+        "can't breathe", "cannot breathe", "choking", "blue lips",
+        "gasping for air", "severe breathlessness", "respiratory distress",
+        "shortness of breath severe", "breathing stopped"
+      ],
+
+      // Trauma (85-100) - Life-threatening only
+      trauma: [
+        "uncontrolled bleeding", "bleeding won't stop", "bleeding profusely",
+        "arterial bleeding", "bleeding from head", "head bleeding severe",
+        "major accident", "severe head injury", "skull fracture",
+        "broken bone protruding", "compound fracture", "bone sticking out",
+        "third degree burn", "burns over large area", "electrical burn severe"
+      ],
+
+      // Other Critical (80-95)
+      critical: [
+        "suicide", "suicidal", "overdose", "poisoning", "poisoned",
+        "anaphylaxis", "severe allergic reaction", "throat swelling",
+        "difficulty swallowing breathing", "severe abdominal pain",
+        "vomiting blood", "coughing blood", "blood in stool severe"
+      ]
+    };
+
+    // ⚠️ URGENT KEYWORDS (Score: 40-79)
+    const urgentKeywords = {
+      // High Priority (60-79)
+      highPriority: [
+        "severe pain", "intense pain", "unbearable pain",
+        "high fever", "fever above 103", "fever 104", "fever 105",
+        "persistent vomiting", "severe vomiting", "dehydration severe",
+        "difficulty breathing", "breathless", "shortness of breath",
+        "chest discomfort", "chest pain", "rapid heartbeat severe"
+      ],
+
+      // Moderate Priority (40-59)
+      moderatePriority: [
+        "worsening", "getting worse", "persistent pain",
+        "moderate pain", "fever 3 days", "high fever 2 days",
+        "severe headache", "migraine severe", "dizziness severe",
+        "fainting spells", "infection spreading", "wound infected",
+        "burn second degree", "fracture", "broken bone",
+        "bleeding heavily", "heavy bleeding", "severe bleeding", "bleeding a lot",
+        "deep cut", "bleeding", "persistent cough blood"
+      ]
+    };
+
+    // 🔥 CARDIAC ASSOCIATED SYMPTOMS (Score Boosters: +10-15)
+    // These boost the score when combined with cardiac symptoms
+    const cardiacAssociatedSymptoms = {
+      criticalAssociated: [ // +15 boost
+        "sweating profusely", "cold sweat", "clammy", "drenched in sweat",
+        "sense of doom", "feeling of impending death", "feeling like dying",
+        "anxiety severe", "panic severe"
+      ],
+      highAssociated: [ // +12 boost
+        "lightheaded", "dizzy", "faint feeling", "about to faint",
+        "nausea", "vomiting", "throwing up",
+        "arm pain left", "left arm numb", "left arm tingling",
+        "jaw pain", "jaw ache", "toothache sudden"
+      ],
+      moderateAssociated: [ // +10 boost
+        "back pain between shoulders", "upper back pain",
+        "neck pain", "shoulder pain",
+        "indigestion severe", "heartburn severe",
+        "shortness of breath", "breathless", "hard to breathe"
+      ]
+    };
+
+    // 📋 ROUTINE KEYWORDS (Score: 0-39)
+    const routineKeywords = [
+      "mild", "slight", "minor", "checkup", "routine",
+      "follow up", "prescription refill", "vaccination",
+      "cold", "cough", "runny nose", "sore throat mild"
     ];
 
-    const urgentKeywords = [
-      "severe pain",
-      "high fever",
-      "worsening",
-      "persistent pain",
-    ];
+    // 🌍 MULTILINGUAL EMERGENCY KEYWORDS
+    const multilingualEmergency = {
+      hindi: [
+        "दिल का दौरा", "गंभीर सीने में दर्द", "सांस नहीं ले सकता",
+        "बेहोश", "गंभीर रक्तस्राव", "स्ट्रोक", "दौरा",
+        "सीने में दर्द", "छाती में दर्द", "सीने में दबाव", "पसीना आना"
+      ],
+      marathi: [
+        "हृदयविकाराचा झटका", "गंभीर छातीत दुखणे", "श्वास घेऊ शकत नाही",
+        "बेशुद्ध", "गंभीर रक्तस्त्राव",
+        "छातीत दुखणे", "छातीत दाब", "घाम येणे"
+      ],
+      tamil: [
+        "மாரடைப்பு", "கடுமையான மார்பு வலி", "மூச்சு விட முடியவில்லை",
+        "சுயநினைவு இழப்பு", "கடுமையான இரத்தப்போக்கு",
+        "மார்பு வலி", "மார்பு அழுத்தம", "வியர்வை"
+      ],
+      telugu: [
+        "గుండెపోటు", "తీవ్రమైన ఛాతీ నొప్పి", "శ్వాస తీసుకోలేకపోవడం",
+        "స్పృహ కోల్పోవడం", "తీవ్రమైన రక్తస్రావం",
+        "ఛాతీ నొప్పి", "ఛాతీ ఒత్తిడి", "చెమట"
+      ]
+    };
 
-    if (emergencyKeywords.some(k => text.includes(k))) {
-      return "emergency";
+    // 🔍 Check Emergency Keywords with Cardiac-Specific Scoring
+    let hasCardiacSymptoms = false;
+
+    // Check Critical Cardiac (95-100)
+    for (const keyword of emergencyKeywords.criticalCardiac || []) {
+      if (text.includes(keyword)) {
+        score = Math.max(score, 95 + Math.random() * 5); // 95-100
+        matchedKeywords.push(keyword);
+        hasCardiacSymptoms = true;
+      }
     }
 
-    if (urgentKeywords.some(k => text.includes(k))) {
-      return "urgent";
+    // Check High-Risk Cardiac (85-94)
+    if (score < 95) {
+      for (const keyword of emergencyKeywords.highRiskCardiac || []) {
+        if (text.includes(keyword)) {
+          score = Math.max(score, 85 + Math.random() * 9); // 85-94
+          matchedKeywords.push(keyword);
+          hasCardiacSymptoms = true;
+        }
+      }
     }
 
-    return "routine";
+    // Check Moderate Cardiac (70-84)
+    if (score < 85) {
+      for (const keyword of emergencyKeywords.moderateCardiac || []) {
+        if (text.includes(keyword)) {
+          score = Math.max(score, 70 + Math.random() * 14); // 70-84
+          matchedKeywords.push(keyword);
+          hasCardiacSymptoms = true;
+        }
+      }
+    }
+
+    // Check Other Emergency Categories (original logic)
+    for (const category in emergencyKeywords) {
+      if (category.includes('cardiac')) continue; // Skip cardiac categories (already processed)
+
+      for (const keyword of emergencyKeywords[category]) {
+        if (text.includes(keyword)) {
+          score = Math.max(score, 85 + Math.random() * 15); // 85-100
+          matchedKeywords.push(keyword);
+        }
+      }
+    }
+
+    // 🔥 Boost score for associated symptoms (if cardiac symptoms detected)
+    if (hasCardiacSymptoms) {
+      for (const keyword of cardiacAssociatedSymptoms.criticalAssociated) {
+        if (text.includes(keyword)) {
+          score = Math.min(100, score + 15); // +15 boost
+          matchedKeywords.push(keyword);
+        }
+      }
+
+      for (const keyword of cardiacAssociatedSymptoms.highAssociated) {
+        if (text.includes(keyword)) {
+          score = Math.min(100, score + 12); // +12 boost
+          matchedKeywords.push(keyword);
+        }
+      }
+
+      for (const keyword of cardiacAssociatedSymptoms.moderateAssociated) {
+        if (text.includes(keyword)) {
+          score = Math.min(100, score + 10); // +10 boost
+          matchedKeywords.push(keyword);
+        }
+      }
+    }
+
+    // Check Multilingual Emergency
+    for (const lang in multilingualEmergency) {
+      for (const keyword of multilingualEmergency[lang]) {
+        if (text.includes(keyword)) {
+          score = Math.max(score, 90);
+          matchedKeywords.push(keyword);
+        }
+      }
+    }
+
+    // Check Urgent Keywords
+    if (score < 80) {
+      for (const keyword of urgentKeywords.highPriority) {
+        if (text.includes(keyword)) {
+          score = Math.max(score, 60 + Math.random() * 19); // 60-79
+          matchedKeywords.push(keyword);
+        }
+      }
+
+      for (const keyword of urgentKeywords.moderatePriority) {
+        if (text.includes(keyword)) {
+          score = Math.max(score, 40 + Math.random() * 19); // 40-59
+          matchedKeywords.push(keyword);
+        }
+      }
+    }
+
+    // Check Routine Keywords
+    if (score < 40) {
+      for (const keyword of routineKeywords) {
+        if (text.includes(keyword)) {
+          score = Math.max(score, 10 + Math.random() * 29); // 10-39
+          matchedKeywords.push(keyword);
+        }
+      }
+    }
+
+    // Default routine if no keywords matched
+    if (matchedKeywords.length === 0) {
+      score = 20; // Default routine score
+    }
+
+    // Determine urgency level and recommendations
+    let level, recommendation, allowOnlineBooking;
+
+    if (score >= 80) {
+      level = "emergency";
+      recommendation = "Seek immediate emergency care. Call ambulance or visit ER now.";
+      allowOnlineBooking = false;
+    } else if (score >= 40) {
+      level = "urgent";
+      recommendation = "Schedule appointment within 24-48 hours. Choose earliest available slot.";
+      allowOnlineBooking = true;
+    } else {
+      level = "routine";
+      recommendation = "Standard consultation recommended. Book at your convenience.";
+      allowOnlineBooking = true;
+    }
+
+    return {
+      level,
+      score: Math.round(score),
+      matchedKeywords: [...new Set(matchedKeywords)], // Remove duplicates
+      recommendation,
+      allowOnlineBooking
+    };
   };
 
 
@@ -572,10 +836,17 @@ Level: ${level}
       return;
     }
 
+    // 🫀 Handle chest pain triage button responses (pain scale 1-10 and yes/no)
+    if (value && (value.startsWith("pain_scale_") || value === "chest_yes" || value === "chest_no")) {
+      let answer;
 
-    // 🫀 Handle chest pain triage answers
-    if (value === "chest_yes" || value === "chest_no") {
-      const answer = value === "chest_yes";
+      // Extract answer from button value
+      if (value.startsWith("pain_scale_")) {
+        answer = value.replace("pain_scale_", ""); // "1" to "10"
+      } else {
+        answer = value === "chest_yes" ? "Yes" : "No";
+      }
+
       const newAnswers = [...chestAnswers, answer];
       setChestAnswers(newAnswers);
 
@@ -1285,12 +1556,21 @@ ${plan.monitoring.map(m => `• ${m}`).join("\n")}`,
       return;
     }
 
+    // 🫀 Chest pain triage trigger - Multiple cardiac keywords
+    const cardiacTriggerKeywords = [
+      "chest pain", "pain in chest", "pain in my chest",
+      "heart attack", "heart pain", "pain in heart",
+      "crushing chest", "crushing pain", "pressure in chest",
+      "chest pressure", "tight chest", "chest tightness",
+      "squeezing chest", "heavy chest", "chest discomfort",
+      "cardiac arrest", "heart problem", "heart issue"
+    ];
 
-    // 🫀 Chest pain triage trigger
-    if (
-      userSymptoms.toLowerCase().includes("chest pain") &&
-      !chestPainTriage
-    ) {
+    const hasCardiacSymptom = cardiacTriggerKeywords.some(keyword =>
+      userSymptoms.toLowerCase().includes(keyword)
+    );
+
+    if (hasCardiacSymptom && !chestPainTriage) {
 
       setTriageSymptoms(userSymptoms); // ✅ SAVE SYMPTOMS
       setChestPainTriage({ step: 0 });
@@ -1301,8 +1581,16 @@ ${plan.monitoring.map(m => `• ${m}`).join("\n")}`,
           text: CHEST_PAIN_QUESTIONS[language || "en"][0],
           sender: "bot",
           options: [
-            { label: "Yes", value: "chest_yes" },
-            { label: "No", value: "chest_no" },
+            { label: "1", value: "pain_scale_1" },
+            { label: "2", value: "pain_scale_2" },
+            { label: "3", value: "pain_scale_3" },
+            { label: "4", value: "pain_scale_4" },
+            { label: "5", value: "pain_scale_5" },
+            { label: "6", value: "pain_scale_6" },
+            { label: "7", value: "pain_scale_7" },
+            { label: "8", value: "pain_scale_8" },
+            { label: "9", value: "pain_scale_9" },
+            { label: "10", value: "pain_scale_10" },
           ],
         },
       ]);
@@ -1312,8 +1600,18 @@ ${plan.monitoring.map(m => `• ${m}`).join("\n")}`,
       return; // ⛔ pause normal diagnosis
     }
 
-    const urgency = classifyUrgency(userSymptoms);
-    localStorage.setItem("urgency", urgency);
+    const urgencyData = classifyUrgency(userSymptoms);
+
+    // Store full urgency data object
+    localStorage.setItem("urgencyData", JSON.stringify({
+      ...urgencyData,
+      symptoms: userSymptoms,
+      timestamp: new Date().toISOString()
+    }));
+
+    // Keep backward compatibility
+    localStorage.setItem("urgency", urgencyData.level);
+
     setInput("");
     setLoading(true);
 
@@ -1459,7 +1757,7 @@ ${plan.monitoring.map(m => `• ${m}`).join("\n")}`,
         }
 
         // 🚨 Emergency message AFTER disease
-        if (urgency === "emergency") {
+        if (urgencyData.level === "emergency") {
           updated.push({
             text:
               language === "hi"
@@ -1476,7 +1774,7 @@ ${plan.monitoring.map(m => `• ${m}`).join("\n")}`,
         }
 
         // ⚠️ Urgent message
-        if (urgency === "urgent") {
+        if (urgencyData.level === "urgent") {
           updated.push({
             text:
               language === "hi"

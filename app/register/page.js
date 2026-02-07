@@ -167,12 +167,14 @@ function RegisterContent() {
 
 
   //urgent booking algorithm (for emergencies)
-  const urgency =
+  const urgencyData =
     isVaccination
-      ? "routine"
-      : typeof window !== "undefined"
-        ? localStorage.getItem("urgency") || "routine"
-        : "routine";
+      ? { level: "routine", score: 20, matchedKeywords: [], recommendation: "Standard vaccination", allowOnlineBooking: true }
+      : typeof window !== "undefined" && localStorage.getItem("urgencyData")
+        ? JSON.parse(localStorage.getItem("urgencyData"))
+        : { level: "routine", score: 20, matchedKeywords: [], recommendation: "Standard consultation", allowOnlineBooking: true };
+
+  const urgency = urgencyData.level; // Backward compatibility
 
   // 💰 Consultation fee (mock)
   const CONSULTATION_FEE_MAP = {
@@ -210,6 +212,9 @@ function RegisterContent() {
   //for vaccination
   const [vaccinationDate, setVaccinationDate] = useState("");
   const [vaccinationSlot, setVaccinationSlot] = useState("");
+
+  // 🚨 Emergency modal dismiss state
+  const [dismissEmergencyModal, setDismissEmergencyModal] = useState(false);
 
 
 
@@ -296,7 +301,22 @@ function RegisterContent() {
     }
 
     setSelectedBooking({ doctor, slot });
-    setShowInsurance(true);
+
+    // 🚨 EMERGENCY BYPASS: Skip insurance for emergency/urgent cases to save time
+    const isEmergencyOrUrgent = urgency === "emergency" || urgency === "urgent" ||
+      (urgencyData.score >= 70); // Cardiac emergencies
+
+    if (isEmergencyOrUrgent) {
+      // Skip insurance modal, proceed directly to booking with zero payment
+      setInsuranceCoverage(0);
+      setShowInsurance(false);
+
+      // Directly book the appointment
+      await finalizeBooking(doctor, slot, 0); // 0 = no payment for emergencies
+    } else {
+      // Normal flow: show insurance modal for routine cases
+      setShowInsurance(true);
+    }
   };
 
 
@@ -323,6 +343,18 @@ function RegisterContent() {
     } finally {
       setCheckingInsurance(false);
     }
+  };
+
+
+  // 🚨 Emergency Fast-Track Booking (bypasses insurance & payment)
+  const finalizeBooking = async (doctor, slot, insuranceCoverage) => {
+    if (!selectedBooking) return;
+
+    setBookingSlot(slot);
+    setInsuranceCoverage(insuranceCoverage);
+
+    // Directly book without payment for emergencies
+    await bookAppointment(doctor, slot);
   };
 
   const confirmBookingAfterInsurance = async () => {
@@ -498,16 +530,127 @@ function RegisterContent() {
             </button>
           </div>
 
-          {/* 🚦 Urgency Banner */}
-          {urgency === "urgent" && (
-            <div className="alert alert-warning" style={{ marginBottom: "20px" }}>
-              ⚠️ This is an urgent case. Please choose the earliest available slot.
+          {/* 🚦 Enhanced Urgency Display */}
+          {urgency !== "routine" && (
+            <div className={`alert ${urgency === "emergency" ? "alert-danger" : "alert-warning"}`}
+              style={{ marginBottom: "20px", padding: "16px", borderRadius: "8px" }}>
+              <div style={{ display: "flex", alignItems: "flex-start", gap: "12px" }}>
+                <div style={{ fontSize: "24px" }}>
+                  {urgency === "emergency" ? "🚨" : "⚠️"}
+                </div>
+                <div style={{ flex: 1 }}>
+                  <div style={{ fontWeight: "600", marginBottom: "4px" }}>
+                    {urgency === "emergency" ? "EMERGENCY - DO NOT BOOK ONLINE" : "URGENT CASE"}
+                  </div>
+                  <div style={{ fontSize: "14px", marginBottom: "8px" }}>
+                    {urgencyData.recommendation}
+                  </div>
+
+                  {/* Cardiac-specific emergency guidance */}
+                  {urgencyData.score >= 70 && urgencyData.score < 95 && urgencyData.matchedKeywords?.some(k =>
+                    k.includes("chest") || k.includes("heart") || k.includes("cardiac")
+                  ) && (
+                      <div style={{
+                        marginTop: "12px",
+                        padding: "12px",
+                        background: "rgba(220, 38, 38, 0.1)",
+                        borderRadius: "6px",
+                        fontSize: "13px"
+                      }}>
+                        <div style={{ fontWeight: "600", marginBottom: "8px", color: "#dc2626" }}>
+                          ⚠️ CARDIAC EMERGENCY - Immediate Actions:
+                        </div>
+                        <div style={{ lineHeight: "1.8" }}>
+                          1. 📞 <strong>Call ambulance: 108</strong><br />
+                          2. 💊 Chew aspirin if available (unless allergic)<br />
+                          3. 🪑 Sit down, stay calm<br />
+                          4. 🚫 <strong>Do NOT drive yourself</strong>
+                        </div>
+                        <div style={{ marginTop: "8px", fontSize: "12px", opacity: 0.9 }}>
+                          While waiting, you may book priority slots below for follow-up care.
+                        </div>
+                      </div>
+                    )}
+
+                  {urgencyData.matchedKeywords?.length > 0 && (
+                    <div style={{ fontSize: "13px", opacity: 0.9 }}>
+                      <strong>Detected symptoms:</strong> {urgencyData.matchedKeywords.slice(0, 3).join(", ")}
+                    </div>
+                  )}
+                  {urgencyData.score && (
+                    <div style={{ fontSize: "12px", marginTop: "4px", opacity: 0.8 }}>
+                      Urgency Score: {urgencyData.score}/100
+                    </div>
+                  )}
+                </div>
+              </div>
             </div>
           )}
 
-          {urgency === "emergency" && (
-            <div className="alert alert-danger" style={{ marginBottom: "20px" }}>
-              🚨 Emergency cases should not be booked online. Please visit the nearest emergency department immediately.
+          {/* 🚨 Emergency Blocking Modal */}
+          {urgency === "emergency" && !urgencyData.allowOnlineBooking && !dismissEmergencyModal && (
+            <div className="modal-overlay" style={{ zIndex: 9999 }}>
+              <div className="modal-card" style={{ maxWidth: "500px", textAlign: "center" }}>
+                <div style={{ fontSize: "64px", marginBottom: "16px" }}>🚨</div>
+                <h2 style={{ color: "#dc2626", marginBottom: "12px" }}>MEDICAL EMERGENCY</h2>
+                <p style={{ fontSize: "16px", marginBottom: "24px", lineHeight: "1.6" }}>
+                  Based on your symptoms, this appears to be a medical emergency.
+                  <strong> Do not wait for an online appointment.</strong>
+                </p>
+
+                <div className="alert alert-danger" style={{ marginBottom: "24px", textAlign: "left" }}>
+                  <strong>Your symptoms:</strong>
+                  <div style={{ marginTop: "8px" }}>
+                    {urgencyData.symptoms || localStorage.getItem("currentSymptoms") || "Severe symptoms detected"}
+                  </div>
+                  {urgencyData.matchedKeywords?.length > 0 && (
+                    <div style={{ marginTop: "8px", fontSize: "13px", opacity: 0.9 }}>
+                      <strong>Detected keywords:</strong> {urgencyData.matchedKeywords.slice(0, 5).join(", ")}
+                    </div>
+                  )}
+                </div>
+
+                <div style={{ background: "#fef2f2", padding: "16px", borderRadius: "8px", marginBottom: "24px" }}>
+                  <h3 style={{ fontSize: "18px", marginBottom: "12px", color: "#991b1b" }}>Immediate Actions:</h3>
+                  <div style={{ display: "grid", gap: "12px", textAlign: "left" }}>
+                    <a href="tel:108" className="btn btn-danger" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "8px", fontSize: "16px", padding: "12px" }}>
+                      📞 Call Ambulance (108)
+                    </a>
+                    <a href="tel:102" className="btn btn-danger" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "8px", fontSize: "16px", padding: "12px" }}>
+                      📞 Medical Emergency (102)
+                    </a>
+                  </div>
+                </div>
+
+                <div style={{ fontSize: "14px", color: "#666", marginBottom: "16px" }}>
+                  <strong>Or visit the nearest emergency department immediately</strong>
+                </div>
+
+                <div style={{ display: "grid", gap: "12px" }}>
+                  <button
+                    onClick={() => {
+                      // Dismiss modal to allow viewing doctors
+                      setDismissEmergencyModal(true);
+                      // Scroll to doctors section
+                      setTimeout(() => {
+                        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+                      }, 100);
+                    }}
+                    className="btn btn-primary"
+                    style={{ width: "100%" }}
+                  >
+                    📋 View Available Doctors (Priority Slots)
+                  </button>
+
+                  <button
+                    onClick={() => router.push("/")}
+                    className="btn btn-secondary"
+                    style={{ width: "100%" }}
+                  >
+                    Go Back to Chat
+                  </button>
+                </div>
+              </div>
             </div>
           )}
 
@@ -804,20 +947,47 @@ function RegisterContent() {
                         {t.slots}
                       </div>
                       <div className="slots-grid">
-                        {Array.isArray(doc.slots) && doc.slots.map((slot, idx) => (
-                          <button
-                            key={idx}
-                            onClick={() => handleSlotSelect(doc.name, slot)}
-                            className="slot-btn"
-                            disabled={isBooking}
-                          >
-                            {isBooking && bookingSlot === slot ? (
-                              <LoaderIcon />
-                            ) : (
-                              slot
-                            )}
-                          </button>
-                        ))}
+                        {Array.isArray(doc.slots) && doc.slots.map((slot, idx) => {
+                          // Highlight first 2 slots for urgent cases OR cardiac emergencies (score 70-94)
+                          const isCardiacEmergency = urgencyData.score >= 70 && urgencyData.score < 95;
+                          const isUrgentPriority = (urgency === "urgent" || isCardiacEmergency) && idx < 2;
+
+                          return (
+                            <button
+                              key={idx}
+                              onClick={() => handleSlotSelect(doc.name, slot)}
+                              className={`slot-btn ${isUrgentPriority ? 'urgent-priority' : ''}`}
+                              disabled={isBooking}
+                              style={isUrgentPriority ? {
+                                background: 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)',
+                                color: 'white',
+                                fontWeight: '600',
+                                border: '2px solid #f59e0b',
+                                boxShadow: '0 4px 12px rgba(245, 158, 11, 0.3)',
+                                position: 'relative'
+                              } : {}}
+                            >
+                              {isBooking && bookingSlot === slot ? (
+                                <LoaderIcon />
+                              ) : (
+                                <>
+                                  {slot}
+                                  {isUrgentPriority && (
+                                    <span style={{
+                                      fontSize: '10px',
+                                      display: 'block',
+                                      marginTop: '2px',
+                                      opacity: 0.9
+                                    }}>
+                                      ⚡ Priority
+                                    </span>
+                                  )}
+                                </>
+                              )}
+
+                            </button>
+                          );
+                        })}
                       </div>
                     </div>
                   </div>

@@ -7434,5 +7434,795 @@
     ],
     "documents": [],
     "createdAt": "2026-02-07T18:33:31.748Z"
+  },
+  {
+    "id": "mlco9pm0uopvxqw85uk",
+    "patientId": "mlaej32a2pfge55lthy",
+    "patientName": "dhawal joshi",
+    "symptoms": "pain in the chest",
+    "doctorType": "general-physician",
+    "messages": [
+      {
+        "text": "Hello dhawal joshi! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      }
+    ],
+    "documents": [],
+    "createdAt": "2026-02-07T18:53:17.160Z"
+  },
+  {
+    "id": "mlcoa8qnbd47qrelj9h",
+    "patientId": "mlaej32a2pfge55lthy",
+    "patientName": "dhawal joshi",
+    "symptoms": "high fever",
+    "doctorType": "general-physician",
+    "messages": [
+      {
+        "text": "Hello dhawal joshi! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      }
+    ],
+    "documents": [],
+    "createdAt": "2026-02-07T18:53:41.951Z"
+  },
+  {
+    "id": "mlcoac5ekbltmop9xg",
+    "patientId": "mlaej32a2pfge55lthy",
+    "patientName": "dhawal joshi",
+    "symptoms": "high fever",
+    "doctorType": "general-physician",
+    "messages": [
+      {
+        "text": "Hello dhawal joshi! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      },
+      {
+        "text": "high fever",
+        "sender": "user"
+      },
+      {
+        "text": "Analyzing your symptoms...",
+        "sender": "bot"
+      },
+      {
+        "text": "🦠 Possible condition:\n\n**Viral infection (most likely)**. High fever alone is commonly caused by viral illnesses like influenza or a cold. Monitor for worsening symptoms.\n\n⚠️ This is not a medical diagnosis.",
+        "sender": "bot"
+      },
+      {
+        "text": "⚠️ An urgent consultation is recommended.",
+        "sender": "bot"
+      },
+      {
+        "text": "Would you like to book a consultation with a doctor?",
+        "sender": "bot"
+      }
+    ],
+    "documents": [],
+    "createdAt": "2026-02-07T18:53:46.370Z"
+  },
+  {
+    "id": "mlcoaqz3ia1g1khshyb",
+    "patientId": "mlaej32a2pfge55lthy",
+    "patientName": "dhawal joshi",
+    "symptoms": "high fever",
+    "doctorType": "general-physician",
+    "messages": [
+      {
+        "text": "Hello dhawal joshi! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      }
+    ],
+    "documents": [],
+    "createdAt": "2026-02-07T18:54:05.583Z"
+  },
+  {
+    "id": "mlcoarxcsvn1codgyfj",
+    "patientId": "mlaej32a2pfge55lthy",
+    "patientName": "dhawal joshi",
+    "symptoms": "high fever",
+    "doctorType": "general-physician",
+    "messages": [
+      {
+        "text": "Hello dhawal joshi! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      },
+      {
+        "text": "high fever",
+        "sender": "user"
+      },
+      {
+        "text": "Analyzing your symptoms...",
+        "sender": "bot"
+      },
+      {
+        "text": "🦠 Possible condition:\n\n**Viral infection (likely)**. High fever is commonly caused by viral illnesses like influenza or other respiratory infections. Further evaluation needed if symptoms persist or worsen.\n\n⚠️ This is not a medical diagnosis.",
+        "sender": "bot"
+      },
+      {
+        "text": "⚠️ An urgent consultation is recommended.",
+        "sender": "bot"
+      },
+      {
+        "text": "Would you like to book a consultation with a doctor?",
+        "sender": "bot"
+      }
+    ],
+    "documents": [],
+    "createdAt": "2026-02-07T18:54:06.816Z"
+  },
+  {
+    "id": "mlcox92p32n3hin87c",
+    "patientId": "mlaej32a2pfge55lthy",
+    "patientName": "dhawal joshi",
+    "symptoms": "fever",
+    "doctorType": "general-physician",
+    "messages": [
+      {
+        "text": "Hello dhawal joshi! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      },
+      {
+        "text": "hi",
+        "sender": "user"
+      },
+      {
+        "text": "Hello! I'm HealthConnect, your intelligent health assistant. 👋\n\nI can help you with:\n• Analyzing your symptoms\n• Understanding medical documents\n• Booking doctor appointments\n• Tracking chronic conditions\n• Vaccination schedules\n\nHow can I assist you today?",
+        "sender": "bot"
+      }
+    ],
+    "documents": [],
+    "createdAt": "2026-02-07T19:11:35.473Z"
+  },
+  {
+    "id": "mlcoxy9zb1j1sqr7hyw",
+    "patientId": "mlaej32a2pfge55lthy",
+    "patientName": "dhawal joshi",
+    "symptoms": "i have pain in chest",
+    "doctorType": "general-physician",
+    "messages": [
+      {
+        "text": "Hello dhawal joshi! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      },
+      {
+        "text": "hi",
+        "sender": "user"
+      },
+      {
+        "text": "Hello! I'm HealthConnect, your intelligent health assistant. 👋\n\nI can help you with:\n• Analyzing your symptoms\n• Understanding medical documents\n• Booking doctor appointments\n• Tracking chronic conditions\n• Vaccination schedules\n\nHow can I assist you today?",
+        "sender": "bot"
+      }
+    ],
+    "documents": [],
+    "createdAt": "2026-02-07T19:12:08.135Z"
+  },
+  {
+    "id": "mlcpsnjfh1yi2ew6pr",
+    "patientId": "mlaej32a2pfge55lthy",
+    "patientName": "dhawal joshi",
+    "symptoms": "chest pain",
+    "doctorType": "cardiologist",
+    "messages": [
+      {
+        "text": "Hello dhawal joshi! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      },
+      {
+        "text": "chest pain",
+        "sender": "user"
+      },
+      {
+        "text": "On a scale of 1-10, how severe is your chest pain? (10 being worst pain imaginable)",
+        "sender": "bot"
+      },
+      {
+        "text": "Is the pain crushing, squeezing, or feels like pressure on your chest?",
+        "sender": "bot"
+      },
+      {
+        "text": "Does the pain spread to your arm, jaw, neck, or back?",
+        "sender": "bot"
+      },
+      {
+        "text": "Are you experiencing shortness of breath or difficulty breathing?",
+        "sender": "bot"
+      },
+      {
+        "text": "Are you sweating heavily, feeling nauseous, or lightheaded?",
+        "sender": "bot"
+      },
+      {
+        "text": "Did the chest pain start suddenly or gradually?",
+        "sender": "bot"
+      },
+      {
+        "text": "Does the pain worsen with activity or deep breathing?",
+        "sender": "bot"
+      },
+      {
+        "text": "🚨 Based on your answers, this may be a medical emergency.",
+        "sender": "bot"
+      },
+      {
+        "text": "Analyzing your symptoms further...",
+        "sender": "bot"
+      },
+      {
+        "text": "🦠 Possible condition:\n\n**Acute coronary syndrome (e.g., heart attack or unstable angina)**. Sudden chest pain, especially with pressure, spreading to arms/jaw, or accompanied by sweating/shortness of breath, suggests reduced blood flow to the heart.\n\n⚠️ This is not a medical diagnosis.",
+        "sender": "bot"
+      },
+      {
+        "text": "Would you like to book a consultation with a doctor?",
+        "sender": "bot"
+      }
+    ],
+    "documents": [],
+    "createdAt": "2026-02-07T19:36:00.555Z"
+  },
+  {
+    "id": "mlcptdoezjeyilzgnvb",
+    "patientId": "mlaej32a2pfge55lthy",
+    "patientName": "dhawal joshi",
+    "symptoms": "i have pain in chest",
+    "doctorType": "general-physician",
+    "messages": [
+      {
+        "text": "Hello dhawal joshi! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      }
+    ],
+    "documents": [],
+    "createdAt": "2026-02-07T19:36:34.430Z"
+  },
+  {
+    "id": "mlcpzmhjtiby3twpkmp",
+    "patientId": "mlaej32a2pfge55lthy",
+    "patientName": "dhawal joshi",
+    "symptoms": "very high fever and bleeding",
+    "doctorType": "general-physician",
+    "messages": [
+      {
+        "text": "Hello dhawal joshi! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      }
+    ],
+    "documents": [],
+    "createdAt": "2026-02-07T19:41:25.783Z"
+  },
+  {
+    "id": "mlcpztfwcopshl8n37l",
+    "patientId": "mlaej32a2pfge55lthy",
+    "patientName": "dhawal joshi",
+    "symptoms": "very high fever and bleeding",
+    "doctorType": "general-physician",
+    "messages": [
+      {
+        "text": "Hello dhawal joshi! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      },
+      {
+        "text": "very high fever and bleeding",
+        "sender": "user"
+      },
+      {
+        "text": "Analyzing your symptoms...",
+        "sender": "bot"
+      },
+      {
+        "text": "🦠 Possible condition:\n\n**Meningococcal meningitis (MenB)**. Sudden high fever with bleeding (e.g., rash/petechiae) suggests meningococcal infection, a medical emergency requiring immediate intervention.\n\n⚠️ This is not a medical diagnosis.",
+        "sender": "bot"
+      },
+      {
+        "text": "⚠️ An urgent consultation is recommended.",
+        "sender": "bot"
+      },
+      {
+        "text": "Would you like to book a consultation with a doctor?",
+        "sender": "bot"
+      }
+    ],
+    "documents": [],
+    "createdAt": "2026-02-07T19:41:34.796Z"
+  },
+  {
+    "id": "mlcq4nd4597wbnhly09",
+    "patientId": "mlaej32a2pfge55lthy",
+    "patientName": "dhawal joshi",
+    "symptoms": "i have chest pain",
+    "doctorType": "cardiologist",
+    "messages": [
+      {
+        "text": "Hello dhawal joshi! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      },
+      {
+        "text": "i have chest pain",
+        "sender": "user"
+      },
+      {
+        "text": "On a scale of 1-10, how severe is your chest pain? (10 being worst pain imaginable)",
+        "sender": "bot"
+      },
+      {
+        "text": "Is the pain crushing, squeezing, or feels like pressure on your chest?",
+        "sender": "bot"
+      },
+      {
+        "text": "Does the pain spread to your arm, jaw, neck, or back?",
+        "sender": "bot"
+      },
+      {
+        "text": "Are you experiencing shortness of breath or difficulty breathing?",
+        "sender": "bot"
+      },
+      {
+        "text": "Are you sweating heavily, feeling nauseous, or lightheaded?",
+        "sender": "bot"
+      },
+      {
+        "text": "Did the chest pain start suddenly or gradually?",
+        "sender": "bot"
+      },
+      {
+        "text": "Does the pain worsen with activity or deep breathing?",
+        "sender": "bot"
+      },
+      {
+        "text": "🚨 Based on your answers, this may be a medical emergency.",
+        "sender": "bot"
+      },
+      {
+        "text": "Analyzing your symptoms further...",
+        "sender": "bot"
+      },
+      {
+        "text": "🦠 Possible condition:\n\n**Acute coronary syndrome (e.g., angina or heart attack)**. Sudden chest pressure/tightness, especially with exertion or radiating pain, suggests reduced blood flow to the heart.\n\n⚠️ This is not a medical diagnosis.",
+        "sender": "bot"
+      },
+      {
+        "text": "Would you like to book a consultation with a doctor?",
+        "sender": "bot"
+      }
+    ],
+    "documents": [],
+    "createdAt": "2026-02-07T19:45:20.200Z"
+  },
+  {
+    "id": "mlcq9rl4d9nyud3yzwc",
+    "patientId": "mlaej32a2pfge55lthy",
+    "patientName": "dhawal joshi",
+    "symptoms": "severe blooding from an accident",
+    "doctorType": "general-physician",
+    "messages": [
+      {
+        "text": "Hello dhawal joshi! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      }
+    ],
+    "documents": [],
+    "createdAt": "2026-02-07T19:49:18.952Z"
+  },
+  {
+    "id": "mlcq9xv78t1khhublgg",
+    "patientId": "mlaej32a2pfge55lthy",
+    "patientName": "dhawal joshi",
+    "symptoms": "severe blooding from an accident",
+    "doctorType": "general-physician",
+    "messages": [
+      {
+        "text": "Hello dhawal joshi! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      },
+      {
+        "text": "severe blooding from an accident",
+        "sender": "user"
+      },
+      {
+        "text": "Analyzing your symptoms...",
+        "sender": "bot"
+      },
+      {
+        "text": "🦠 Possible condition:\n\n**Hypovolemic shock due to acute hemorrhage**. Severe blood loss from trauma may lead to life-threatening shock if >20% of blood volume is lost rapidly.\n\n⚠️ This is not a medical diagnosis.",
+        "sender": "bot"
+      },
+      {
+        "text": "Would you like to book a consultation with a doctor?",
+        "sender": "bot"
+      }
+    ],
+    "documents": [],
+    "createdAt": "2026-02-07T19:49:27.091Z"
+  },
+  {
+    "id": "mlcqab55soadgiay96",
+    "patientId": "mlaej32a2pfge55lthy",
+    "patientName": "dhawal joshi",
+    "symptoms": "blooding severely",
+    "doctorType": "general-physician",
+    "messages": [
+      {
+        "text": "Hello dhawal joshi! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      }
+    ],
+    "documents": [],
+    "createdAt": "2026-02-07T19:49:44.297Z"
+  },
+  {
+    "id": "mlcqazyzk5slly7ueem",
+    "patientId": "mlaej32a2pfge55lthy",
+    "patientName": "dhawal joshi",
+    "symptoms": "chest pain",
+    "doctorType": "cardiologist",
+    "messages": [
+      {
+        "text": "Hello dhawal joshi! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      },
+      {
+        "text": "chest pain",
+        "sender": "user"
+      },
+      {
+        "text": "On a scale of 1-10, how severe is your chest pain? (10 being worst pain imaginable)",
+        "sender": "bot"
+      },
+      {
+        "text": "Is the pain crushing, squeezing, or feels like pressure on your chest?",
+        "sender": "bot"
+      },
+      {
+        "text": "Does the pain spread to your arm, jaw, neck, or back?",
+        "sender": "bot"
+      },
+      {
+        "text": "Are you experiencing shortness of breath or difficulty breathing?",
+        "sender": "bot"
+      },
+      {
+        "text": "Are you sweating heavily, feeling nauseous, or lightheaded?",
+        "sender": "bot"
+      },
+      {
+        "text": "Did the chest pain start suddenly or gradually?",
+        "sender": "bot"
+      },
+      {
+        "text": "Does the pain worsen with activity or deep breathing?",
+        "sender": "bot"
+      },
+      {
+        "text": "🚨 Based on your answers, this may be a medical emergency.",
+        "sender": "bot"
+      },
+      {
+        "text": "Analyzing your symptoms further...",
+        "sender": "bot"
+      },
+      {
+        "text": "🦠 Possible condition:\n\n**Acute coronary syndrome (e.g., heart attack or unstable angina)**. Sudden chest pain with pressure, tightness, or radiating pain may indicate reduced blood flow to the heart. Requires immediate evaluation.\n\n⚠️ This is not a medical diagnosis.",
+        "sender": "bot"
+      },
+      {
+        "text": "Would you like to book a consultation with a doctor?",
+        "sender": "bot"
+      }
+    ],
+    "documents": [],
+    "createdAt": "2026-02-07T19:50:16.475Z"
+  },
+  {
+    "id": "mlcqez2aibpu3043ae",
+    "patientId": "mlaej32a2pfge55lthy",
+    "patientName": "dhawal joshi",
+    "symptoms": "bleeding from head",
+    "doctorType": "general-physician",
+    "messages": [
+      {
+        "text": "Hello dhawal joshi! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      }
+    ],
+    "documents": [],
+    "createdAt": "2026-02-07T19:53:21.922Z"
+  },
+  {
+    "id": "mlcqf0irgofld7axgr7",
+    "patientId": "mlaej32a2pfge55lthy",
+    "patientName": "dhawal joshi",
+    "symptoms": "bleeding from head",
+    "doctorType": "general-physician",
+    "messages": [
+      {
+        "text": "Hello dhawal joshi! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      },
+      {
+        "text": "bleeding from head",
+        "sender": "user"
+      },
+      {
+        "text": "Analyzing your symptoms...",
+        "sender": "bot"
+      },
+      {
+        "text": "🦠 Possible condition:\n\n**Subdural haematoma** likely due to head trauma causing bleeding between brain and skull. Requires immediate evaluation for neurological deficits.\n\n⚠️ This is not a medical diagnosis.",
+        "sender": "bot"
+      },
+      {
+        "text": "🚨 This may be an emergency. Immediate medical consultation is recommended.",
+        "sender": "bot"
+      },
+      {
+        "text": "Would you like to book a consultation with a doctor?",
+        "sender": "bot"
+      }
+    ],
+    "documents": [],
+    "createdAt": "2026-02-07T19:53:23.811Z"
+  },
+  {
+    "id": "mlcqfpjus75i4huutm",
+    "patientId": "mlaej32a2pfge55lthy",
+    "patientName": "dhawal joshi",
+    "symptoms": "chest pain",
+    "doctorType": "cardiologist",
+    "messages": [
+      {
+        "text": "Hello dhawal joshi! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      },
+      {
+        "text": "chest pain",
+        "sender": "user"
+      },
+      {
+        "text": "On a scale of 1-10, how severe is your chest pain? (10 being worst pain imaginable)",
+        "sender": "bot"
+      },
+      {
+        "text": "Is the pain crushing, squeezing, or feels like pressure on your chest?",
+        "sender": "bot"
+      },
+      {
+        "text": "Does the pain spread to your arm, jaw, neck, or back?",
+        "sender": "bot"
+      },
+      {
+        "text": "Are you experiencing shortness of breath or difficulty breathing?",
+        "sender": "bot"
+      },
+      {
+        "text": "Are you sweating heavily, feeling nauseous, or lightheaded?",
+        "sender": "bot"
+      },
+      {
+        "text": "Did the chest pain start suddenly or gradually?",
+        "sender": "bot"
+      },
+      {
+        "text": "Does the pain worsen with activity or deep breathing?",
+        "sender": "bot"
+      },
+      {
+        "text": "🚨 Based on your answers, this may be a medical emergency.",
+        "sender": "bot"
+      },
+      {
+        "text": "Analyzing your symptoms further...",
+        "sender": "bot"
+      },
+      {
+        "text": "🦠 Possible condition:\n\n**Acute coronary syndrome (e.g., heart attack or unstable angina)**. Sudden chest pain with pressure, tightness, or radiating discomfort may indicate reduced blood flow to the heart. Requires immediate evaluation.\n\n⚠️ This is not a medical diagnosis.",
+        "sender": "bot"
+      },
+      {
+        "text": "Would you like to book a consultation with a doctor?",
+        "sender": "bot"
+      }
+    ],
+    "documents": [],
+    "createdAt": "2026-02-07T19:53:56.250Z"
+  },
+  {
+    "id": "mlcqmxi4c5cjgs4g1og",
+    "patientId": "mlaej32a2pfge55lthy",
+    "patientName": "dhawal joshi",
+    "symptoms": "chest pain",
+    "doctorType": "cardiologist",
+    "messages": [
+      {
+        "text": "Hello dhawal joshi! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      },
+      {
+        "text": "chest pain",
+        "sender": "user"
+      },
+      {
+        "text": "On a scale of 1-10, how severe is your chest pain? (10 being worst pain imaginable)",
+        "sender": "bot"
+      },
+      {
+        "text": "Is the pain crushing, squeezing, or feels like pressure on your chest?",
+        "sender": "bot"
+      },
+      {
+        "text": "Does the pain spread to your arm, jaw, neck, or back?",
+        "sender": "bot"
+      },
+      {
+        "text": "Are you experiencing shortness of breath or difficulty breathing?",
+        "sender": "bot"
+      },
+      {
+        "text": "Are you sweating heavily, feeling nauseous, or lightheaded?",
+        "sender": "bot"
+      },
+      {
+        "text": "Did the chest pain start suddenly or gradually?",
+        "sender": "bot"
+      },
+      {
+        "text": "Does the pain worsen with activity or deep breathing?",
+        "sender": "bot"
+      },
+      {
+        "text": "🚨 Based on your answers, this may be a medical emergency.",
+        "sender": "bot"
+      },
+      {
+        "text": "Analyzing your symptoms further...",
+        "sender": "bot"
+      },
+      {
+        "text": "🦠 Possible condition:\n\n**Acute coronary syndrome (e.g., angina or heart attack)**. Sudden chest pressure/tightness, especially with exertion or radiating pain, suggests reduced blood flow to the heart. Requires immediate evaluation.\n\n⚠️ This is not a medical diagnosis.",
+        "sender": "bot"
+      },
+      {
+        "text": "Would you like to book a consultation with a doctor?",
+        "sender": "bot"
+      }
+    ],
+    "documents": [],
+    "createdAt": "2026-02-07T19:59:33.148Z"
+  },
+  {
+    "id": "mlcqnkk59ma9ho4a0x",
+    "patientId": "mlaej32a2pfge55lthy",
+    "patientName": "dhawal joshi",
+    "symptoms": "bleeding severly",
+    "doctorType": "general-physician",
+    "messages": [
+      {
+        "text": "Hello dhawal joshi! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      }
+    ],
+    "documents": [],
+    "createdAt": "2026-02-07T20:00:03.029Z"
+  },
+  {
+    "id": "mlcqnmferb3ck9wh0rp",
+    "patientId": "mlaej32a2pfge55lthy",
+    "patientName": "dhawal joshi",
+    "symptoms": "bleeding severly",
+    "doctorType": "general-physician",
+    "messages": [
+      {
+        "text": "Hello dhawal joshi! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      },
+      {
+        "text": "bleeding severly",
+        "sender": "user"
+      },
+      {
+        "text": "Analyzing your symptoms...",
+        "sender": "bot"
+      },
+      {
+        "text": "🦠 Possible condition:\n\n**Heavy menstrual bleeding (menorrhagia)**. Excessive blood loss causing soaking through pads/tampons hourly, clots, fatigue, or activity limitation.\n\n⚠️ This is not a medical diagnosis.",
+        "sender": "bot"
+      },
+      {
+        "text": "⚠️ An urgent consultation is recommended.",
+        "sender": "bot"
+      },
+      {
+        "text": "Would you like to book a consultation with a doctor?",
+        "sender": "bot"
+      }
+    ],
+    "documents": [],
+    "createdAt": "2026-02-07T20:00:05.450Z"
   }
 ]
