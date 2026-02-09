@@ -9,6 +9,7 @@ import { useRouter } from "next/navigation";
 import { PHQ9, GAD7, SCORE_OPTIONS } from "@/utils/mentalHealth"
 import { DOCTOR_DIRECTORY } from "@/utils/doctorDirectory";
 import { VACCINATION_SCHEDULE } from "@/utils/vaccinationSchedule";
+import ConsentModal from "@/components/ConsentModal";
 
 
 // Icons
@@ -294,6 +295,11 @@ export default function Chatbot() {
 
   const [input, setInput] = useState("");
 
+  // Consent management states
+  const [showConsentModal, setShowConsentModal] = useState(false);
+  const [consentsChecked, setConsentsChecked] = useState(false);
+  const [userEmail, setUserEmail] = useState("");
+
   // Ref for auto-scrolling to the latest message
   const messagesEndRef = useRef(null);
 
@@ -301,6 +307,33 @@ export default function Chatbot() {
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
+
+  // Check consent status on load
+  useEffect(() => {
+    const checkConsentStatus = async () => {
+      if (typeof window !== 'undefined') {
+        const email = localStorage.getItem("userEmail");
+        setUserEmail(email || "");
+
+        if (email && !consentsChecked) {
+          try {
+            const response = await fetch(`/api/consents?email=${encodeURIComponent(email)}`);
+            const data = await response.json();
+
+            if (!data.has_consents) {
+              setShowConsentModal(true);
+            }
+            setConsentsChecked(true);
+          } catch (error) {
+            console.error('Error checking consent status:', error);
+            setConsentsChecked(true);
+          }
+        }
+      }
+    };
+
+    checkConsentStatus();
+  }, [consentsChecked]);
 
   // Document upload states
   const [showUploadModal, setShowUploadModal] = useState(false);
@@ -868,22 +901,50 @@ Level: ${level}
           },
         ]);
       } else {
-        const redFlagCount = newAnswers.filter(Boolean).length;
-        const urgency =
-          redFlagCount >= 1 ? "emergency" : "urgent";
+        // Calculate urgency based on pain scale and yes answers
+        const painLevel = parseInt(newAnswers[0]) || 0; // First answer is pain scale 1-10
+        const yesCount = newAnswers.slice(1).filter(a => a === "Yes").length; // Count yes answers from Q2-Q7
 
+        const isEmergency = painLevel >= 7 || yesCount >= 2;
+        const urgency = isEmergency ? "emergency" : "urgent";
+        const urgencyScore = isEmergency ? Math.max(70, painLevel * 10) : Math.max(40, painLevel * 5);
+
+        // Store urgency data
         localStorage.setItem("urgency", urgency);
+        localStorage.setItem("urgencyData", JSON.stringify({
+          level: urgency,
+          score: urgencyScore,
+          matchedKeywords: [`Pain level: ${painLevel}/10`, `${yesCount} critical symptoms`],
+          recommendation: isEmergency ? "Immediate medical attention required" : "Urgent consultation recommended",
+          allowOnlineBooking: true // Allow booking but show warnings
+        }));
+
+        // 🚨 EMERGENCY ESCALATION MESSAGES
+        if (isEmergency) {
+          setMessages(prev => [
+            ...prev,
+            {
+              text: "🚨 **MEDICAL EMERGENCY DETECTED**\n\nBased on your answers, this requires immediate medical attention.",
+              sender: "bot",
+            },
+            {
+              text: "👉 **IMMEDIATE ACTIONS:**\n\n1. 📞 Call ambulance: **108**\n2. 💊 Chew aspirin if available (unless allergic)\n3. 🪑 Sit down, stay calm\n4. 🚫 **Do NOT drive yourself**\n\nWhile waiting, I'll help you find the nearest cardiologist.",
+              sender: "bot",
+            },
+          ]);
+        } else {
+          setMessages(prev => [
+            ...prev,
+            {
+              text: "⚠️ Chest pain detected. An urgent consultation with a cardiologist is recommended.",
+              sender: "bot",
+            },
+          ]);
+        }
 
         // 🔁 CALL RAG AFTER TRIAGE
         setMessages(prev => [
           ...prev,
-          {
-            text:
-              urgency === "emergency"
-                ? "🚨 Based on your answers, this may be a medical emergency."
-                : "⚠️ Chest pain detected. An urgent consultation is recommended.",
-            sender: "bot",
-          },
           {
             text: "Analyzing your symptoms further...",
             sender: "bot",
@@ -948,10 +1009,13 @@ Level: ${level}
             },
           ]);
 
+          // 🫀 FORCE CARDIOLOGIST for chest pain - override RAG response
+          const cardiologistDoctors = DOCTOR_DIRECTORY["cardiologist"] || [];
+
           setPendingDiagnosis({
             source: "chest",
-            doctorType: data.doctorType,
-            doctors: data.doctors,
+            doctorType: "cardiologist", // Always cardiologist, ignore RAG
+            doctors: cardiologistDoctors, // Use cardiologist doctors, not RAG doctors
             symptoms: triageSymptoms,
             diseaseInfo: data.summary, //for RAG optimization 
           });
@@ -995,7 +1059,12 @@ Level: ${level}
         return;
       }
 
-      const safeDoctorType = doctorType || "general-physician";
+      // 🫀 FORCE CARDIOLOGIST for chest pain cases
+      let safeDoctorType = doctorType || "general-physician";
+      if (source === "chest") {
+        safeDoctorType = "cardiologist"; // Always route chest pain to cardiologist
+      }
+
       const safeDoctors = Array.isArray(doctors) ? doctors : [];
 
       setMessages(prev => [
@@ -1209,10 +1278,6 @@ Level: ${level}
             }
           ]);
         }
-
-        // Close modal and reset
-        setShowUploadModal(false);
-        setSelectedFile(null);
       } else {
         alert(data.error || 'Failed to analyze document');
       }
@@ -1222,6 +1287,38 @@ Level: ${level}
     } finally {
       setUploadingFile(false);
     }
+  };
+
+  // Handle consent acceptance
+  const handleConsentAccept = async (consentData) => {
+    try {
+      const response = await fetch('/api/consents', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(consentData)
+      });
+
+      if (response.ok) {
+        setShowConsentModal(false);
+        setMessages(prev => [
+          ...prev,
+          {
+            text: "✅ Thank you for accepting the consents. You can now use all features of the Patient Portal.",
+            sender: "bot"
+          }
+        ]);
+      } else {
+        alert('Failed to save consents. Please try again.');
+      }
+    } catch (error) {
+      console.error('Error saving consents:', error);
+      alert('Error saving consents. Please try again.');
+    }
+  };
+
+  const handleConsentCancel = () => {
+    // User must accept required consents to continue
+    alert('You must accept the required consents to use the Patient Portal.');
   };
 
   const handleSend = async () => {
@@ -1558,11 +1655,15 @@ ${plan.monitoring.map(m => `• ${m}`).join("\n")}`,
 
     // 🫀 Chest pain triage trigger - Multiple cardiac keywords
     const cardiacTriggerKeywords = [
-      "chest pain", "pain in chest", "pain in my chest",
-      "heart attack", "heart pain", "pain in heart",
-      "crushing chest", "crushing pain", "pressure in chest",
-      "chest pressure", "tight chest", "chest tightness",
-      "squeezing chest", "heavy chest", "chest discomfort",
+      "chest pain", "pain in chest", "pain in my chest", "pain in the chest",
+      "pain in chest region", "pain in the chest region", "pain in chest area",
+      "chest hurts", "my chest hurts", "the chest hurts",
+      "heart attack", "heart pain", "pain in heart", "pain in my heart", "pain in the heart",
+      "crushing chest", "crushing pain", "crushing pain in chest",
+      "pressure in chest", "pressure in the chest", "pressure in my chest",
+      "chest pressure", "tight chest", "chest tightness", "chest feels tight",
+      "squeezing chest", "squeezing pain", "heavy chest", "chest feels heavy",
+      "chest discomfort", "discomfort in chest", "discomfort in the chest",
       "cardiac arrest", "heart problem", "heart issue"
     ];
 
@@ -1921,11 +2022,7 @@ ${plan.monitoring.map(m => `• ${m}`).join("\n")}`,
     // Reset chat messages to initial state
     setMessages([
       { text: "Hello! Welcome to HealthConnect.", sender: "bot" },
-      {
-        text: "Select your language.",
-        sender: "bot",
-        useDropdown: true,
-      },
+      { text: "What symptoms are you facing today?", sender: "bot" }
     ]);
   };
 
@@ -2358,6 +2455,14 @@ ${plan.monitoring.map(m => `• ${m}`).join("\n")}`,
           </a>
         </div>
       </div>
+
+      {/* Consent Modal */}
+      <ConsentModal
+        isOpen={showConsentModal}
+        onAccept={handleConsentAccept}
+        onCancel={handleConsentCancel}
+        userEmail={userEmail}
+      />
     </div>
   );
 }

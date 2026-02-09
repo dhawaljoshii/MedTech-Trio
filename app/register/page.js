@@ -530,20 +530,48 @@ function RegisterContent() {
             </button>
           </div>
 
-          {/* 🚦 Enhanced Urgency Display */}
+          {/* 🚦 Enhanced Urgency Display with Priority Escalation */}
           {urgency !== "routine" && (
             <div className={`alert ${urgency === "emergency" ? "alert-danger" : "alert-warning"}`}
-              style={{ marginBottom: "20px", padding: "16px", borderRadius: "8px" }}>
-              <div style={{ display: "flex", alignItems: "flex-start", gap: "12px" }}>
-                <div style={{ fontSize: "24px" }}>
+              style={{
+                marginBottom: "20px",
+                padding: "20px",
+                borderRadius: "12px",
+                border: urgency === "emergency" ? "3px solid #dc2626" : "2px solid #f59e0b",
+                boxShadow: urgency === "emergency"
+                  ? "0 0 30px rgba(220, 38, 38, 0.3)"
+                  : "0 0 20px rgba(245, 158, 11, 0.2)"
+              }}>
+              <div style={{ display: "flex", alignItems: "flex-start", gap: "16px" }}>
+                <div style={{ fontSize: "48px" }}>
                   {urgency === "emergency" ? "🚨" : "⚠️"}
                 </div>
                 <div style={{ flex: 1 }}>
-                  <div style={{ fontWeight: "600", marginBottom: "4px" }}>
-                    {urgency === "emergency" ? "EMERGENCY - DO NOT BOOK ONLINE" : "URGENT CASE"}
+                  <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "8px" }}>
+                    <div style={{ fontWeight: "700", fontSize: "20px" }}>
+                      {urgency === "emergency" ? "EMERGENCY PRIORITY BOOKING" : "URGENT PRIORITY BOOKING"}
+                    </div>
+                    <div style={{
+                      background: urgency === "emergency" ? "#dc2626" : "#f59e0b",
+                      color: "white",
+                      padding: "4px 12px",
+                      borderRadius: "20px",
+                      fontSize: "12px",
+                      fontWeight: "600"
+                    }}>
+                      {urgency === "emergency" ? "LEVEL 1" : "LEVEL 2"}
+                    </div>
                   </div>
-                  <div style={{ fontSize: "14px", marginBottom: "8px" }}>
+                  <div style={{ fontSize: "15px", marginBottom: "12px", fontWeight: "500" }}>
                     {urgencyData.recommendation}
+                  </div>
+                  <div style={{ display: "flex", gap: "20px", fontSize: "14px", marginBottom: "8px" }}>
+                    <div>
+                      🎯 <strong>Urgency Score:</strong> {urgencyData.score}/100
+                    </div>
+                    <div>
+                      ⏱️ <strong>{urgency === "emergency" ? "Book IMMEDIATELY" : "Within 24 hours"}</strong>
+                    </div>
                   </div>
 
                   {/* Cardiac-specific emergency guidance */}
@@ -947,47 +975,73 @@ function RegisterContent() {
                         {t.slots}
                       </div>
                       <div className="slots-grid">
-                        {Array.isArray(doc.slots) && doc.slots.map((slot, idx) => {
-                          // Highlight first 2 slots for urgent cases OR cardiac emergencies (score 70-94)
-                          const isCardiacEmergency = urgencyData.score >= 70 && urgencyData.score < 95;
-                          const isUrgentPriority = (urgency === "urgent" || isCardiacEmergency) && idx < 2;
+                        {(() => {
+                          // 🔄 SLOT SORTING: Sort slots by time for emergency/urgent cases
+                          let slotsToRender = Array.isArray(doc.slots) ? [...doc.slots] : [];
 
-                          return (
-                            <button
-                              key={idx}
-                              onClick={() => handleSlotSelect(doc.name, slot)}
-                              className={`slot-btn ${isUrgentPriority ? 'urgent-priority' : ''}`}
-                              disabled={isBooking}
-                              style={isUrgentPriority ? {
-                                background: 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)',
-                                color: 'white',
-                                fontWeight: '600',
-                                border: '2px solid #f59e0b',
-                                boxShadow: '0 4px 12px rgba(245, 158, 11, 0.3)',
-                                position: 'relative'
-                              } : {}}
-                            >
-                              {isBooking && bookingSlot === slot ? (
-                                <LoaderIcon />
-                              ) : (
-                                <>
-                                  {slot}
-                                  {isUrgentPriority && (
-                                    <span style={{
-                                      fontSize: '10px',
-                                      display: 'block',
-                                      marginTop: '2px',
-                                      opacity: 0.9
-                                    }}>
-                                      ⚡ Priority
-                                    </span>
-                                  )}
-                                </>
-                              )}
+                          if (urgency === "emergency" || urgency === "urgent") {
+                            // Sort earliest first for priority cases
+                            slotsToRender = slotsToRender.sort((a, b) => {
+                              const timeA = new Date(`1970-01-01 ${a}`);
+                              const timeB = new Date(`1970-01-01 ${b}`);
+                              return timeA - timeB;
+                            });
+                          }
 
-                            </button>
-                          );
-                        })}
+                          return slotsToRender.map((slot, idx) => {
+                            // 🎯 PRIORITY HIGHLIGHTING
+                            const isEmergency = urgency === "emergency";
+                            const isUrgent = urgency === "urgent" || (urgencyData.score >= 70 && urgencyData.score < 95);
+
+                            // Highlight first 3 slots for priority cases
+                            const isPrioritySlot = (isEmergency || isUrgent) && idx < 3;
+
+                            return (
+                              <button
+                                key={idx}
+                                onClick={() => handleSlotSelect(doc.name, slot)}
+                                className={`slot-btn ${isEmergency && isPrioritySlot ? 'emergency-priority' :
+                                  isPrioritySlot ? 'urgent-priority' : ''
+                                  }`}
+                                disabled={isBooking}
+                                style={isPrioritySlot ? {
+                                  background: isEmergency
+                                    ? 'linear-gradient(135deg, #dc2626 0%, #991b1b 100%)'
+                                    : 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)',
+                                  color: 'white',
+                                  fontWeight: '700',
+                                  border: isEmergency ? '3px solid #dc2626' : '2px solid #f59e0b',
+                                  boxShadow: isEmergency
+                                    ? '0 0 20px rgba(220, 38, 38, 0.5)'
+                                    : '0 4px 12px rgba(245, 158, 11, 0.3)',
+                                  position: 'relative',
+                                  animation: isEmergency ? 'glow 1.5s infinite' : 'none'
+                                } : {}}
+                              >
+                                {isBooking && bookingSlot === slot ? (
+                                  <LoaderIcon />
+                                ) : (
+                                  <>
+                                    {slot}
+                                    {isPrioritySlot && (
+                                      <span style={{
+                                        fontSize: '10px',
+                                        display: 'block',
+                                        marginTop: '4px',
+                                        opacity: 0.95,
+                                        fontWeight: '600',
+                                        letterSpacing: '0.5px'
+                                      }}>
+                                        {isEmergency ? '🚨 EMERGENCY' : '⚡ PRIORITY'}
+                                      </span>
+                                    )}
+                                  </>
+                                )}
+
+                              </button>
+                            );
+                          });
+                        })()}
                       </div>
                     </div>
                   </div>

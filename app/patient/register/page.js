@@ -91,6 +91,11 @@ function PatientRegisterContent() {
             // Store patient in localStorage
             localStorage.setItem("patient", JSON.stringify(patient));
 
+            // Store email separately for consent system
+            if (patient.email) {
+                localStorage.setItem("userEmail", patient.email);
+            }
+
             // Check if there's a pending booking to complete
             if (redirect === "booking" && pendingBooking) {
                 localStorage.removeItem("pendingBooking");

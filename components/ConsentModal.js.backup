@@ -1,0 +1,891 @@
+"use client";
+
+import { useState, useEffect, useRef } from 'react';
+import { getAllConsents } from '@/lib/consents';
+import ReactMarkdown from 'react-markdown';
+
+export default function ConsentModal({ isOpen, onAccept, onCancel, userEmail }) {
+    const [activeTab, setActiveTab] = useState(0);
+    const [consents, setConsents] = useState([]);
+    const [acceptedConsents, setAcceptedConsents] = useState({});
+    const [scrolledToBottom, setScrolledToBottom] = useState({});
+    const [signature, setSignature] = useState('');
+    const contentRef = useRef(null);
+
+    useEffect(() => {
+        const allConsents = getAllConsents();
+        setConsents(allConsents);
+
+        // Initialize accepted state
+        const initial = {};
+        allConsents.forEach(consent => {
+            initial[consent.id] = false;
+        });
+        setAcceptedConsents(initial);
+
+        // Initialize scroll state
+        const scrollState = {};
+        allConsents.forEach(consent => {
+            scrollState[consent.id] = false;
+        });
+        setScrolledToBottom(scrollState);
+    }, []);
+
+    const handleScroll = (e) => {
+        const { scrollTop, scrollHeight, clientHeight } = e.target;
+        const isBottom = scrollHeight - scrollTop - clientHeight < 50;
+
+        if (isBottom && consents[activeTab]) {
+            setScrolledToBottom(prev => ({
+                ...prev,
+                [consents[activeTab].id]: true
+            }));
+        }
+    };
+
+    const handleCheckboxChange = (consentId) => {
+        setAcceptedConsents(prev => ({
+            ...prev,
+            [consentId]: !prev[consentId]
+        }));
+    };
+
+    const allRequiredAccepted = () => {
+        return consents
+            .filter(c => c.isRequired)
+            .every(c => acceptedConsents[c.id]);
+    };
+
+    const canAccept = () => {
+        return allRequiredAccepted() && signature.trim().length > 0;
+    };
+
+    const handleAccept = () => {
+        const acceptedConsentsList = consents
+            .filter(c => acceptedConsents[c.id])
+            .map(c => ({
+                consent_type_id: c.id,
+                consent_name: c.name,
+                version: c.version,
+                accepted_at: new Date().toISOString()
+            }));
+
+        onAccept({
+            patient_email: userEmail,
+            consents: acceptedConsentsList,
+            signature: signature,
+            ip_address: 'client', // Will be set server-side
+            user_agent: navigator.userAgent
+        });
+    };
+
+    if (!isOpen || consents.length === 0) return null;
+
+    const currentConsent = consents[activeTab];
+
+    return (
+        <div style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background: 'rgba(15, 23, 42, 0.75)',
+            backdropFilter: 'blur(8px)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            zIndex: 10000,
+            padding: '20px'
+        }}>
+            <div style={{
+                background: 'white',
+                borderRadius: '20px',
+                maxWidth: '1000px',
+                width: '100%',
+                maxHeight: '90vh',
+                display: 'flex',
+                flexDirection: 'column',
+                boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+                overflow: 'hidden'
+            }}>
+                {/* Header */}
+                <div style={{
+                    background: 'linear-gradient(135deg, #14b8a6 0%, #0d9488 50%, #0f766e 100%)',
+                    padding: '48px 40px',
+                    textAlign: 'center',
+                    position: 'relative'
+                }}>
+                    <div style={{
+                        fontSize: '56px',
+                        marginBottom: '20px',
+                        filter: 'drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1))'
+                    }}>🏥</div>
+                    <h2 style={{
+                        fontSize: '32px',
+                        fontWeight: '700',
+                        marginBottom: '12px',
+                        color: 'white',
+                        letterSpacing: '-0.5px'
+                    }}>
+                        Patient Consent Agreement
+                    </h2>
+                    <p style={{
+                        fontSize: '17px',
+                        color: 'rgba(255, 255, 255, 0.95)',
+                        maxWidth: '600px',
+                        margin: '0 auto',
+                        lineHeight: '1.6'
+                    }}>
+                        Please review and accept the following consent forms to access your patient portal
+                    </p>
+                </div>
+
+                {/* Tabs */}
+                <div style={{
+                    padding: '32px 40px 24px',
+                    background: 'white',
+                    borderBottom: '1px solid #e5e7eb',
+                    overflowX: 'auto'
+                }}>
+                    <div style={{
+                        display: 'flex',
+                        gap: '10px',
+                        flexWrap: 'wrap'
+                    }}>
+                        {consents.map((consent, index) => (
+                            <button
+                                key={consent.id}
+                                onClick={() => setActiveTab(index)}
+                                style={{
+                                    padding: '12px 24px',
+                                    borderRadius: '100px',
+                                    border: 'none',
+                                    background: activeTab === index
+                                        ? '#0d9488'
+                                        : '#f1f5f9',
+                                    color: activeTab === index ? 'white' : '#64748b',
+                                    fontWeight: activeTab === index ? '600' : '500',
+                                    fontSize: '15px',
+                                    cursor: 'pointer',
+                                    whiteSpace: 'nowrap',
+                                    transition: 'all 0.2s ease',
+                                    boxShadow: activeTab === index
+                                        ? '0 4px 12px rgba(13, 148, 136, 0.25)'
+                                        : 'none',
+                                    display: 'inline-flex',
+                                    alignItems: 'center',
+                                    gap: '8px'
+                                }}
+                                onMouseEnter={(e) => {
+                                    if (activeTab !== index) {
+                                        e.target.style.background = '#e2e8f0';
+                                        e.target.style.color = '#475569';
+                                    }
+                                }}
+                                onMouseLeave={(e) => {
+                                    if (activeTab !== index) {
+                                        e.target.style.background = '#f1f5f9';
+                                        e.target.style.color = '#64748b';
+                                    }
+                                }}
+                            >
+                                {consent.isRequired && (
+                                    <span style={{
+                                        color: activeTab === index ? '#fecaca' : '#ef4444',
+                                        fontSize: '14px',
+                                        fontWeight: '700'
+                                    }}>●</span>
+                                )}
+                                {consent.name}
+                                {acceptedConsents[consent.id] && (
+                                    <span style={{
+                                        color: activeTab === index ? '#d1fae5' : '#10b981',
+                                        fontSize: '18px',
+                                        fontWeight: '700'
+                                    }}>✓</span>
+                                )}
+                            </button>
+                        ))}
+                    </div>
+                    <p style={{
+                        fontSize: '13px',
+                        color: '#94a3b8',
+                        marginTop: '16px',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '6px'
+                    }}>
+                        <span style={{ color: '#ef4444', fontSize: '12px', fontWeight: '700' }}>●</span>
+                        Required consent
+                    </p>
+                </div>
+
+                {/* Content */}
+                <div
+                    ref={contentRef}
+                    onScroll={handleScroll}
+                    style={{
+                        flex: 1,
+                        padding: '40px',
+                        overflowY: 'auto',
+                        background: '#fafafa'
+                    }}
+                >
+                    <div style={{
+                        background: 'white',
+                        padding: '32px',
+                        borderRadius: '16px',
+                        marginBottom: '24px',
+                        boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)',
+                        border: '1px solid #e5e7eb'
+                    }}>
+                        <div style={{
+                            display: 'flex',
+                            justifyContent: 'space-between',
+                            alignItems: 'flex-start',
+                            marginBottom: '24px',
+                            paddingBottom: '20px',
+                            borderBottom: '2px solid #f1f5f9'
+                        }}>
+                            <div>
+                                <h3 style={{
+                                    fontSize: '24px',
+                                    fontWeight: '700',
+                                    color: '#0f172a',
+                                    marginBottom: '8px',
+                                    letterSpacing: '-0.3px'
+                                }}>
+                                    {currentConsent.name}
+                                </h3>
+                                <p style={{ fontSize: '14px', color: '#64748b', lineHeight: '1.6' }}>
+                                    {currentConsent.description}
+                                </p>
+                                {currentConsent.isRequired && (
+                                    <span style={{
+                                        display: 'inline-block',
+                                        marginTop: '12px',
+                                        padding: '6px 14px',
+                                        background: '#fef2f2',
+                                        color: '#dc2626',
+                                        fontSize: '12px',
+                                        fontWeight: '600',
+                                        borderRadius: '100px',
+                                        border: '1px solid #fecaca'
+                                    }}>
+                                        ● REQUIRED
+                                    </span>
+                                )}
+                            </div>
+                            <div style={{
+                                textAlign: 'right',
+                                fontSize: '12px',
+                                color: '#94a3b8',
+                                background: '#f8fafc',
+                                padding: '12px 16px',
+                                borderRadius: '8px'
+                            }}>
+                                <div style={{ fontWeight: '600', color: '#64748b' }}>Version {currentConsent.version}</div>
+                                <div style={{ marginTop: '4px' }}>Last Updated: January 1, 2024</div>
+                            </div>
+                        </div>
+
+                        <div style={{
+                            fontSize: '15px',
+                            lineHeight: '1.8',
+                            color: '#334155'
+                        }}>
+                            <ReactMarkdown>{currentConsent.content}</ReactMarkdown>
+                        </div>
+                    </div>
+
+                    {/* Scroll indicator */}
+                    {!scrolledToBottom[currentConsent.id] && (
+                        <div style={{
+                            background: 'linear-gradient(135deg, #fef3c7 0%, #fde68a 100%)',
+                            border: '1px solid #fbbf24',
+                            borderRadius: '12px',
+                            padding: '16px 20px',
+                            marginBottom: '20px',
+                            fontSize: '14px',
+                            color: '#92400e',
+                            textAlign: 'center',
+                            fontWeight: '500',
+                            boxShadow: '0 2px 8px rgba(251, 191, 36, 0.15)'
+                        }}>
+                            <div style={{ fontSize: '20px', marginBottom: '4px' }}>⬇️</div>
+                            Please scroll to the bottom to review the entire consent
+                        </div>
+                    )}
+
+                    {/* Checkbox */}
+                    <div style={{
+                        background: 'white',
+                        padding: '24px',
+                        borderRadius: '16px',
+                        border: '2px solid #e5e7eb',
+                        boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)'
+                    }}>
+                        <label style={{
+                            display: 'flex',
+                            alignItems: 'flex-start',
+                            gap: '16px',
+                            cursor: scrolledToBottom[currentConsent.id] ? 'pointer' : 'not-allowed',
+                            opacity: scrolledToBottom[currentConsent.id] ? 1 : 0.5
+                        }}>
+                            <input
+                                type="checkbox"
+                                checked={acceptedConsents[currentConsent.id] || false}
+                                onChange={() => handleCheckboxChange(currentConsent.id)}
+                                disabled={!scrolledToBottom[currentConsent.id]}
+                                style={{
+                                    width: '22px',
+                                    height: '22px',
+                                    marginTop: '2px',
+                                    cursor: scrolledToBottom[currentConsent.id] ? 'pointer' : 'not-allowed',
+                                    accentColor: '#0d9488'
+                                }}
+                            />
+                            <span style={{ fontSize: '15px', fontWeight: '500', color: '#1e293b', lineHeight: '1.6' }}>
+                                I have read and agree to the <strong>{currentConsent.name}</strong>
+                                {currentConsent.isRequired && <span style={{ color: '#dc2626' }}> *</span>}
+                            </span>
+                        </label>
+                    </div>
+                </div>
+
+                {/* Footer */}
+                <div style={{
+                    padding: '32px 40px',
+                    borderTop: '1px solid #e5e7eb',
+                    background: 'white'
+                }}>
+                    {/* Signature */}
+                    <div style={{ marginBottom: '28px' }}>
+                        <label style={{
+                            display: 'block',
+                            fontSize: '14px',
+                            fontWeight: '600',
+                            color: '#0f172a',
+                            marginBottom: '12px'
+                        }}>
+                            Digital Signature <span style={{ color: '#dc2626' }}>*</span>
+                        </label>
+                        <input
+                            type="text"
+                            value={signature}
+                            onChange={(e) => setSignature(e.target.value)}
+                            placeholder="Type your full name"
+                            style={{
+                                width: '100%',
+                                padding: '16px 20px',
+                                border: '2px solid #e5e7eb',
+                                borderRadius: '12px',
+                                fontSize: '18px',
+                                fontFamily: 'cursive',
+                                transition: 'all 0.2s',
+                                outline: 'none',
+                                background: '#fafafa'
+                            }}
+                            onFocus={(e) => {
+                                e.target.style.borderColor = '#0d9488';
+                                e.target.style.background = 'white';
+                                e.target.style.boxShadow = '0 0 0 4px rgba(13, 148, 136, 0.1)';
+                            }}
+                            onBlur={(e) => {
+                                e.target.style.borderColor = '#e5e7eb';
+                                e.target.style.background = '#fafafa';
+                                e.target.style.boxShadow = 'none';
+                            }}
+                        />
+                        <p style={{ fontSize: '13px', color: '#64748b', marginTop: '10px' }}>
+                            By typing your name, you agree to use it as your digital signature
+                        </p>
+                    </div>
+
+                    {/* Progress */}
+                    <div style={{
+                        background: '#f8fafc',
+                        padding: '16px 20px',
+                        borderRadius: '12px',
+                        marginBottom: '24px',
+                        fontSize: '14px',
+                        color: '#475569',
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        alignItems: 'center',
+                        border: '1px solid #e5e7eb'
+                    }}>
+                        <div>
+                            <strong style={{ color: '#0f172a' }}>Required:</strong>{' '}
+                            <span style={{
+                                color: consents.filter(c => c.isRequired && acceptedConsents[c.id]).length === consents.filter(c => c.isRequired).length
+                                    ? '#10b981'
+                                    : '#64748b',
+                                fontWeight: '600'
+                            }}>
+                                {consents.filter(c => c.isRequired && acceptedConsents[c.id]).length} / {consents.filter(c => c.isRequired).length}
+                            </span>
+                        </div>
+                        <div>
+                            <strong style={{ color: '#0f172a' }}>Optional:</strong>{' '}
+                            <span style={{ fontWeight: '600', color: '#64748b' }}>
+                                {consents.filter(c => !c.isRequired && acceptedConsents[c.id]).length} / {consents.filter(c => !c.isRequired).length}
+                            </span>
+                        </div>
+                    </div>
+
+                    {/* Buttons */}
+                    <div style={{ display: 'flex', gap: '16px' }}>
+                        <button
+                            onClick={onCancel}
+                            style={{
+                                flex: 1,
+                                padding: '16px 24px',
+                                borderRadius: '12px',
+                                border: '2px solid #e5e7eb',
+                                background: 'white',
+                                color: '#64748b',
+                                fontSize: '16px',
+                                fontWeight: '600',
+                                cursor: 'pointer',
+                                transition: 'all 0.2s'
+                            }}
+                            onMouseEnter={(e) => {
+                                e.target.style.background = '#f8fafc';
+                                e.target.style.borderColor = '#cbd5e1';
+                            }}
+                            onMouseLeave={(e) => {
+                                e.target.style.background = 'white';
+                                e.target.style.borderColor = '#e5e7eb';
+                            }}
+                        >
+                            Cancel
+                        </button>
+                        <button
+                            onClick={handleAccept}
+                            disabled={!canAccept()}
+                            style={{
+                                flex: 2,
+                                padding: '16px 24px',
+                                borderRadius: '12px',
+                                border: 'none',
+                                background: canAccept()
+                                    ? 'linear-gradient(135deg, #14b8a6 0%, #0d9488 100%)'
+                                    : '#e5e7eb',
+                                color: canAccept() ? 'white' : '#94a3b8',
+                                fontSize: '16px',
+                                fontWeight: '600',
+                                cursor: canAccept() ? 'pointer' : 'not-allowed',
+                                boxShadow: canAccept() ? '0 4px 16px rgba(13, 148, 136, 0.3)' : 'none',
+                                transition: 'all 0.2s',
+                                transform: 'translateY(0)'
+                            }}
+                            onMouseEnter={(e) => {
+                                if (canAccept()) {
+                                    e.target.style.transform = 'translateY(-2px)';
+                                    e.target.style.boxShadow = '0 6px 20px rgba(13, 148, 136, 0.4)';
+                                }
+                            }}
+                            onMouseLeave={(e) => {
+                                if (canAccept()) {
+                                    e.target.style.transform = 'translateY(0)';
+                                    e.target.style.boxShadow = '0 4px 16px rgba(13, 148, 136, 0.3)';
+                                }
+                            }}
+                        >
+                            {canAccept() ? '✓ Accept & Continue' : 'Please accept required consents and sign'}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+}
+
+
+position: 'fixed',
+    top: 0,
+        left: 0,
+            right: 0,
+                bottom: 0,
+                    background: 'rgba(0, 0, 0, 0.7)',
+                        display: 'flex',
+                            alignItems: 'center',
+                                justifyContent: 'center',
+                                    zIndex: 10000,
+                                        padding: '20px'
+}}>
+    <div style={{
+        background: 'white',
+        borderRadius: '16px',
+        maxWidth: '900px',
+        width: '100%',
+        maxHeight: '90vh',
+        display: 'flex',
+        flexDirection: 'column',
+        boxShadow: '0 20px 60px rgba(0, 0, 0, 0.3)'
+    }}>
+        {/* Header */}
+        <div style={{
+            background: 'linear-gradient(135deg, #0d9488 0%, #0f766e 100%)',
+            padding: '40px 32px 32px',
+            borderTopLeftRadius: '16px',
+            borderTopRightRadius: '16px',
+            textAlign: 'center',
+            position: 'relative',
+            overflow: 'hidden'
+        }}>
+            {/* Decorative circles */}
+            <div style={{
+                position: 'absolute',
+                top: '-50px',
+                right: '-50px',
+                width: '200px',
+                height: '200px',
+                borderRadius: '50%',
+                background: 'rgba(255, 255, 255, 0.1)'
+            }}></div>
+            <div style={{
+                position: 'absolute',
+                bottom: '-30px',
+                left: '-30px',
+                width: '150px',
+                height: '150px',
+                borderRadius: '50%',
+                background: 'rgba(255, 255, 255, 0.1)'
+            }}></div>
+
+            <div style={{
+                fontSize: '48px',
+                marginBottom: '16px',
+                position: 'relative',
+                zIndex: 1
+            }}>🏥</div>
+            <h2 style={{
+                fontSize: '28px',
+                fontWeight: '700',
+                marginBottom: '12px',
+                color: 'white',
+                position: 'relative',
+                zIndex: 1
+            }}>
+                Welcome to Patient Portal
+            </h2>
+            <p style={{
+                fontSize: '16px',
+                color: 'rgba(255, 255, 255, 0.9)',
+                position: 'relative',
+                zIndex: 1,
+                maxWidth: '500px',
+                margin: '0 auto'
+            }}>
+                Please review and accept the required consents to continue
+            </p>
+        </div>
+
+        {/* Tabs */}
+        <div style={{
+            display: 'flex',
+            gap: '12px',
+            padding: '24px 32px',
+            background: '#f8fafc',
+            borderBottom: '2px solid #e2e8f0',
+            overflowX: 'auto',
+            scrollbarWidth: 'thin'
+        }}>
+            {consents.map((consent, index) => (
+                <button
+                    key={consent.id}
+                    onClick={() => setActiveTab(index)}
+                    style={{
+                        padding: '14px 24px',
+                        borderRadius: '12px',
+                        border: 'none',
+                        background: activeTab === index
+                            ? 'linear-gradient(135deg, #0d9488 0%, #0f766e 100%)'
+                            : 'white',
+                        color: activeTab === index ? 'white' : '#64748b',
+                        fontWeight: activeTab === index ? '600' : '500',
+                        fontSize: '14px',
+                        cursor: 'pointer',
+                        whiteSpace: 'nowrap',
+                        transition: 'all 0.3s ease',
+                        position: 'relative',
+                        boxShadow: activeTab === index
+                            ? '0 4px 12px rgba(13, 148, 136, 0.3)'
+                            : '0 2px 8px rgba(0, 0, 0, 0.05)',
+                        transform: activeTab === index ? 'translateY(-2px)' : 'translateY(0)'
+                    }}
+                    onMouseEnter={(e) => {
+                        if (activeTab !== index) {
+                            e.target.style.background = '#f0fdfa';
+                            e.target.style.color = '#0f766e';
+                            e.target.style.transform = 'translateY(-2px)';
+                        }
+                    }}
+                    onMouseLeave={(e) => {
+                        if (activeTab !== index) {
+                            e.target.style.background = 'white';
+                            e.target.style.color = '#64748b';
+                            e.target.style.transform = 'translateY(0)';
+                        }
+                    }}
+                >
+                    {consent.isRequired && (
+                        <span style={{
+                            color: activeTab === index ? '#fecaca' : '#dc2626',
+                            marginRight: '6px',
+                            fontSize: '16px'
+                        }}>*</span>
+                    )}
+                    {consent.name}
+                    {acceptedConsents[consent.id] && (
+                        <span style={{
+                            marginLeft: '10px',
+                            color: activeTab === index ? '#d1fae5' : '#10b981',
+                            fontSize: '16px',
+                            fontWeight: '700'
+                        }}>✓</span>
+                    )}
+                </button>
+            ))}
+        </div>
+
+        {/* Content */}
+        <div
+            ref={contentRef}
+            onScroll={handleScroll}
+            style={{
+                flex: 1,
+                padding: '32px',
+                overflowY: 'auto',
+                background: '#f8fafc'
+            }}
+        >
+            <div style={{
+                background: 'white',
+                padding: '28px',
+                borderRadius: '16px',
+                marginBottom: '24px',
+                boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
+                border: '1px solid #e2e8f0'
+            }}>
+                <div style={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    marginBottom: '16px',
+                    paddingBottom: '16px',
+                    borderBottom: '1px solid #e2e8f0'
+                }}>
+                    <div>
+                        <h3 style={{ fontSize: '20px', fontWeight: '700', color: '#0f766e', marginBottom: '4px' }}>
+                            {currentConsent.name}
+                            {currentConsent.isRequired && (
+                                <span style={{ color: '#dc2626', marginLeft: '8px', fontSize: '14px' }}>
+                                    (Required)
+                                </span>
+                            )}
+                        </h3>
+                        <p style={{ fontSize: '13px', color: '#64748b' }}>
+                            {currentConsent.description}
+                        </p>
+                    </div>
+                    <div style={{ textAlign: 'right', fontSize: '12px', color: '#94a3b8' }}>
+                        <div>Version {currentConsent.version}</div>
+                        <div>Last Updated: Jan 1, 2024</div>
+                    </div>
+                </div>
+
+                <div style={{
+                    fontSize: '14px',
+                    lineHeight: '1.8',
+                    color: '#334155'
+                }}>
+                    <ReactMarkdown>{currentConsent.content}</ReactMarkdown>
+                </div>
+            </div>
+
+            {/* Scroll indicator */}
+            {!scrolledToBottom[currentConsent.id] && (
+                <div style={{
+                    background: '#fef3c7',
+                    border: '1px solid #fbbf24',
+                    borderRadius: '8px',
+                    padding: '12px 16px',
+                    marginBottom: '16px',
+                    fontSize: '13px',
+                    color: '#92400e',
+                    textAlign: 'center'
+                }}>
+                    ⬇️ Please scroll to the bottom to review the entire consent
+                </div>
+            )}
+
+            {/* Checkbox */}
+            <div style={{
+                background: 'white',
+                padding: '24px',
+                borderRadius: '16px',
+                border: '2px solid #e2e8f0',
+                boxShadow: '0 2px 12px rgba(0, 0, 0, 0.05)'
+            }}>
+                <label style={{
+                    display: 'flex',
+                    alignItems: 'flex-start',
+                    gap: '14px',
+                    cursor: scrolledToBottom[currentConsent.id] ? 'pointer' : 'not-allowed',
+                    opacity: scrolledToBottom[currentConsent.id] ? 1 : 0.5
+                }}>
+                    <input
+                        type="checkbox"
+                        checked={acceptedConsents[currentConsent.id] || false}
+                        onChange={() => handleCheckboxChange(currentConsent.id)}
+                        disabled={!scrolledToBottom[currentConsent.id]}
+                        style={{
+                            width: '24px',
+                            height: '24px',
+                            marginTop: '2px',
+                            cursor: scrolledToBottom[currentConsent.id] ? 'pointer' : 'not-allowed',
+                            accentColor: '#0d9488'
+                        }}
+                    />
+                    <span style={{ fontSize: '15px', fontWeight: '500', color: '#334155', lineHeight: '1.6' }}>
+                        I have read and agree to the <strong>{currentConsent.name}</strong>
+                        {currentConsent.isRequired && <span style={{ color: '#dc2626' }}> *</span>}
+                    </span>
+                </label>
+            </div>
+        </div>
+
+        {/* Footer */}
+        <div style={{
+            padding: '24px 32px',
+            borderTop: '2px solid #e2e8f0',
+            background: '#f8fafc'
+        }}>
+            {/* Signature */}
+            <div style={{ marginBottom: '24px' }}>
+                <label style={{
+                    display: 'block',
+                    fontSize: '14px',
+                    fontWeight: '600',
+                    color: '#334155',
+                    marginBottom: '10px'
+                }}>
+                    Digital Signature <span style={{ color: '#dc2626' }}>*</span>
+                </label>
+                <input
+                    type="text"
+                    value={signature}
+                    onChange={(e) => setSignature(e.target.value)}
+                    placeholder="Type your full name"
+                    style={{
+                        width: '100%',
+                        padding: '14px 18px',
+                        border: '2px solid #e2e8f0',
+                        borderRadius: '12px',
+                        fontSize: '16px',
+                        fontFamily: 'cursive',
+                        transition: 'all 0.3s',
+                        outline: 'none'
+                    }}
+                    onFocus={(e) => {
+                        e.target.style.borderColor = '#0d9488';
+                        e.target.style.boxShadow = '0 0 0 3px rgba(13, 148, 136, 0.1)';
+                    }}
+                    onBlur={(e) => {
+                        e.target.style.borderColor = '#e2e8f0';
+                        e.target.style.boxShadow = 'none';
+                    }}
+                />
+                <p style={{ fontSize: '13px', color: '#64748b', marginTop: '8px' }}>
+                    By typing your name, you agree to use it as your digital signature
+                </p>
+            </div>
+
+            {/* Progress */}
+            <div style={{
+                background: 'white',
+                padding: '12px 16px',
+                borderRadius: '8px',
+                marginBottom: '16px',
+                fontSize: '13px',
+                color: '#64748b'
+            }}>
+                <div style={{ marginBottom: '4px' }}>
+                    <strong>Required Consents:</strong> {consents.filter(c => c.isRequired && acceptedConsents[c.id]).length} / {consents.filter(c => c.isRequired).length} accepted
+                </div>
+                <div>
+                    <strong>Optional Consents:</strong> {consents.filter(c => !c.isRequired && acceptedConsents[c.id]).length} / {consents.filter(c => !c.isRequired).length} accepted
+                </div>
+            </div>
+
+            {/* Buttons */}
+            <div style={{ display: 'flex', gap: '16px' }}>
+                <button
+                    onClick={onCancel}
+                    style={{
+                        flex: 1,
+                        padding: '16px',
+                        borderRadius: '12px',
+                        border: '2px solid #e2e8f0',
+                        background: 'white',
+                        color: '#64748b',
+                        fontSize: '16px',
+                        fontWeight: '600',
+                        cursor: 'pointer',
+                        transition: 'all 0.3s'
+                    }}
+                    onMouseEnter={(e) => {
+                        e.target.style.background = '#f8fafc';
+                        e.target.style.borderColor = '#cbd5e1';
+                    }}
+                    onMouseLeave={(e) => {
+                        e.target.style.background = 'white';
+                        e.target.style.borderColor = '#e2e8f0';
+                    }}
+                >
+                    Cancel
+                </button>
+                <button
+                    onClick={handleAccept}
+                    disabled={!canAccept()}
+                    style={{
+                        flex: 2,
+                        padding: '16px',
+                        borderRadius: '12px',
+                        border: 'none',
+                        background: canAccept()
+                            ? 'linear-gradient(135deg, #0d9488 0%, #0f766e 100%)'
+                            : '#e2e8f0',
+                        color: canAccept() ? 'white' : '#94a3b8',
+                        fontSize: '16px',
+                        fontWeight: '600',
+                        cursor: canAccept() ? 'pointer' : 'not-allowed',
+                        boxShadow: canAccept() ? '0 6px 20px rgba(13, 148, 136, 0.3)' : 'none',
+                        transition: 'all 0.3s',
+                        transform: 'translateY(0)'
+                    }}
+                    onMouseEnter={(e) => {
+                        if (canAccept()) {
+                            e.target.style.transform = 'translateY(-2px)';
+                            e.target.style.boxShadow = '0 8px 24px rgba(13, 148, 136, 0.4)';
+                        }
+                    }}
+                    onMouseLeave={(e) => {
+                        if (canAccept()) {
+                            e.target.style.transform = 'translateY(0)';
+                            e.target.style.boxShadow = '0 6px 20px rgba(13, 148, 136, 0.3)';
+                        }
+                    }}
+                >
+                    {canAccept() ? '✓ Accept & Continue' : 'Please accept required consents and sign'}
+                </button>
+            </div>
+        </div>
+    </div>
+</div >
+);
+}

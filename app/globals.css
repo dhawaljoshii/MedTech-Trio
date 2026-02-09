@@ -4735,3 +4735,47 @@ p {
   border-color: var(--primary-600);
   box-shadow: 0 4px 12px rgba(13, 148, 136, 0.2);
 }
+
+/* ===== Priority Escalation Animations ===== */
+
+/* Emergency slot glow animation */
+@keyframes glow {
+
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(220, 38, 38, 0.5);
+  }
+
+  50% {
+    box-shadow: 0 0 35px rgba(220, 38, 38, 0.8), 0 0 50px rgba(220, 38, 38, 0.4);
+  }
+}
+
+/* Pulse animation for emergency banner */
+@keyframes pulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.02);
+    opacity: 0.95;
+  }
+}
+
+/* Priority slot classes */
+.emergency-priority {
+  animation: glow 1.5s infinite;
+}
+
+.urgent-priority {
+  transition: all 0.3s ease;
+}
+
+.urgent-priority:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(245, 158, 11, 0.4) !important;
+}

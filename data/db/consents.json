@@ -1,0 +1,110 @@
+[
+  {
+    "patient_email": "123@gmail.com",
+    "consents": [
+      {
+        "consent_type_id": "medical_treatment",
+        "consent_name": "Medical Treatment Consent",
+        "version": "1.0",
+        "accepted_at": "2026-02-09T04:53:37.116Z",
+        "ip_address": "::1",
+        "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36",
+        "signature": "tom"
+      },
+      {
+        "consent_type_id": "privacy_hipaa",
+        "consent_name": "Privacy & Data Sharing Consent (HIPAA)",
+        "version": "1.0",
+        "accepted_at": "2026-02-09T04:53:37.116Z",
+        "ip_address": "::1",
+        "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36",
+        "signature": "tom"
+      },
+      {
+        "consent_type_id": "telemedicine",
+        "consent_name": "Telemedicine Consent",
+        "version": "1.0",
+        "accepted_at": "2026-02-09T04:53:37.116Z",
+        "ip_address": "::1",
+        "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36",
+        "signature": "tom"
+      },
+      {
+        "consent_type_id": "marketing",
+        "consent_name": "Marketing & Communications Consent",
+        "version": "1.0",
+        "accepted_at": "2026-02-09T04:53:37.116Z",
+        "ip_address": "::1",
+        "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36",
+        "signature": "tom"
+      },
+      {
+        "consent_type_id": "research",
+        "consent_name": "Research & Analytics Consent",
+        "version": "1.0",
+        "accepted_at": "2026-02-09T04:53:37.116Z",
+        "ip_address": "::1",
+        "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36",
+        "signature": "tom"
+      }
+    ],
+    "accepted_at": "2026-02-09T04:53:37.137Z",
+    "ip_address": "::1",
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36",
+    "signature": "tom"
+  },
+  {
+    "patient_email": "test@hotmail.com",
+    "consents": [
+      {
+        "consent_type_id": "medical_treatment",
+        "consent_name": "Medical Treatment Consent",
+        "version": "1.0",
+        "accepted_at": "2026-02-09T04:54:24.733Z",
+        "ip_address": "::1",
+        "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36",
+        "signature": "tom"
+      },
+      {
+        "consent_type_id": "privacy_hipaa",
+        "consent_name": "Privacy & Data Sharing Consent (HIPAA)",
+        "version": "1.0",
+        "accepted_at": "2026-02-09T04:54:24.733Z",
+        "ip_address": "::1",
+        "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36",
+        "signature": "tom"
+      },
+      {
+        "consent_type_id": "telemedicine",
+        "consent_name": "Telemedicine Consent",
+        "version": "1.0",
+        "accepted_at": "2026-02-09T04:54:24.733Z",
+        "ip_address": "::1",
+        "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36",
+        "signature": "tom"
+      },
+      {
+        "consent_type_id": "marketing",
+        "consent_name": "Marketing & Communications Consent",
+        "version": "1.0",
+        "accepted_at": "2026-02-09T04:54:24.733Z",
+        "ip_address": "::1",
+        "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36",
+        "signature": "tom"
+      },
+      {
+        "consent_type_id": "research",
+        "consent_name": "Research & Analytics Consent",
+        "version": "1.0",
+        "accepted_at": "2026-02-09T04:54:24.733Z",
+        "ip_address": "::1",
+        "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36",
+        "signature": "tom"
+      }
+    ],
+    "accepted_at": "2026-02-09T04:54:24.756Z",
+    "ip_address": "::1",
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36",
+    "signature": "tom"
+  }
+]

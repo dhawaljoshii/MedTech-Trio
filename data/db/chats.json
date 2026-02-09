@@ -8224,5 +8224,978 @@
     ],
     "documents": [],
     "createdAt": "2026-02-07T20:00:05.450Z"
+  },
+  {
+    "id": "mlelgcknhhh03cr623k",
+    "patientId": "mlaej32a2pfge55lthy",
+    "patientName": "dhawal joshi",
+    "symptoms": "pain in chest",
+    "doctorType": "general-physician",
+    "messages": [
+      {
+        "text": "Hello dhawal joshi! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      },
+      {
+        "text": "pain in chest",
+        "sender": "user"
+      },
+      {
+        "text": "On a scale of 1-10, how severe is your chest pain? (10 being worst pain imaginable)",
+        "sender": "bot"
+      },
+      {
+        "text": "Is the pain crushing, squeezing, or feels like pressure on your chest?",
+        "sender": "bot"
+      },
+      {
+        "text": "Does the pain spread to your arm, jaw, neck, or back?",
+        "sender": "bot"
+      },
+      {
+        "text": "Are you experiencing shortness of breath or difficulty breathing?",
+        "sender": "bot"
+      },
+      {
+        "text": "Are you sweating heavily, feeling nauseous, or lightheaded?",
+        "sender": "bot"
+      },
+      {
+        "text": "Did the chest pain start suddenly or gradually?",
+        "sender": "bot"
+      },
+      {
+        "text": "Does the pain worsen with activity or deep breathing?",
+        "sender": "bot"
+      },
+      {
+        "text": "🚨 Based on your answers, this may be a medical emergency.",
+        "sender": "bot"
+      },
+      {
+        "text": "Analyzing your symptoms further...",
+        "sender": "bot"
+      },
+      {
+        "text": "🦠 Possible condition:\n\n**Angina (Coronary Heart Disease)**. Likely due to reduced blood flow to the heart, causing chest pain. Symptoms may worsen with activity or stress.\n\n⚠️ This is not a medical diagnosis.",
+        "sender": "bot"
+      },
+      {
+        "text": "Would you like to book a consultation with a doctor?",
+        "sender": "bot"
+      }
+    ],
+    "documents": [],
+    "createdAt": "2026-02-09T03:10:00.359Z"
+  },
+  {
+    "id": "mlelgy1buihx9tvj04",
+    "patientId": "mlaej32a2pfge55lthy",
+    "patientName": "dhawal joshi",
+    "symptoms": "chest pain",
+    "doctorType": "cardiologist",
+    "messages": [
+      {
+        "text": "Hello dhawal joshi! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      },
+      {
+        "text": "chest pain",
+        "sender": "user"
+      },
+      {
+        "text": "On a scale of 1-10, how severe is your chest pain? (10 being worst pain imaginable)",
+        "sender": "bot"
+      },
+      {
+        "text": "Is the pain crushing, squeezing, or feels like pressure on your chest?",
+        "sender": "bot"
+      },
+      {
+        "text": "Does the pain spread to your arm, jaw, neck, or back?",
+        "sender": "bot"
+      },
+      {
+        "text": "Are you experiencing shortness of breath or difficulty breathing?",
+        "sender": "bot"
+      },
+      {
+        "text": "Are you sweating heavily, feeling nauseous, or lightheaded?",
+        "sender": "bot"
+      },
+      {
+        "text": "Did the chest pain start suddenly or gradually?",
+        "sender": "bot"
+      },
+      {
+        "text": "Does the pain worsen with activity or deep breathing?",
+        "sender": "bot"
+      },
+      {
+        "text": "🚨 Based on your answers, this may be a medical emergency.",
+        "sender": "bot"
+      },
+      {
+        "text": "Analyzing your symptoms further...",
+        "sender": "bot"
+      },
+      {
+        "text": "🦠 Possible condition:\n\n**Acute coronary syndrome (e.g., angina or heart attack)**. Sudden chest pressure/tightness, especially with exertion or radiating pain, suggests reduced blood flow to the heart. Requires immediate evaluation.\n\n⚠️ This is not a medical diagnosis.",
+        "sender": "bot"
+      },
+      {
+        "text": "Would you like to book a consultation with a doctor?",
+        "sender": "bot"
+      }
+    ],
+    "documents": [],
+    "createdAt": "2026-02-09T03:10:28.175Z"
+  },
+  {
+    "id": "mlelj1olvkhqed8cpm",
+    "patientId": "mlaej32a2pfge55lthy",
+    "patientName": "dhawal joshi",
+    "symptoms": "pain in the chest",
+    "doctorType": "general-physician",
+    "messages": [
+      {
+        "text": "Hello dhawal joshi! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      }
+    ],
+    "documents": [],
+    "createdAt": "2026-02-09T03:12:06.213Z"
+  },
+  {
+    "id": "mlelmzg92z3az3brpw3",
+    "patientId": "mlaej32a2pfge55lthy",
+    "patientName": "dhawal joshi",
+    "symptoms": "pain in the chest region",
+    "doctorType": "general-physician",
+    "messages": [
+      {
+        "text": "Hello dhawal joshi! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      }
+    ],
+    "documents": [],
+    "createdAt": "2026-02-09T03:15:09.945Z"
+  },
+  {
+    "id": "mleloh6pndakeok9cc",
+    "patientId": "mlaej32a2pfge55lthy",
+    "patientName": "dhawal joshi",
+    "symptoms": "pain in the chest region",
+    "doctorType": "general-physician",
+    "messages": [
+      {
+        "text": "Hello dhawal joshi! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      },
+      {
+        "text": "pain in the chest region",
+        "sender": "user"
+      },
+      {
+        "text": "On a scale of 1-10, how severe is your chest pain? (10 being worst pain imaginable)",
+        "sender": "bot"
+      },
+      {
+        "text": "Is the pain crushing, squeezing, or feels like pressure on your chest?",
+        "sender": "bot"
+      },
+      {
+        "text": "Does the pain spread to your arm, jaw, neck, or back?",
+        "sender": "bot"
+      },
+      {
+        "text": "Are you experiencing shortness of breath or difficulty breathing?",
+        "sender": "bot"
+      },
+      {
+        "text": "Are you sweating heavily, feeling nauseous, or lightheaded?",
+        "sender": "bot"
+      },
+      {
+        "text": "Did the chest pain start suddenly or gradually?",
+        "sender": "bot"
+      },
+      {
+        "text": "Does the pain worsen with activity or deep breathing?",
+        "sender": "bot"
+      },
+      {
+        "text": "🚨 Based on your answers, this may be a medical emergency.",
+        "sender": "bot"
+      },
+      {
+        "text": "Analyzing your symptoms further...",
+        "sender": "bot"
+      },
+      {
+        "text": "🦠 Possible condition:\n\n**Angina (Coronary Heart Disease)**. Likely due to reduced blood flow to the heart, causing chest pain. Common in cardiovascular disease.\n\n⚠️ This is not a medical diagnosis.",
+        "sender": "bot"
+      },
+      {
+        "text": "Would you like to book a consultation with a doctor?",
+        "sender": "bot"
+      }
+    ],
+    "documents": [],
+    "createdAt": "2026-02-09T03:16:19.585Z"
+  },
+  {
+    "id": "mleltbhuswxj22ydhxm",
+    "patientId": "mlaej32a2pfge55lthy",
+    "patientName": "dhawal joshi",
+    "symptoms": "pain in the chest region",
+    "doctorType": "cardiologist",
+    "messages": [
+      {
+        "text": "Hello dhawal joshi! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      },
+      {
+        "text": "pain in the chest region",
+        "sender": "user"
+      },
+      {
+        "text": "On a scale of 1-10, how severe is your chest pain? (10 being worst pain imaginable)",
+        "sender": "bot"
+      },
+      {
+        "text": "Is the pain crushing, squeezing, or feels like pressure on your chest?",
+        "sender": "bot"
+      },
+      {
+        "text": "Does the pain spread to your arm, jaw, neck, or back?",
+        "sender": "bot"
+      },
+      {
+        "text": "Are you experiencing shortness of breath or difficulty breathing?",
+        "sender": "bot"
+      },
+      {
+        "text": "Are you sweating heavily, feeling nauseous, or lightheaded?",
+        "sender": "bot"
+      },
+      {
+        "text": "Did the chest pain start suddenly or gradually?",
+        "sender": "bot"
+      },
+      {
+        "text": "Does the pain worsen with activity or deep breathing?",
+        "sender": "bot"
+      },
+      {
+        "text": "🚨 **MEDICAL EMERGENCY DETECTED**\n\nBased on your answers, this requires immediate medical attention.",
+        "sender": "bot"
+      },
+      {
+        "text": "👉 **IMMEDIATE ACTIONS:**\n\n1. 📞 Call ambulance: **108**\n2. 💊 Chew aspirin if available (unless allergic)\n3. 🪑 Sit down, stay calm\n4. 🚫 **Do NOT drive yourself**\n\nWhile waiting, I'll help you find the nearest cardiologist.",
+        "sender": "bot"
+      },
+      {
+        "text": "Analyzing your symptoms further...",
+        "sender": "bot"
+      },
+      {
+        "text": "🦠 Possible condition:\n\n**Angina (Coronary Heart Disease)**. Likely due to reduced blood flow to the heart, causing chest pain. Common in cardiovascular disease or prior heart conditions.\n\n⚠️ This is not a medical diagnosis.",
+        "sender": "bot"
+      },
+      {
+        "text": "Would you like to book a consultation with a doctor?",
+        "sender": "bot"
+      }
+    ],
+    "documents": [],
+    "createdAt": "2026-02-09T03:20:05.490Z"
+  },
+  {
+    "id": "mlelwo76sp452bm952",
+    "patientId": "mlaej32a2pfge55lthy",
+    "patientName": "dhawal joshi",
+    "symptoms": "pain in the chest region",
+    "doctorType": "cardiologist",
+    "messages": [
+      {
+        "text": "Hello dhawal joshi! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      },
+      {
+        "text": "pain in the chest region",
+        "sender": "user"
+      },
+      {
+        "text": "On a scale of 1-10, how severe is your chest pain? (10 being worst pain imaginable)",
+        "sender": "bot"
+      },
+      {
+        "text": "Is the pain crushing, squeezing, or feels like pressure on your chest?",
+        "sender": "bot"
+      },
+      {
+        "text": "Does the pain spread to your arm, jaw, neck, or back?",
+        "sender": "bot"
+      },
+      {
+        "text": "Are you experiencing shortness of breath or difficulty breathing?",
+        "sender": "bot"
+      },
+      {
+        "text": "Are you sweating heavily, feeling nauseous, or lightheaded?",
+        "sender": "bot"
+      },
+      {
+        "text": "Did the chest pain start suddenly or gradually?",
+        "sender": "bot"
+      },
+      {
+        "text": "Does the pain worsen with activity or deep breathing?",
+        "sender": "bot"
+      },
+      {
+        "text": "🚨 **MEDICAL EMERGENCY DETECTED**\n\nBased on your answers, this requires immediate medical attention.",
+        "sender": "bot"
+      },
+      {
+        "text": "👉 **IMMEDIATE ACTIONS:**\n\n1. 📞 Call ambulance: **108**\n2. 💊 Chew aspirin if available (unless allergic)\n3. 🪑 Sit down, stay calm\n4. 🚫 **Do NOT drive yourself**\n\nWhile waiting, I'll help you find the nearest cardiologist.",
+        "sender": "bot"
+      },
+      {
+        "text": "Analyzing your symptoms further...",
+        "sender": "bot"
+      },
+      {
+        "text": "🦠 Possible condition:\n\n**Angina (Coronary Heart Disease)**. Likely due to reduced blood flow to the heart, causing chest pain. Symptoms may worsen with activity or stress.\n\n⚠️ This is not a medical diagnosis.",
+        "sender": "bot"
+      },
+      {
+        "text": "Would you like to book a consultation with a doctor?",
+        "sender": "bot"
+      }
+    ],
+    "documents": [],
+    "createdAt": "2026-02-09T03:22:41.922Z"
+  },
+  {
+    "id": "mlem2hdmjzdf8my75wg",
+    "patientId": "mlaej32a2pfge55lthy",
+    "patientName": "dhawal joshi",
+    "symptoms": "feeling chest pain",
+    "doctorType": "cardiologist",
+    "messages": [
+      {
+        "text": "Hello dhawal joshi! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      },
+      {
+        "text": "feeling chest pain",
+        "sender": "user"
+      },
+      {
+        "text": "On a scale of 1-10, how severe is your chest pain? (10 being worst pain imaginable)",
+        "sender": "bot"
+      },
+      {
+        "text": "Is the pain crushing, squeezing, or feels like pressure on your chest?",
+        "sender": "bot"
+      },
+      {
+        "text": "Does the pain spread to your arm, jaw, neck, or back?",
+        "sender": "bot"
+      },
+      {
+        "text": "Are you experiencing shortness of breath or difficulty breathing?",
+        "sender": "bot"
+      },
+      {
+        "text": "Are you sweating heavily, feeling nauseous, or lightheaded?",
+        "sender": "bot"
+      },
+      {
+        "text": "Did the chest pain start suddenly or gradually?",
+        "sender": "bot"
+      },
+      {
+        "text": "Does the pain worsen with activity or deep breathing?",
+        "sender": "bot"
+      },
+      {
+        "text": "🚨 **MEDICAL EMERGENCY DETECTED**\n\nBased on your answers, this requires immediate medical attention.",
+        "sender": "bot"
+      },
+      {
+        "text": "👉 **IMMEDIATE ACTIONS:**\n\n1. 📞 Call ambulance: **108**\n2. 💊 Chew aspirin if available (unless allergic)\n3. 🪑 Sit down, stay calm\n4. 🚫 **Do NOT drive yourself**\n\nWhile waiting, I'll help you find the nearest cardiologist.",
+        "sender": "bot"
+      },
+      {
+        "text": "Analyzing your symptoms further...",
+        "sender": "bot"
+      },
+      {
+        "text": "🦠 Possible condition:\n\n**Angina (Coronary Heart Disease)**. Likely due to reduced blood flow to the heart, causing squeezing chest pain, often triggered by activity or stress.\n\n⚠️ This is not a medical diagnosis.",
+        "sender": "bot"
+      },
+      {
+        "text": "Would you like to book a consultation with a doctor?",
+        "sender": "bot"
+      }
+    ],
+    "documents": [],
+    "createdAt": "2026-02-09T03:27:13.018Z"
+  },
+  {
+    "id": "mlemenw6oytv195ku7",
+    "patientId": "mlaej32a2pfge55lthy",
+    "patientName": "dhawal joshi",
+    "symptoms": "pain in the chest region",
+    "doctorType": "cardiologist",
+    "messages": [
+      {
+        "text": "Hello dhawal joshi! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      },
+      {
+        "text": "pain in the chest region",
+        "sender": "user"
+      },
+      {
+        "text": "On a scale of 1-10, how severe is your chest pain? (10 being worst pain imaginable)",
+        "sender": "bot"
+      },
+      {
+        "text": "Is the pain crushing, squeezing, or feels like pressure on your chest?",
+        "sender": "bot"
+      },
+      {
+        "text": "Does the pain spread to your arm, jaw, neck, or back?",
+        "sender": "bot"
+      },
+      {
+        "text": "Are you experiencing shortness of breath or difficulty breathing?",
+        "sender": "bot"
+      },
+      {
+        "text": "Are you sweating heavily, feeling nauseous, or lightheaded?",
+        "sender": "bot"
+      },
+      {
+        "text": "Did the chest pain start suddenly or gradually?",
+        "sender": "bot"
+      },
+      {
+        "text": "Does the pain worsen with activity or deep breathing?",
+        "sender": "bot"
+      },
+      {
+        "text": "🚨 **MEDICAL EMERGENCY DETECTED**\n\nBased on your answers, this requires immediate medical attention.",
+        "sender": "bot"
+      },
+      {
+        "text": "👉 **IMMEDIATE ACTIONS:**\n\n1. 📞 Call ambulance: **108**\n2. 💊 Chew aspirin if available (unless allergic)\n3. 🪑 Sit down, stay calm\n4. 🚫 **Do NOT drive yourself**\n\nWhile waiting, I'll help you find the nearest cardiologist.",
+        "sender": "bot"
+      },
+      {
+        "text": "Analyzing your symptoms further...",
+        "sender": "bot"
+      },
+      {
+        "text": "🦠 Possible condition:\n\n**Acute Coronary Syndrome (e.g., Angina or Heart Attack)**. Sudden chest pain may indicate reduced blood flow to the heart, especially if persistent or with exertion.\n\n⚠️ This is not a medical diagnosis.",
+        "sender": "bot"
+      },
+      {
+        "text": "Would you like to book a consultation with a doctor?",
+        "sender": "bot"
+      }
+    ],
+    "documents": [],
+    "createdAt": "2026-02-09T03:36:41.334Z"
+  },
+  {
+    "id": "mlemgt0ht5pjz8k9ul8",
+    "patientId": "mlaej32a2pfge55lthy",
+    "patientName": "dhawal joshi",
+    "symptoms": "major accident",
+    "doctorType": "general-physician",
+    "messages": [
+      {
+        "text": "Hello dhawal joshi! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      }
+    ],
+    "documents": [],
+    "createdAt": "2026-02-09T03:38:21.281Z"
+  },
+  {
+    "id": "mlemgwgfkvw7g5o707",
+    "patientId": "mlaej32a2pfge55lthy",
+    "patientName": "dhawal joshi",
+    "symptoms": "major accident",
+    "doctorType": "general-physician",
+    "messages": [
+      {
+        "text": "Hello dhawal joshi! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      },
+      {
+        "text": "major accident",
+        "sender": "user"
+      },
+      {
+        "text": "Analyzing your symptoms...",
+        "sender": "bot"
+      },
+      {
+        "text": "🦠 Possible condition:\n\n**Polytrauma (multiple traumatic injuries)** due to major accident, potentially involving fractures, internal bleeding, or organ damage. Immediate assessment critical.\n\n⚠️ This is not a medical diagnosis.",
+        "sender": "bot"
+      },
+      {
+        "text": "🚨 This may be an emergency. Immediate medical consultation is recommended.",
+        "sender": "bot"
+      },
+      {
+        "text": "Would you like to book a consultation with a doctor?",
+        "sender": "bot"
+      }
+    ],
+    "documents": [],
+    "createdAt": "2026-02-09T03:38:25.743Z"
+  },
+  {
+    "id": "mlemig6uvj4jzrk217",
+    "patientId": "mlaej32a2pfge55lthy",
+    "patientName": "dhawal joshi",
+    "symptoms": "minor accident but my head feels fuzzy and my eyes are turning yellow",
+    "doctorType": "general-physician",
+    "messages": [
+      {
+        "text": "Hello dhawal joshi! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      }
+    ],
+    "documents": [],
+    "createdAt": "2026-02-09T03:39:37.974Z"
+  },
+  {
+    "id": "mlemk6ymuwscxhymstq",
+    "patientId": "mlaej32a2pfge55lthy",
+    "patientName": "dhawal joshi",
+    "symptoms": "i have brain cancer in my liver",
+    "doctorType": "general-physician",
+    "messages": [
+      {
+        "text": "Hello dhawal joshi! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      }
+    ],
+    "documents": [],
+    "createdAt": "2026-02-09T03:40:59.326Z"
+  },
+  {
+    "id": "mleml2xhsvfnarqo71",
+    "patientId": "mlaej32a2pfge55lthy",
+    "patientName": "dhawal joshi",
+    "symptoms": "i want to drink diet coke",
+    "doctorType": "general-physician",
+    "messages": [
+      {
+        "text": "Hello dhawal joshi! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      }
+    ],
+    "documents": [],
+    "createdAt": "2026-02-09T03:41:40.757Z"
+  },
+  {
+    "id": "mlempiu96xptrmsiiiq",
+    "patientId": "mlaej32a2pfge55lthy",
+    "patientName": "dhawal joshi",
+    "symptoms": "chest pain",
+    "doctorType": "cardiologist",
+    "messages": [
+      {
+        "text": "Hello dhawal joshi! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      },
+      {
+        "text": "chest pain",
+        "sender": "user"
+      },
+      {
+        "text": "On a scale of 1-10, how severe is your chest pain? (10 being worst pain imaginable)",
+        "sender": "bot"
+      },
+      {
+        "text": "Is the pain crushing, squeezing, or feels like pressure on your chest?",
+        "sender": "bot"
+      },
+      {
+        "text": "Does the pain spread to your arm, jaw, neck, or back?",
+        "sender": "bot"
+      },
+      {
+        "text": "Are you experiencing shortness of breath or difficulty breathing?",
+        "sender": "bot"
+      },
+      {
+        "text": "Are you sweating heavily, feeling nauseous, or lightheaded?",
+        "sender": "bot"
+      },
+      {
+        "text": "Did the chest pain start suddenly or gradually?",
+        "sender": "bot"
+      },
+      {
+        "text": "Does the pain worsen with activity or deep breathing?",
+        "sender": "bot"
+      },
+      {
+        "text": "🚨 **MEDICAL EMERGENCY DETECTED**\n\nBased on your answers, this requires immediate medical attention.",
+        "sender": "bot"
+      },
+      {
+        "text": "👉 **IMMEDIATE ACTIONS:**\n\n1. 📞 Call ambulance: **108**\n2. 💊 Chew aspirin if available (unless allergic)\n3. 🪑 Sit down, stay calm\n4. 🚫 **Do NOT drive yourself**\n\nWhile waiting, I'll help you find the nearest cardiologist.",
+        "sender": "bot"
+      },
+      {
+        "text": "Analyzing your symptoms further...",
+        "sender": "bot"
+      },
+      {
+        "text": "🦠 Possible condition:\n\n**Acute coronary syndrome (e.g., heart attack or unstable angina)**. Sudden chest pressure/pain radiating to arm/jaw, with possible shortness of breath, nausea, or sweating suggests reduced blood flow to the heart.\n\n⚠️ This is not a medical diagnosis.",
+        "sender": "bot"
+      },
+      {
+        "text": "Would you like to book a consultation with a doctor?",
+        "sender": "bot"
+      }
+    ],
+    "documents": [],
+    "createdAt": "2026-02-09T03:45:08.001Z"
+  },
+  {
+    "id": "mlemqczqa29r4bpcjed",
+    "patientId": "mlaej32a2pfge55lthy",
+    "patientName": "dhawal joshi",
+    "symptoms": "i have fever",
+    "doctorType": "general-physician",
+    "messages": [
+      {
+        "text": "Hello dhawal joshi! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      }
+    ],
+    "documents": [],
+    "createdAt": "2026-02-09T03:45:47.078Z"
+  },
+  {
+    "id": "mlemqf885nobikqcunt",
+    "patientId": "mlaej32a2pfge55lthy",
+    "patientName": "dhawal joshi",
+    "symptoms": "i have fever",
+    "doctorType": "general-physician",
+    "messages": [
+      {
+        "text": "Hello dhawal joshi! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      },
+      {
+        "text": "i have fever",
+        "sender": "user"
+      },
+      {
+        "text": "Analyzing your symptoms...",
+        "sender": "bot"
+      },
+      {
+        "text": "🦠 Possible condition:\n\n**Influenza (Flu)** likely, given fever as a primary symptom with no other chronic conditions reported. Common viral infection requiring rest and hydration.\n\n⚠️ This is not a medical diagnosis.",
+        "sender": "bot"
+      },
+      {
+        "text": "Would you like to book a consultation with a doctor?",
+        "sender": "bot"
+      }
+    ],
+    "documents": [],
+    "createdAt": "2026-02-09T03:45:49.976Z"
+  },
+  {
+    "id": "mlemqv1b7c8dphojbjn",
+    "patientId": "mlaej32a2pfge55lthy",
+    "patientName": "dhawal joshi",
+    "symptoms": "major road accident",
+    "doctorType": "general-physician",
+    "messages": [
+      {
+        "text": "Hello dhawal joshi! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      }
+    ],
+    "documents": [],
+    "createdAt": "2026-02-09T03:46:10.463Z"
+  },
+  {
+    "id": "mlemra790bbak79uv2js",
+    "patientId": "mlaej32a2pfge55lthy",
+    "patientName": "dhawal joshi",
+    "symptoms": "bleeding from head",
+    "doctorType": "general-physician",
+    "messages": [
+      {
+        "text": "Hello dhawal joshi! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      }
+    ],
+    "documents": [],
+    "createdAt": "2026-02-09T03:46:30.117Z"
+  },
+  {
+    "id": "mlemrda9ih2cvx9u3rd",
+    "patientId": "mlaej32a2pfge55lthy",
+    "patientName": "dhawal joshi",
+    "symptoms": "bleeding from head",
+    "doctorType": "general-physician",
+    "messages": [
+      {
+        "text": "Hello dhawal joshi! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      },
+      {
+        "text": "bleeding from head",
+        "sender": "user"
+      },
+      {
+        "text": "Analyzing your symptoms...",
+        "sender": "bot"
+      },
+      {
+        "text": "🦠 Possible condition:\n\n**Possible traumatic brain injury or subdural haematoma.** Sudden head bleeding may indicate a serious condition requiring immediate evaluation, especially if accompanied by headache, confusion, or loss of consciousness.\n\n⚠️ This is not a medical diagnosis.",
+        "sender": "bot"
+      },
+      {
+        "text": "🚨 This may be an emergency. Immediate medical consultation is recommended.",
+        "sender": "bot"
+      },
+      {
+        "text": "Would you like to book a consultation with a doctor?",
+        "sender": "bot"
+      }
+    ],
+    "documents": [],
+    "createdAt": "2026-02-09T03:46:34.113Z"
+  },
+  {
+    "id": "mlenedabdl4244adsv7",
+    "patientId": "mlaej32a2pfge55lthy",
+    "patientName": "dhawal joshi",
+    "symptoms": "pain in the chest region",
+    "doctorType": "cardiologist",
+    "messages": [
+      {
+        "text": "Hello dhawal joshi! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      },
+      {
+        "text": "pain in the chest region",
+        "sender": "user"
+      },
+      {
+        "text": "On a scale of 1-10, how severe is your chest pain? (10 being worst pain imaginable)",
+        "sender": "bot"
+      },
+      {
+        "text": "Is the pain crushing, squeezing, or feels like pressure on your chest?",
+        "sender": "bot"
+      },
+      {
+        "text": "Does the pain spread to your arm, jaw, neck, or back?",
+        "sender": "bot"
+      },
+      {
+        "text": "Are you experiencing shortness of breath or difficulty breathing?",
+        "sender": "bot"
+      },
+      {
+        "text": "Are you sweating heavily, feeling nauseous, or lightheaded?",
+        "sender": "bot"
+      },
+      {
+        "text": "Did the chest pain start suddenly or gradually?",
+        "sender": "bot"
+      },
+      {
+        "text": "Does the pain worsen with activity or deep breathing?",
+        "sender": "bot"
+      },
+      {
+        "text": "🚨 **MEDICAL EMERGENCY DETECTED**\n\nBased on your answers, this requires immediate medical attention.",
+        "sender": "bot"
+      },
+      {
+        "text": "👉 **IMMEDIATE ACTIONS:**\n\n1. 📞 Call ambulance: **108**\n2. 💊 Chew aspirin if available (unless allergic)\n3. 🪑 Sit down, stay calm\n4. 🚫 **Do NOT drive yourself**\n\nWhile waiting, I'll help you find the nearest cardiologist.",
+        "sender": "bot"
+      },
+      {
+        "text": "Analyzing your symptoms further...",
+        "sender": "bot"
+      },
+      {
+        "text": "🦠 Possible condition:\n\n**Possible angina or coronary heart disease.** Chest pain, especially with exertion or stress, may indicate reduced blood flow to the heart. Further evaluation is needed.\n\n⚠️ This is not a medical diagnosis.",
+        "sender": "bot"
+      },
+      {
+        "text": "Would you like to book a consultation with a doctor?",
+        "sender": "bot"
+      }
+    ],
+    "documents": [],
+    "createdAt": "2026-02-09T04:04:27.203Z"
+  },
+  {
+    "id": "mleodrei4i22nnscubf",
+    "patientId": "mkfdsfoxp6svvzd106e",
+    "patientName": "123",
+    "symptoms": "feeling fever",
+    "doctorType": "general-physician",
+    "messages": [
+      {
+        "text": "Hello 123! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      },
+      {
+        "text": "✅ Thank you for accepting the consents. You can now use all features of the Patient Portal.",
+        "sender": "bot"
+      }
+    ],
+    "documents": [],
+    "createdAt": "2026-02-09T04:31:58.458Z"
+  },
+  {
+    "id": "mleodtwe2cmusilpjet",
+    "patientId": "mkfdsfoxp6svvzd106e",
+    "patientName": "123",
+    "symptoms": "feeling fever",
+    "doctorType": "general-physician",
+    "messages": [
+      {
+        "text": "Hello 123! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      },
+      {
+        "text": "✅ Thank you for accepting the consents. You can now use all features of the Patient Portal.",
+        "sender": "bot"
+      },
+      {
+        "text": "feeling fever",
+        "sender": "user"
+      },
+      {
+        "text": "Analyzing your symptoms...",
+        "sender": "bot"
+      },
+      {
+        "text": "🦠 Possible condition:\n\n**Viral infection (likely Flu)**. Sudden fever suggests a viral illness such as influenza, especially with no other chronic symptoms noted.\n\n⚠️ This is not a medical diagnosis.",
+        "sender": "bot"
+      },
+      {
+        "text": "Would you like to book a consultation with a doctor?",
+        "sender": "bot"
+      }
+    ],
+    "documents": [],
+    "createdAt": "2026-02-09T04:32:01.694Z"
   }
 ]
