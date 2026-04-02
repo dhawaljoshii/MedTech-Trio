@@ -304,8 +304,9 @@ export default function PatientHistory() {
                                         onClick={() => handleSelect(item)}
                                     >
                                         <div className="item-header">
-                                            <span className="item-title">
+                                            <span className="item-title" style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
                                                 {item.type === 'appointment' ? item.doctorName : `${item.doctorType} Consult`}
+                                                {item.status === 'Completed' && <span style={{ fontSize: '12px' }} title="Completed">✅</span>}
                                             </span>
                                             <span className="item-date">{formatDate(item.date)}</span>
                                         </div>
@@ -457,6 +458,41 @@ export default function PatientHistory() {
                                                 </div>
                                             </div>
                                         ))}
+                                    </div>
+                                </div>
+                            )}
+
+                            {selectedItem.type === 'appointment' && selectedItem.status === 'Completed' && (
+                                <div className="detail-section">
+                                    <h3>Post-Consultation</h3>
+                                    <div className="detail-card" style={{ background: 'var(--success-50)', borderColor: 'var(--success-100)' }}>
+                                        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
+                                            <div style={{ background: 'var(--success-100)', padding: '8px', borderRadius: '50%', color: 'var(--success-700)' }}>
+                                                <svg style={{ width: '20px', height: '20px' }} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" /></svg>
+                                            </div>
+                                            <div>
+                                                <h4 style={{ margin: 0, color: 'var(--success-800)' }}>Appointment Completed</h4>
+                                                <p style={{ margin: 0, fontSize: '14px', color: 'var(--success-700)' }}>This consultation is done. Check your prescriptions below.</p>
+                                            </div>
+                                        </div>
+
+                                        <button
+                                            className="btn btn-primary"
+                                            style={{ display: 'flex', alignItems: 'center', gap: '8px' }}
+                                            onClick={() => {
+                                                setFilter('prescription');
+                                                // Auto-select the most recent prescription for immediate analysis
+                                                const recentRx = historyItems.find(i => i.type === 'prescription');
+                                                if (recentRx) {
+                                                    const rxId = recentRx.id || recentRx._id;
+                                                    setSelectedId(rxId);
+                                                    if (window.innerWidth < 768) setMobileMenuOpen(false); // Close menu on mobile
+                                                }
+                                            }}
+                                        >
+                                            <PillIcon />
+                                            View Prescriptions
+                                        </button>
                                     </div>
                                 </div>
                             )}

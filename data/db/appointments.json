@@ -526,8 +526,9 @@
     "vaccines": [],
     "hospitalId": null,
     "reminderAt": null,
-    "status": "Booked",
-    "createdAt": "2026-02-07T19:59:43.113Z"
+    "status": "Completed",
+    "createdAt": "2026-02-07T19:59:43.113Z",
+    "completedAt": "2026-02-09T09:00:22.768Z"
   },
   {
     "id": "mlemps0mkmp2kxxlp2",
@@ -558,5 +559,160 @@
     "reminderAt": null,
     "status": "Booked",
     "createdAt": "2026-02-09T03:48:04.222Z"
+  },
+  {
+    "id": "mleptp70g6dw8qkbi3e",
+    "patientId": "mlep6g3ysj091677dsk",
+    "patientName": "tom",
+    "doctorType": "general-physician",
+    "doctorName": "Dr. Patil",
+    "slot": "04:00 PM",
+    "symptoms": "i have fever",
+    "appointmentType": "consultation",
+    "vaccines": [],
+    "hospitalId": null,
+    "reminderAt": null,
+    "status": "Booked",
+    "createdAt": "2026-02-09T05:12:21.708Z"
+  },
+  {
+    "id": "mletc1u5cxaj5hit6bq",
+    "patientId": "mlep6g3ysj091677dsk",
+    "patientName": "tom",
+    "doctorType": "general-physician",
+    "doctorName": "Dr. Patil",
+    "slot": "04:00 PM",
+    "symptoms": "i have fever and this is my lab report",
+    "appointmentType": "consultation",
+    "vaccines": [],
+    "hospitalId": null,
+    "reminderAt": null,
+    "status": "Booked",
+    "createdAt": "2026-02-09T06:50:36.749Z"
+  },
+  {
+    "id": "mletsbn9oswt3gr29f",
+    "patientId": "mlep6g3ysj091677dsk",
+    "patientName": "tom",
+    "doctorType": "general-physician",
+    "doctorName": "Dr. Patil",
+    "slot": "04:00 PM",
+    "symptoms": "i have fever",
+    "appointmentType": "consultation",
+    "vaccines": [],
+    "hospitalId": null,
+    "reminderAt": null,
+    "status": "Booked",
+    "createdAt": "2026-02-09T07:03:15.957Z"
+  },
+  {
+    "id": "mleu4keywj1p6jpq51",
+    "patientId": "mlep6g3ysj091677dsk",
+    "patientName": "tom",
+    "doctorType": "general-physician",
+    "doctorName": "Dr. Patil",
+    "slot": "11:30 AM",
+    "symptoms": "fever and this is my report",
+    "appointmentType": "consultation",
+    "vaccines": [],
+    "hospitalId": null,
+    "reminderAt": null,
+    "status": "Booked",
+    "createdAt": "2026-02-09T07:12:47.194Z"
+  },
+  {
+    "id": "mleue1kszifndx9kqr",
+    "patientId": "mlep6g3ysj091677dsk",
+    "patientName": "tom",
+    "doctorType": "general-physician",
+    "doctorName": "Dr. Patil",
+    "slot": "02:00 PM",
+    "symptoms": "high blood pressure and fever",
+    "documents": [
+      {
+        "name": "testreport.pdf",
+        "type": "pdf",
+        "url": "/uploads/1770621572737_testreport.pdf",
+        "attachedAt": "2026-02-09T07:19:32.741Z"
+      }
+    ],
+    "appointmentType": "consultation",
+    "vaccines": [],
+    "hospitalId": null,
+    "reminderAt": null,
+    "status": "Booked",
+    "createdAt": "2026-02-09T07:20:09.340Z"
+  },
+  {
+    "id": "mlex16jt2d1b08ta89m",
+    "patientId": "mlep6g3ysj091677dsk",
+    "patientName": "tom",
+    "doctorType": "general-physician",
+    "doctorName": "Dr. Patil",
+    "slot": "10:00 AM",
+    "symptoms": "i have high fever and cold",
+    "documents": [
+      {
+        "name": "testreport.pdf",
+        "type": "pdf",
+        "url": "/uploads/1770626017325_testreport.pdf",
+        "attachedAt": "2026-02-09T08:33:37.334Z"
+      }
+    ],
+    "appointmentType": "consultation",
+    "vaccines": [],
+    "hospitalId": null,
+    "reminderAt": null,
+    "status": "Booked",
+    "createdAt": "2026-02-09T08:34:08.105Z"
+  },
+  {
+    "id": "mlexpckvqyhpbafb87",
+    "patientId": "mlep6g3ysj091677dsk",
+    "patientName": "tom",
+    "doctorType": "cardiologist",
+    "doctorName": "Dr. Sharma",
+    "slot": "09:00 AM",
+    "symptoms": "chest pain",
+    "documents": [],
+    "appointmentType": "consultation",
+    "vaccines": [],
+    "hospitalId": null,
+    "reminderAt": null,
+    "status": "Completed",
+    "createdAt": "2026-02-09T08:52:55.663Z",
+    "completedAt": "2026-02-09T09:11:29.508Z"
+  },
+  {
+    "id": "mleybswf6gk97olpzd9",
+    "patientId": "mlep6g3ysj091677dsk",
+    "patientName": "tom",
+    "doctorType": "general-physician",
+    "doctorName": "Dr. Patil",
+    "slot": "02:00 PM",
+    "symptoms": "fever",
+    "documents": [],
+    "appointmentType": "consultation",
+    "vaccines": [],
+    "hospitalId": null,
+    "reminderAt": null,
+    "status": "Booked",
+    "createdAt": "2026-02-09T09:10:23.247Z"
+  },
+  {
+    "id": "mm1u0zscr783kx8zodk",
+    "patientId": "mkhc3a5c3iy1kzswjs9",
+    "patientName": "alex",
+    "doctorType": "pulmonologist",
+    "doctorName": "Dr. Desai",
+    "slot": "04:00 PM",
+    "symptoms": "i have sore throat and cough",
+    "documents": [],
+    "appointmentType": "consultation",
+    "vaccines": [],
+    "hospitalId": null,
+    "reminderAt": null,
+    "status": "Booked",
+    "createdAt": "2026-02-25T09:28:42.540Z"
   }
 ]

@@ -23,4 +23,10 @@ export const doctorAuth = [
     name: "Dr. Mishra",
     type: "Pediatrician"
   },
+  {
+    username: "drsharma",
+    password: "heart123",
+    name: "Dr. Sharma",
+    type: "Heart"
+  },
 ];

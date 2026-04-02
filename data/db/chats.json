@@ -9197,5 +9197,1070 @@
     ],
     "documents": [],
     "createdAt": "2026-02-09T04:32:01.694Z"
+  },
+  {
+    "id": "mleps35dt2lk3xr216n",
+    "patientId": "mlep6g3ysj091677dsk",
+    "patientName": "tom",
+    "symptoms": "i have red itchy patch on my arm",
+    "doctorType": "general-physician",
+    "messages": [
+      {
+        "text": "Hello tom! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      }
+    ],
+    "documents": [],
+    "createdAt": "2026-02-09T05:11:06.481Z"
+  },
+  {
+    "id": "mlepteg4mmut8jztnc",
+    "patientId": "mlep6g3ysj091677dsk",
+    "patientName": "tom",
+    "symptoms": "i have fever",
+    "doctorType": "general-physician",
+    "messages": [
+      {
+        "text": "Hello tom! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      }
+    ],
+    "documents": [],
+    "createdAt": "2026-02-09T05:12:07.780Z"
+  },
+  {
+    "id": "mleptf8r7a2ezp6a8hu",
+    "patientId": "mlep6g3ysj091677dsk",
+    "patientName": "tom",
+    "symptoms": "i have fever",
+    "doctorType": "general-physician",
+    "messages": [
+      {
+        "text": "Hello tom! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      },
+      {
+        "text": "i have fever",
+        "sender": "user"
+      },
+      {
+        "text": "Analyzing your symptoms...",
+        "sender": "bot"
+      },
+      {
+        "text": "🦠 Possible condition:\n\n**Viral infection (likely influenza or common cold)**. Fever suggests a viral illness, with flu being highly probable given current prevalence.\n\n⚠️ This is not a medical diagnosis.",
+        "sender": "bot"
+      },
+      {
+        "text": "Would you like to book a consultation with a doctor?",
+        "sender": "bot"
+      }
+    ],
+    "documents": [],
+    "createdAt": "2026-02-09T05:12:08.811Z"
+  },
+  {
+    "id": "mletb8xqlmki2b41vea",
+    "patientId": "mlep6g3ysj091677dsk",
+    "patientName": "tom",
+    "symptoms": "i have fever and this is my lab report",
+    "doctorType": "general-physician",
+    "messages": [
+      {
+        "text": "Hello tom! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      },
+      {
+        "text": "📎 Attached: testreport.pdf\n\nThis document will be shared with your doctor.",
+        "sender": "user"
+      }
+    ],
+    "documents": [
+      {
+        "name": "testreport.pdf",
+        "type": "pdf",
+        "url": "#",
+        "attachedAt": "2026-02-09T06:49:31.305Z"
+      }
+    ],
+    "createdAt": "2026-02-09T06:49:59.294Z"
+  },
+  {
+    "id": "mletbfxwuhqamf7pqt",
+    "patientId": "mlep6g3ysj091677dsk",
+    "patientName": "tom",
+    "symptoms": "i have fever and this is my lab report",
+    "doctorType": "general-physician",
+    "messages": [
+      {
+        "text": "Hello tom! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      },
+      {
+        "text": "📎 Attached: testreport.pdf\n\nThis document will be shared with your doctor.",
+        "sender": "user"
+      },
+      {
+        "text": "i have fever and this is my lab report",
+        "sender": "user"
+      },
+      {
+        "text": "Analyzing your symptoms...",
+        "sender": "bot"
+      },
+      {
+        "text": "🦠 Possible condition:\n\n**Viral infection (likely influenza or other respiratory virus)**. Fever with systemic symptoms (fatigue, chills) suggests acute viral illness. Lab findings may show leukopenia or mild leukocytosis.\n\n⚠️ This is not a medical diagnosis.",
+        "sender": "bot"
+      },
+      {
+        "text": "Would you like to book a consultation with a doctor?",
+        "sender": "bot"
+      }
+    ],
+    "documents": [
+      {
+        "name": "testreport.pdf",
+        "type": "pdf",
+        "url": "#",
+        "attachedAt": "2026-02-09T06:49:31.305Z"
+      }
+    ],
+    "createdAt": "2026-02-09T06:50:08.372Z"
+  },
+  {
+    "id": "mlets16jzbk7tf0s29",
+    "patientId": "mlep6g3ysj091677dsk",
+    "patientName": "tom",
+    "symptoms": "i have fever",
+    "doctorType": "general-physician",
+    "messages": [
+      {
+        "text": "Hello tom! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      },
+      {
+        "text": "📎 Attached: testreport.pdf\n\nThis document will be shared with your doctor.",
+        "sender": "user"
+      }
+    ],
+    "documents": [
+      {
+        "name": "testreport.pdf",
+        "type": "pdf",
+        "url": "#",
+        "attachedAt": "2026-02-09T07:02:52.722Z"
+      }
+    ],
+    "createdAt": "2026-02-09T07:03:02.395Z"
+  },
+  {
+    "id": "mlets27bs6dgx3e048",
+    "patientId": "mlep6g3ysj091677dsk",
+    "patientName": "tom",
+    "symptoms": "i have fever",
+    "doctorType": "general-physician",
+    "messages": [
+      {
+        "text": "Hello tom! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      },
+      {
+        "text": "📎 Attached: testreport.pdf\n\nThis document will be shared with your doctor.",
+        "sender": "user"
+      },
+      {
+        "text": "i have fever",
+        "sender": "user"
+      },
+      {
+        "text": "Analyzing your symptoms...",
+        "sender": "bot"
+      },
+      {
+        "text": "🦠 Possible condition:\n\n**Influenza (Flu)** likely, given fever as the primary symptom, often accompanied by fatigue, cough, or muscle aches.\n\n⚠️ This is not a medical diagnosis.",
+        "sender": "bot"
+      },
+      {
+        "text": "Would you like to book a consultation with a doctor?",
+        "sender": "bot"
+      }
+    ],
+    "documents": [
+      {
+        "name": "testreport.pdf",
+        "type": "pdf",
+        "url": "#",
+        "attachedAt": "2026-02-09T07:02:52.722Z"
+      }
+    ],
+    "createdAt": "2026-02-09T07:03:03.719Z"
+  },
+  {
+    "id": "mleu49x5lgo0nka31h",
+    "patientId": "mlep6g3ysj091677dsk",
+    "patientName": "tom",
+    "symptoms": "fever and this is my report",
+    "doctorType": "general-physician",
+    "messages": [
+      {
+        "text": "Hello tom! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      },
+      {
+        "text": "📎 Attached: testreport.pdf\n\nThis document will be shared with your doctor.",
+        "sender": "user"
+      }
+    ],
+    "documents": [
+      {
+        "name": "testreport.pdf",
+        "type": "pdf",
+        "url": "/uploads/1770621140271_testreport.pdf",
+        "attachedAt": "2026-02-09T07:12:20.275Z"
+      }
+    ],
+    "createdAt": "2026-02-09T07:12:33.593Z"
+  },
+  {
+    "id": "mleu4ca5csgibv5n8a",
+    "patientId": "mlep6g3ysj091677dsk",
+    "patientName": "tom",
+    "symptoms": "fever and this is my report",
+    "doctorType": "general-physician",
+    "messages": [
+      {
+        "text": "Hello tom! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      },
+      {
+        "text": "📎 Attached: testreport.pdf\n\nThis document will be shared with your doctor.",
+        "sender": "user"
+      },
+      {
+        "text": "fever and this is my report",
+        "sender": "user"
+      },
+      {
+        "text": "Analyzing your symptoms...",
+        "sender": "bot"
+      },
+      {
+        "text": "🦠 Possible condition:\n\n**Influenza (Flu)**. Acute viral infection causing fever, likely accompanied by fatigue, muscle aches, or respiratory symptoms. Common and self-limiting in most cases.\n\n⚠️ This is not a medical diagnosis.",
+        "sender": "bot"
+      },
+      {
+        "text": "Would you like to book a consultation with a doctor?",
+        "sender": "bot"
+      }
+    ],
+    "documents": [
+      {
+        "name": "testreport.pdf",
+        "type": "pdf",
+        "url": "/uploads/1770621140271_testreport.pdf",
+        "attachedAt": "2026-02-09T07:12:20.275Z"
+      }
+    ],
+    "createdAt": "2026-02-09T07:12:36.653Z"
+  },
+  {
+    "id": "mleudkoruajbjv94fwe",
+    "patientId": "mlep6g3ysj091677dsk",
+    "patientName": "tom",
+    "symptoms": "high blood pressure and fever",
+    "doctorType": "general-physician",
+    "messages": [
+      {
+        "text": "Hello tom! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      },
+      {
+        "text": "📎 Attached: testreport.pdf\n\nThis document will be shared with your doctor.",
+        "sender": "user"
+      }
+    ],
+    "documents": [
+      {
+        "name": "testreport.pdf",
+        "type": "pdf",
+        "url": "/uploads/1770621572737_testreport.pdf",
+        "attachedAt": "2026-02-09T07:19:32.741Z"
+      }
+    ],
+    "createdAt": "2026-02-09T07:19:47.451Z"
+  },
+  {
+    "id": "mleudomee2v2k886rh",
+    "patientId": "mlep6g3ysj091677dsk",
+    "patientName": "tom",
+    "symptoms": "high blood pressure and fever",
+    "doctorType": "general-physician",
+    "messages": [
+      {
+        "text": "Hello tom! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      },
+      {
+        "text": "📎 Attached: testreport.pdf\n\nThis document will be shared with your doctor.",
+        "sender": "user"
+      },
+      {
+        "text": "high blood pressure and fever",
+        "sender": "user"
+      },
+      {
+        "text": "Analyzing your symptoms...",
+        "sender": "bot"
+      },
+      {
+        "text": "🦠 Possible condition:\n\n**Possible viral infection or hypertensive urgency.** High blood pressure with fever may indicate an acute infection or uncontrolled hypertension. Further evaluation needed.\n\n⚠️ This is not a medical diagnosis.",
+        "sender": "bot"
+      },
+      {
+        "text": "Would you like to book a consultation with a doctor?",
+        "sender": "bot"
+      }
+    ],
+    "documents": [
+      {
+        "name": "testreport.pdf",
+        "type": "pdf",
+        "url": "/uploads/1770621572737_testreport.pdf",
+        "attachedAt": "2026-02-09T07:19:32.741Z"
+      }
+    ],
+    "createdAt": "2026-02-09T07:19:52.550Z"
+  },
+  {
+    "id": "mlex0ru7qbeq2vbeo7k",
+    "patientId": "mlep6g3ysj091677dsk",
+    "patientName": "tom",
+    "symptoms": "i have high fever and cold",
+    "doctorType": "general-physician",
+    "messages": [
+      {
+        "text": "Hello tom! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      },
+      {
+        "text": "📎 Attached: testreport.pdf\n\nThis document will be shared with your doctor.",
+        "sender": "user"
+      }
+    ],
+    "documents": [
+      {
+        "name": "testreport.pdf",
+        "type": "pdf",
+        "url": "/uploads/1770626017325_testreport.pdf",
+        "attachedAt": "2026-02-09T08:33:37.334Z"
+      }
+    ],
+    "createdAt": "2026-02-09T08:33:49.039Z"
+  },
+  {
+    "id": "mlex0tzw4xvmsy05tus",
+    "patientId": "mlep6g3ysj091677dsk",
+    "patientName": "tom",
+    "symptoms": "i have high fever and cold",
+    "doctorType": "general-physician",
+    "messages": [
+      {
+        "text": "Hello tom! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      },
+      {
+        "text": "📎 Attached: testreport.pdf\n\nThis document will be shared with your doctor.",
+        "sender": "user"
+      },
+      {
+        "text": "i have high fever and cold",
+        "sender": "user"
+      },
+      {
+        "text": "Analyzing your symptoms...",
+        "sender": "bot"
+      },
+      {
+        "text": "🦠 Possible condition:\n\n**Influenza (Flu)**. Sudden high fever, chills, and cold-like symptoms (e.g., cough, fatigue) suggest viral infection. Common and self-limiting but may require monitoring.\n\n⚠️ This is not a medical diagnosis.",
+        "sender": "bot"
+      },
+      {
+        "text": "⚠️ An urgent consultation is recommended.",
+        "sender": "bot"
+      },
+      {
+        "text": "Would you like to book a consultation with a doctor?",
+        "sender": "bot"
+      }
+    ],
+    "documents": [
+      {
+        "name": "testreport.pdf",
+        "type": "pdf",
+        "url": "/uploads/1770626017325_testreport.pdf",
+        "attachedAt": "2026-02-09T08:33:37.334Z"
+      }
+    ],
+    "createdAt": "2026-02-09T08:33:51.836Z"
+  },
+  {
+    "id": "mlexm9t1537y1cok8jf",
+    "patientId": "mlep6g3ysj091677dsk",
+    "patientName": "tom",
+    "symptoms": "CHEST PAIN",
+    "doctorType": "cardiologist",
+    "messages": [
+      {
+        "text": "Hello tom! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      },
+      {
+        "text": "CHEST PAIN",
+        "sender": "user"
+      },
+      {
+        "text": "On a scale of 1-10, how severe is your chest pain? (10 being worst pain imaginable)",
+        "sender": "bot"
+      },
+      {
+        "text": "Is the pain crushing, squeezing, or feels like pressure on your chest?",
+        "sender": "bot"
+      },
+      {
+        "text": "Does the pain spread to your arm, jaw, neck, or back?",
+        "sender": "bot"
+      },
+      {
+        "text": "Are you experiencing shortness of breath or difficulty breathing?",
+        "sender": "bot"
+      },
+      {
+        "text": "Are you sweating heavily, feeling nauseous, or lightheaded?",
+        "sender": "bot"
+      },
+      {
+        "text": "Did the chest pain start suddenly or gradually?",
+        "sender": "bot"
+      },
+      {
+        "text": "Does the pain worsen with activity or deep breathing?",
+        "sender": "bot"
+      },
+      {
+        "text": "🚨 **MEDICAL EMERGENCY DETECTED**\n\nBased on your answers, this requires immediate medical attention.",
+        "sender": "bot"
+      },
+      {
+        "text": "👉 **IMMEDIATE ACTIONS:**\n\n1. 📞 Call ambulance: **108**\n2. 💊 Chew aspirin if available (unless allergic)\n3. 🪑 Sit down, stay calm\n4. 🚫 **Do NOT drive yourself**\n\nWhile waiting, I'll help you find the nearest cardiologist.",
+        "sender": "bot"
+      },
+      {
+        "text": "Analyzing your symptoms further...",
+        "sender": "bot"
+      },
+      {
+        "text": "🦠 Possible condition:\n\n**Acute coronary syndrome (e.g., heart attack or unstable angina)**. Sudden chest pressure, tightness, or crushing pain radiating to arms/jaw, with shortness of breath, cold sweats, or nausea.\n\n⚠️ This is not a medical diagnosis.",
+        "sender": "bot"
+      },
+      {
+        "text": "Would you like to book a consultation with a doctor?",
+        "sender": "bot"
+      }
+    ],
+    "documents": [],
+    "createdAt": "2026-02-09T08:50:32.101Z"
+  },
+  {
+    "id": "mlexp7wk1t0uagbmfuu",
+    "patientId": "mlep6g3ysj091677dsk",
+    "patientName": "tom",
+    "symptoms": "chest pain",
+    "doctorType": "cardiologist",
+    "messages": [
+      {
+        "text": "Hello tom! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      },
+      {
+        "text": "chest pain",
+        "sender": "user"
+      },
+      {
+        "text": "On a scale of 1-10, how severe is your chest pain? (10 being worst pain imaginable)",
+        "sender": "bot"
+      },
+      {
+        "text": "Is the pain crushing, squeezing, or feels like pressure on your chest?",
+        "sender": "bot"
+      },
+      {
+        "text": "Does the pain spread to your arm, jaw, neck, or back?",
+        "sender": "bot"
+      },
+      {
+        "text": "Are you experiencing shortness of breath or difficulty breathing?",
+        "sender": "bot"
+      },
+      {
+        "text": "Are you sweating heavily, feeling nauseous, or lightheaded?",
+        "sender": "bot"
+      },
+      {
+        "text": "Did the chest pain start suddenly or gradually?",
+        "sender": "bot"
+      },
+      {
+        "text": "Does the pain worsen with activity or deep breathing?",
+        "sender": "bot"
+      },
+      {
+        "text": "🚨 **MEDICAL EMERGENCY DETECTED**\n\nBased on your answers, this requires immediate medical attention.",
+        "sender": "bot"
+      },
+      {
+        "text": "👉 **IMMEDIATE ACTIONS:**\n\n1. 📞 Call ambulance: **108**\n2. 💊 Chew aspirin if available (unless allergic)\n3. 🪑 Sit down, stay calm\n4. 🚫 **Do NOT drive yourself**\n\nWhile waiting, I'll help you find the nearest cardiologist.",
+        "sender": "bot"
+      },
+      {
+        "text": "Analyzing your symptoms further...",
+        "sender": "bot"
+      },
+      {
+        "text": "🦠 Possible condition:\n\n**Acute coronary syndrome (e.g., myocardial infarction or unstable angina)**. Sudden chest pain with pressure, tightness, or radiating discomfort may indicate reduced blood flow to the heart, requiring immediate evaluation.\n\n⚠️ This is not a medical diagnosis.",
+        "sender": "bot"
+      },
+      {
+        "text": "Would you like to book a consultation with a doctor?",
+        "sender": "bot"
+      }
+    ],
+    "documents": [],
+    "createdAt": "2026-02-09T08:52:49.604Z"
+  },
+  {
+    "id": "mleybfu80glixytfyjjt",
+    "patientId": "mlep6g3ysj091677dsk",
+    "patientName": "tom",
+    "symptoms": "fever",
+    "doctorType": "general-physician",
+    "messages": [
+      {
+        "text": "Hello tom! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      }
+    ],
+    "documents": [],
+    "createdAt": "2026-02-09T09:10:06.320Z"
+  },
+  {
+    "id": "mleybgpngr63iyxfx1p",
+    "patientId": "mlep6g3ysj091677dsk",
+    "patientName": "tom",
+    "symptoms": "fever",
+    "doctorType": "general-physician",
+    "messages": [
+      {
+        "text": "Hello tom! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      },
+      {
+        "text": "fever",
+        "sender": "user"
+      },
+      {
+        "text": "Analyzing your symptoms...",
+        "sender": "bot"
+      },
+      {
+        "text": "🦠 Possible condition:\n\n**Viral infection (likely flu or common cold)**. Fever is commonly caused by viral illnesses, especially if no other chronic conditions are present.\n\n⚠️ This is not a medical diagnosis.",
+        "sender": "bot"
+      },
+      {
+        "text": "Would you like to book a consultation with a doctor?",
+        "sender": "bot"
+      }
+    ],
+    "documents": [],
+    "createdAt": "2026-02-09T09:10:07.451Z"
+  },
+  {
+    "id": "mm1tzjo4opwk85x6n7",
+    "patientId": "mkhc3a5c3iy1kzswjs9",
+    "patientName": "alex",
+    "symptoms": "i have sore throat and cough",
+    "doctorType": "pulmonologist",
+    "messages": [
+      {
+        "text": "Hello alex! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      }
+    ],
+    "documents": [],
+    "createdAt": "2026-02-25T09:27:34.996Z"
+  },
+  {
+    "id": "mm1u0i7b58sqeo93idl",
+    "patientId": "mkhc3a5c3iy1kzswjs9",
+    "patientName": "alex",
+    "symptoms": "i have sore throat and cough",
+    "doctorType": "pulmonologist",
+    "messages": [
+      {
+        "text": "Hello alex! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      },
+      {
+        "text": "i have sore throat and cough",
+        "sender": "user"
+      },
+      {
+        "text": "Analyzing your symptoms...",
+        "sender": "bot"
+      },
+      {
+        "text": "🦠 Possible condition:\n\n**Common cold or viral upper respiratory infection.** Likely caused by a viral pathogen, given sore throat and cough without high fever or severe symptoms.\n\n⚠️ This is not a medical diagnosis.",
+        "sender": "bot"
+      },
+      {
+        "text": "Would you like to book a consultation with a doctor?",
+        "sender": "bot"
+      }
+    ],
+    "documents": [],
+    "createdAt": "2026-02-25T09:28:19.751Z"
+  },
+  {
+    "id": "mm4pmjcjnm2g6a4jbw",
+    "patientId": "mkfdsfoxp6svvzd106e",
+    "patientName": "123",
+    "symptoms": "i have fever",
+    "doctorType": "general-physician",
+    "messages": [
+      {
+        "text": "Hello 123! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      }
+    ],
+    "documents": [],
+    "createdAt": "2026-02-27T09:48:48.115Z"
+  },
+  {
+    "id": "mm4pmkg7okxoyfe78z",
+    "patientId": "mkfdsfoxp6svvzd106e",
+    "patientName": "123",
+    "symptoms": "i have fever",
+    "doctorType": "general-physician",
+    "messages": [
+      {
+        "text": "Hello 123! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      },
+      {
+        "text": "i have fever",
+        "sender": "user"
+      },
+      {
+        "text": "Analyzing your symptoms...",
+        "sender": "bot"
+      },
+      {
+        "text": "🦠 Possible condition:\n\n**Influenza (Flu)**. Sudden fever with possible fatigue, muscle aches, or respiratory symptoms. Common viral infection.\n\n⚠️ This is not a medical diagnosis.",
+        "sender": "bot"
+      },
+      {
+        "text": "Would you like to book a consultation with a doctor?",
+        "sender": "bot"
+      }
+    ],
+    "documents": [],
+    "createdAt": "2026-02-27T09:48:49.543Z"
+  },
+  {
+    "id": "mn0h3wm53zk49kvtni",
+    "patientId": "mkhc3a5c3iy1kzswjs9",
+    "patientName": "alex",
+    "symptoms": "i have fever",
+    "doctorType": "general-physician",
+    "messages": [
+      {
+        "text": "Hello alex! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      }
+    ],
+    "documents": [],
+    "createdAt": "2026-03-21T15:18:59.549Z"
+  },
+  {
+    "id": "mn0h42phyvli9prva0r",
+    "patientId": "mkhc3a5c3iy1kzswjs9",
+    "patientName": "alex",
+    "symptoms": "i have fever",
+    "doctorType": "general-physician",
+    "messages": [
+      {
+        "text": "Hello alex! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      },
+      {
+        "text": "i have fever",
+        "sender": "user"
+      },
+      {
+        "text": "Analyzing your symptoms...",
+        "sender": "bot"
+      },
+      {
+        "text": "🦠 Possible condition:\n\n**Influenza (Flu)** likely, given fever as a primary symptom with no other context. Common viral infection causing fever, fatigue, and respiratory symptoms.\n\n⚠️ This is not a medical diagnosis.",
+        "sender": "bot"
+      },
+      {
+        "text": "Would you like to book a consultation with a doctor?",
+        "sender": "bot"
+      }
+    ],
+    "documents": [],
+    "createdAt": "2026-03-21T15:19:07.445Z"
+  },
+  {
+    "id": "mn0h4qzw2lvlnnwk97g",
+    "patientId": "mkhc3a5c3iy1kzswjs9",
+    "patientName": "alex",
+    "symptoms": "chest pain",
+    "doctorType": "cardiologist",
+    "messages": [
+      {
+        "text": "Hello alex! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      },
+      {
+        "text": "chest pain",
+        "sender": "user"
+      },
+      {
+        "text": "On a scale of 1-10, how severe is your chest pain? (10 being worst pain imaginable)",
+        "sender": "bot"
+      },
+      {
+        "text": "Is the pain crushing, squeezing, or feels like pressure on your chest?",
+        "sender": "bot"
+      },
+      {
+        "text": "Does the pain spread to your arm, jaw, neck, or back?",
+        "sender": "bot"
+      },
+      {
+        "text": "Are you experiencing shortness of breath or difficulty breathing?",
+        "sender": "bot"
+      },
+      {
+        "text": "Are you sweating heavily, feeling nauseous, or lightheaded?",
+        "sender": "bot"
+      },
+      {
+        "text": "Did the chest pain start suddenly or gradually?",
+        "sender": "bot"
+      },
+      {
+        "text": "Does the pain worsen with activity or deep breathing?",
+        "sender": "bot"
+      },
+      {
+        "text": "🚨 **MEDICAL EMERGENCY DETECTED**\n\nBased on your answers, this requires immediate medical attention.",
+        "sender": "bot"
+      },
+      {
+        "text": "👉 **IMMEDIATE ACTIONS:**\n\n1. 📞 Call ambulance: **108**\n2. 💊 Chew aspirin if available (unless allergic)\n3. 🪑 Sit down, stay calm\n4. 🚫 **Do NOT drive yourself**\n\nWhile waiting, I'll help you find the nearest cardiologist.",
+        "sender": "bot"
+      },
+      {
+        "text": "Analyzing your symptoms further...",
+        "sender": "bot"
+      },
+      {
+        "text": "🦠 Possible condition:\n\n**Acute coronary syndrome (e.g., angina or heart attack)**. Sudden chest pressure/tightness, especially with exertion or radiating pain, suggests reduced blood flow to the heart. Requires immediate evaluation.\n\n⚠️ This is not a medical diagnosis.",
+        "sender": "bot"
+      },
+      {
+        "text": "Would you like to book a consultation with a doctor?",
+        "sender": "bot"
+      }
+    ],
+    "documents": [],
+    "createdAt": "2026-03-21T15:19:38.924Z"
+  },
+  {
+    "id": "mn2yiie7lopfu973yke",
+    "patientId": "mkhc3a5c3iy1kzswjs9",
+    "patientName": "alex",
+    "symptoms": "i have fever",
+    "doctorType": "general-physician",
+    "messages": [
+      {
+        "text": "Hello alex! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      }
+    ],
+    "documents": [],
+    "createdAt": "2026-03-23T09:01:46.783Z"
+  },
+  {
+    "id": "mn2yinfy5eq1wlu96c8",
+    "patientId": "mkhc3a5c3iy1kzswjs9",
+    "patientName": "alex",
+    "symptoms": "i have fever",
+    "doctorType": "general-physician",
+    "messages": [
+      {
+        "text": "Hello alex! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      },
+      {
+        "text": "i have fever",
+        "sender": "user"
+      },
+      {
+        "text": "Analyzing your symptoms...",
+        "sender": "bot"
+      },
+      {
+        "text": "🦠 Possible condition:\n\n**Viral infection (likely influenza)**. Common symptoms include fever, often accompanied by cough, fatigue, or muscle aches.\n\n⚠️ This is not a medical diagnosis.",
+        "sender": "bot"
+      },
+      {
+        "text": "Would you like to book a consultation with a doctor?",
+        "sender": "bot"
+      }
+    ],
+    "documents": [],
+    "createdAt": "2026-03-23T09:01:53.326Z"
+  },
+  {
+    "id": "mng5d7iibzst1hx6sn8",
+    "patientId": "mkhc3a5c3iy1kzswjs9",
+    "patientName": "alex",
+    "symptoms": "fever",
+    "doctorType": "general-physician",
+    "messages": [
+      {
+        "text": "Hello alex! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      }
+    ],
+    "documents": [],
+    "createdAt": "2026-04-01T14:34:37.002Z"
+  },
+  {
+    "id": "mng5d8yur0hwc3xlle",
+    "patientId": "mkhc3a5c3iy1kzswjs9",
+    "patientName": "alex",
+    "symptoms": "fever",
+    "doctorType": "general-physician",
+    "messages": [
+      {
+        "text": "Hello alex! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      },
+      {
+        "text": "fever",
+        "sender": "user"
+      },
+      {
+        "text": "Analyzing your symptoms...",
+        "sender": "bot"
+      },
+      {
+        "text": "🦠 Possible condition:\n\n**Viral infection (likely flu or common cold)**. Fever is commonly caused by viral illnesses, especially if no other chronic conditions are present.\n\n⚠️ This is not a medical diagnosis.",
+        "sender": "bot"
+      },
+      {
+        "text": "Would you like to book a consultation with a doctor?",
+        "sender": "bot"
+      }
+    ],
+    "documents": [],
+    "createdAt": "2026-04-01T14:34:38.886Z"
+  },
+  {
+    "id": "mng5f6oynywagru3fg",
+    "patientId": "mkhc3a5c3iy1kzswjs9",
+    "patientName": "alex",
+    "symptoms": "chest pain",
+    "doctorType": "cardiologist",
+    "messages": [
+      {
+        "text": "Hello alex! Welcome to HealthConnect.",
+        "sender": "bot"
+      },
+      {
+        "text": "What symptoms are you facing today?",
+        "sender": "bot"
+      },
+      {
+        "text": "chest pain",
+        "sender": "user"
+      },
+      {
+        "text": "On a scale of 1-10, how severe is your chest pain? (10 being worst pain imaginable)",
+        "sender": "bot"
+      },
+      {
+        "text": "Is the pain crushing, squeezing, or feels like pressure on your chest?",
+        "sender": "bot"
+      },
+      {
+        "text": "Does the pain spread to your arm, jaw, neck, or back?",
+        "sender": "bot"
+      },
+      {
+        "text": "Are you experiencing shortness of breath or difficulty breathing?",
+        "sender": "bot"
+      },
+      {
+        "text": "Are you sweating heavily, feeling nauseous, or lightheaded?",
+        "sender": "bot"
+      },
+      {
+        "text": "Did the chest pain start suddenly or gradually?",
+        "sender": "bot"
+      },
+      {
+        "text": "Does the pain worsen with activity or deep breathing?",
+        "sender": "bot"
+      },
+      {
+        "text": "🚨 **MEDICAL EMERGENCY DETECTED**\n\nBased on your answers, this requires immediate medical attention.",
+        "sender": "bot"
+      },
+      {
+        "text": "👉 **IMMEDIATE ACTIONS:**\n\n1. 📞 Call ambulance: **108**\n2. 💊 Chew aspirin if available (unless allergic)\n3. 🪑 Sit down, stay calm\n4. 🚫 **Do NOT drive yourself**\n\nWhile waiting, I'll help you find the nearest cardiologist.",
+        "sender": "bot"
+      },
+      {
+        "text": "Analyzing your symptoms further...",
+        "sender": "bot"
+      },
+      {
+        "text": "🦠 Possible condition:\n\n**Acute coronary syndrome (e.g., heart attack or unstable angina)**. Sudden chest pain with pressure, tightness, or radiating discomfort may indicate reduced blood flow to the heart. Requires immediate evaluation.\n\n⚠️ This is not a medical diagnosis.",
+        "sender": "bot"
+      },
+      {
+        "text": "Would you like to book a consultation with a doctor?",
+        "sender": "bot"
+      }
+    ],
+    "documents": [],
+    "createdAt": "2026-04-01T14:36:09.250Z"
   }
 ]

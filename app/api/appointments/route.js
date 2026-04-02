@@ -55,6 +55,7 @@ export async function POST(request) {
             appointmentType,
             vaccines,
             hospitalId,
+            documents, // ✅ New field
         } = body;
 
         if (!patientName || !doctorName || !slot) {
@@ -88,6 +89,7 @@ export async function POST(request) {
             doctorName,
             slot,
             symptoms: symptoms || null,
+            documents: documents || [], // ✅ Store documents link
 
             appointmentType: appointmentType || "consultation",
             vaccines: vaccines || [],
@@ -133,6 +135,42 @@ export async function POST(request) {
         }
 
         return NextResponse.json(newAppointment, { status: 201 });
+    } catch (error) {
+        return NextResponse.json({ error: error.message }, { status: 500 });
+    }
+}
+
+// PATCH - Update appointment status
+export async function PATCH(request) {
+    try {
+        const body = await request.json();
+        const { id, status } = body;
+
+        if (!id || !status) {
+            return NextResponse.json(
+                { error: 'Appointment ID and status are required' },
+                { status: 400 }
+            );
+        }
+
+        const appointments = await readDB(DB_FILE);
+        const index = appointments.findIndex(a => a.id === id);
+
+        if (index === -1) {
+            return NextResponse.json({ error: 'Appointment not found' }, { status: 404 });
+        }
+
+        // Update status
+        appointments[index].status = status;
+
+        // Optional: Add completedAt timestamp if status is 'Completed'
+        if (status === 'Completed') {
+            appointments[index].completedAt = new Date().toISOString();
+        }
+
+        await writeDB(DB_FILE, appointments);
+
+        return NextResponse.json(appointments[index]);
     } catch (error) {
         return NextResponse.json({ error: error.message }, { status: 500 });
     }

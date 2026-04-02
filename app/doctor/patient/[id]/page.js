@@ -32,6 +32,41 @@ const Icons = {
     )
 };
 
+// Helper to determine urgency score
+const getUrgencyScore = (appt) => {
+    const s = (appt.symptoms || '').toLowerCase();
+
+    // Emergency (Score 3)
+    if (
+        s.includes('chest pain') ||
+        s.includes('difficulty breathing') ||
+        s.includes('shortness of breath') ||
+        s.includes('unconscious') ||
+        s.includes('seizure') ||
+        s.includes('stroke') ||
+        s.includes('heart attack') ||
+        s.includes('suicide') ||
+        (s.includes('bleeding') && s.includes('severe'))
+    ) return 3;
+
+    // Urgent (Score 2)
+    if (
+        (s.includes('fever') && s.includes('high')) ||
+        s.includes('severe pain') ||
+        s.includes('acute') ||
+        s.includes('broken') ||
+        s.includes('fracture') ||
+        s.includes('vomiting') ||
+        (s.includes('abdominal') && s.includes('pain')) ||
+        s.includes('asthma attack') ||
+        s.includes('allergic reaction') ||
+        s.includes('urgent')
+    ) return 2;
+
+    // Routine (Score 1)
+    return 1;
+};
+
 export default function PatientRecord() {
     const router = useRouter();
     const { id } = useParams();
@@ -171,6 +206,8 @@ export default function PatientRecord() {
         }
     };
 
+    const [selectedAppointment, setSelectedAppointment] = useState(null);
+
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -197,7 +234,18 @@ export default function PatientRecord() {
                 const follows = await followRes.json();
                 const comps = await compRes.json();
 
+                // Sort appointments: Urgency (Desc)
+                if (appts && appts.length > 0) {
+                    appts.sort((a, b) => getUrgencyScore(b) - getUrgencyScore(a));
+                }
+
                 setHistory({ chats, appointments: appts });
+
+                // ✅ Auto-select the first appointment if available (now the most urgent/relevant one)
+                if (appts && appts.length > 0) {
+                    setSelectedAppointment(appts[0]);
+                }
+
                 setPrescriptions(rxs);
                 setInstructions(insts || []);
                 setFollowups(follows || []);
@@ -326,6 +374,31 @@ export default function PatientRecord() {
         }
     };
 
+    const handleCompleteAppointment = async () => {
+        if (!selectedAppointment) return;
+
+        try {
+            const res = await fetch('/api/appointments', {
+                method: 'PATCH',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ id: selectedAppointment.id, status: 'Completed' })
+            });
+
+            if (res.ok) {
+                const updatedAppt = await res.json();
+
+                // Update local state
+                setHistory(prev => ({
+                    ...prev,
+                    appointments: prev.appointments.map(a => a.id === updatedAppt.id ? updatedAppt : a)
+                }));
+                setSelectedAppointment(updatedAppt);
+            }
+        } catch (error) {
+            console.error("Error completing appointment:", error);
+        }
+    };
+
     if (loading) return <div className="p-8 text-center">Loading Patient Record...</div>;
     if (!patient) return <div className="p-8 text-center">Patient not found</div>;
 
@@ -387,166 +460,221 @@ export default function PatientRecord() {
                 </div>
 
                 {activeTab === 'overview' && (
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 animate-fadeIn">
+                    <div className="space-y-8 animate-fadeIn">
 
-                        {/* LEFT COL: Appointments & Documents */}
-                        <div className="space-y-8">
-
-                            {/* Medical History Section (New) */}
-                            <div className="dashboard-card border-l-4 border-l-purple-500">
-                                <div className="section-header">
-                                    <span className="section-icon">🏥</span>
-                                    <h2>Medical History</h2>
-                                </div>
-                                <div className="grid grid-cols-1 gap-6">
-                                    {/* Chronic Conditions */}
+                        {/* 🌟 CURRENT CONSULTATION CONTEXT (Top Card) */}
+                        {selectedAppointment && (
+                            <div className="dashboard-card border-t-4 border-t-teal-500 shadow-md">
+                                <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
                                     <div>
-                                        <h3 className="text-sm font-bold text-gray-500 uppercase tracking-wide mb-3">Chronic Conditions</h3>
-                                        <div className="flex flex-wrap gap-2 mb-3">
-                                            {medicalHistory.chronicConditions.map((cond, i) => (
-                                                <span key={i} className="px-3 py-1 bg-purple-50 text-purple-700 rounded-full text-sm font-medium flex items-center gap-1">
-                                                    {cond}
-                                                    <button onClick={() => handleHistoryUpdate('chronicConditions', cond, 'remove')} className="hover:text-purple-900">×</button>
-                                                </span>
-                                            ))}
-                                            {medicalHistory.chronicConditions.length === 0 && <span className="text-sm text-gray-400 italic">None logged</span>}
+                                        <div className="flex items-center gap-3 mb-2">
+                                            <span className="text-2xl">🩺</span>
+                                            <h2 className="text-xl font-bold text-gray-800">Current Consultation Context</h2>
                                         </div>
-                                        <div className="flex gap-2">
-                                            <input
-                                                className="form-input py-1 text-sm"
-                                                placeholder="Add condition..."
-                                                value={newCondition}
-                                                onChange={e => setNewCondition(e.target.value)}
-                                            />
+                                        <div className="flex items-center gap-4 text-sm text-gray-600">
+                                            <span className="bg-teal-50 text-teal-700 px-3 py-1 rounded-full font-medium border border-teal-100">
+                                                {selectedAppointment.slot}
+                                            </span>
+                                            <span>
+                                                Dr. {selectedAppointment.doctorName} ({selectedAppointment.doctorType})
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div className="mt-4 md:mt-0 flex gap-2">
+                                        {selectedAppointment.status === 'Completed' ? (
+                                            <div className="bg-green-100 text-green-700 px-4 py-2 rounded-lg font-bold flex items-center gap-2 border border-green-200">
+                                                <Icons.CheckCircle /> Completed
+                                            </div>
+                                        ) : (
                                             <button
-                                                className="btn btn-sm btn-secondary"
-                                                onClick={() => {
-                                                    if (newCondition) {
-                                                        handleHistoryUpdate('chronicConditions', newCondition, 'add');
-                                                        setNewCondition('');
-                                                    }
-                                                }}
+                                                onClick={handleCompleteAppointment}
+                                                className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg font-bold shadow-md transition-all flex items-center gap-2"
                                             >
-                                                <Icons.Plus />
-                                                Add
+                                                <Icons.CheckCircle /> Complete
                                             </button>
-                                        </div>
+                                        )}
+
+                                        <button className="btn btn-primary" onClick={() => { setShowPrescribeModal(true); setActiveTab('prescriptions'); }}>
+                                            Start Prescription
+                                        </button>
                                     </div>
                                 </div>
-                            </div>
 
+                                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                    {/* Main Symptoms */}
+                                    <div className="md:col-span-2 bg-orange-50/50 p-5 rounded-xl border border-orange-100">
+                                        <h3 className="text-xs font-bold text-orange-600 uppercase tracking-wider mb-2">Reported Symptoms</h3>
+                                        <p className="text-lg font-medium text-gray-800 leading-relaxed">
+                                            {selectedAppointment.symptoms || "No specific symptoms reported for this appointment."}
+                                        </p>
+                                    </div>
 
-
-                            {/* Booked Appointments */}
-                            <div className="dashboard-card">
-                                <div className="section-header">
-                                    <span className="section-icon">📅</span>
-                                    <h2>Booked Appointments</h2>
-                                </div>
-                                <div className="space-y-4">
-                                    {history.appointments && history.appointments.length > 0 ? (
-                                        history.appointments.map(appt => {
-                                            // Simple urgency heuristic
-                                            const isUrgent = appt.symptoms && (
-                                                appt.symptoms.toLowerCase().includes('pain') ||
-                                                appt.symptoms.toLowerCase().includes('emergency') ||
-                                                appt.symptoms.toLowerCase().includes('severe')
-                                            );
-
-                                            return (
-                                                <div key={appt.id} className="p-4 bg-white border border-gray-100 rounded-xl shadow-sm hover:shadow-md transition-all flex justify-between items-center group">
-                                                    <div>
-                                                        <div className="flex items-center gap-2 mb-1">
-                                                            <span className="font-bold text-gray-900">{appt.slot}</span>
-                                                            <span className={`text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full ${isUrgent ? 'bg-red-100 text-red-600' : 'bg-gray-100 text-gray-600'
-                                                                }`}>
-                                                                {isUrgent ? 'Urgent' : 'Routine'}
-                                                            </span>
+                                    {/* Attached Documents */}
+                                    <div className="md:col-span-1">
+                                        <h3 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3">Attached Documents</h3>
+                                        {selectedAppointment.documents && selectedAppointment.documents.length > 0 ? (
+                                            <div className="space-y-3">
+                                                {selectedAppointment.documents.map((doc, idx) => (
+                                                    <a key={idx} href={doc.url} target="_blank" rel="noopener noreferrer"
+                                                        className="flex items-center gap-3 p-3 bg-white border border-gray-200 rounded-lg hover:shadow-sm hover:border-teal-300 transition-all group">
+                                                        <div className="w-8 h-8 rounded-full bg-teal-50 flex items-center justify-center text-lg">
+                                                            {doc.type === 'pdf' ? '📄' : '🖼️'}
                                                         </div>
-                                                        <p className="text-sm text-gray-600">
-                                                            Doctor: <span className="font-medium text-gray-800">{appt.doctorName}</span>
-                                                        </p>
-                                                        {appt.symptoms && (
-                                                            <p className="text-xs text-gray-400 mt-1 italic">"{appt.symptoms}"</p>
-                                                        )}
-                                                    </div>
-                                                    <button className="btn btn-sm btn-secondary">
-                                                        View Details
-                                                    </button>
-                                                </div>
-                                            );
-                                        })
-                                    ) : (
-                                        <p className="text-gray-400 text-center text-sm py-4">No upcoming appointments.</p>
-                                    )}
-                                </div>
-                            </div>
-
-                            {/* Uploaded Documents Section */}
-                            <div className="dashboard-card">
-                                <div className="section-header">
-                                    <span className="section-icon">📂</span>
-                                    <h2>Uploaded Documents</h2>
-                                </div>
-
-                                {history.chats.filter(c => c.documents && c.documents.length > 0).length === 0 ? (
-                                    <div className="p-8 text-center bg-gray-50 rounded-lg border border-dashed border-gray-200">
-                                        <p className="text-gray-400">No documents uploaded yet.</p>
-                                    </div>
-                                ) : (
-                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                        {history.chats.flatMap(c => c.documents || []).map((doc, idx) => (
-                                            <div key={idx} className="p-4 bg-white border border-gray-100 rounded-xl shadow-sm hover:shadow-md transition-all flex items-center gap-4 group">
-                                                <div className="w-10 h-10 rounded-full bg-teal-50 flex items-center justify-center text-xl text-teal-600">
-                                                    {doc.type === 'pdf' ? '📄' : '🖼️'}
-                                                </div>
-                                                <div className="flex-1 overflow-hidden">
-                                                    <p className="font-semibold text-gray-800 truncate" title={doc.name}>{doc.name}</p>
-                                                    <a href={doc.url} target="_blank" className="text-xs text-teal-600 font-medium hover:underline flex items-center gap-1">
-                                                        View File <span className="group-hover:translate-x-0.5 transition-transform">→</span>
+                                                        <div className="overflow-hidden">
+                                                            <p className="text-sm font-medium text-gray-700 truncate group-hover:text-teal-700">{doc.name}</p>
+                                                            <span className="text-[10px] text-teal-600 font-bold">View File</span>
+                                                        </div>
                                                     </a>
-                                                </div>
+                                                ))}
                                             </div>
-                                        ))}
+                                        ) : (
+                                            <div className="p-4 bg-gray-50 rounded-lg border border-dashed border-gray-200 text-center">
+                                                <span className="text-gray-400 text-sm">No documents attached</span>
+                                            </div>
+                                        )}
                                     </div>
-                                )}
-                            </div>
-                        </div>
-
-                        {/* RIGHT COL: Symptoms */}
-                        <div className="space-y-8">
-                            {/* Symptoms History */}
-                            <div className="dashboard-card">
-                                <div className="section-header">
-                                    <span className="section-icon">⚠️</span>
-                                    <h2>Reported Symptoms</h2>
                                 </div>
+                            </div>
+                        )}
 
-                                <div className="space-y-4">
-                                    {history.chats
-                                        .filter(c => c.symptoms && c.symptoms.length > 3 && !c.symptoms.toLowerCase().includes('null'))
-                                        .map(chat => (
-                                            <div key={chat.id} className="p-4 bg-orange-50/50 border border-orange-100 rounded-xl flex justify-between items-center">
-                                                <div>
-                                                    <p className="font-semibold text-lg text-gray-800">{chat.symptoms}</p>
-                                                    <div className="flex items-center gap-2 mt-1">
-                                                        <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-white text-gray-600 border border-gray-100">
-                                                            {new Date(chat.createdAt).toLocaleDateString()}
-                                                        </span>
-                                                        <span className="text-xs text-gray-400">•</span>
-                                                        <span className="text-xs text-gray-500 capitalize">{chat.doctorType} Consult</span>
-                                                    </div>
-                                                </div>
+                        <div className="grid grid-cols-1 gap-8">
+
+                            {/* LEFT COL: Appointments & Documents */}
+                            <div className="space-y-8">
+
+                                {/* Medical History Section (New) */}
+                                <div className="dashboard-card border-l-4 border-l-purple-500">
+                                    <div className="section-header">
+                                        <span className="section-icon">🏥</span>
+                                        <h2>Medical History</h2>
+                                    </div>
+                                    <div className="grid grid-cols-1 gap-6">
+                                        {/* Chronic Conditions */}
+                                        <div>
+                                            <h3 className="text-sm font-bold text-gray-500 uppercase tracking-wide mb-3">Chronic Conditions</h3>
+                                            <div className="flex flex-wrap gap-2 mb-3">
+                                                {medicalHistory.chronicConditions.map((cond, i) => (
+                                                    <span key={i} className="px-3 py-1 bg-purple-50 text-purple-700 rounded-full text-sm font-medium flex items-center gap-1">
+                                                        {cond}
+                                                        <button onClick={() => handleHistoryUpdate('chronicConditions', cond, 'remove')} className="hover:text-purple-900">×</button>
+                                                    </span>
+                                                ))}
+                                                {medicalHistory.chronicConditions.length === 0 && <span className="text-sm text-gray-400 italic">None logged</span>}
                                             </div>
-                                        ))}
-                                    {history.chats.length === 0 && (
-                                        <div className="p-8 text-center bg-gray-50 rounded-lg border border-dashed border-gray-200">
-                                            <p className="text-gray-400">No reported symptoms.</p>
+                                            <div className="flex gap-2">
+                                                <input
+                                                    className="form-input py-1 text-sm"
+                                                    placeholder="Add condition..."
+                                                    value={newCondition}
+                                                    onChange={e => setNewCondition(e.target.value)}
+                                                />
+                                                <button
+                                                    className="btn btn-sm btn-secondary"
+                                                    onClick={() => {
+                                                        if (newCondition) {
+                                                            handleHistoryUpdate('chronicConditions', newCondition, 'add');
+                                                            setNewCondition('');
+                                                        }
+                                                    }}
+                                                >
+                                                    <Icons.Plus />
+                                                    Add
+                                                </button>
+                                            </div>
                                         </div>
-                                    )}
+                                    </div>
                                 </div>
+
+
+
+                                {/* Booked Appointments */}
+                                <div className="dashboard-card">
+                                    <div className="section-header">
+                                        <span className="section-icon">📅</span>
+                                        <h2>Booked Appointments</h2>
+                                    </div>
+                                    <div className="space-y-4">
+                                        {history.appointments && history.appointments.length > 0 ? (
+                                            history.appointments.map(appt => {
+                                                const score = getUrgencyScore(appt);
+                                                let urgencyLevel = 'routine';
+                                                let badgeClass = 'bg-gray-100 text-gray-600';
+                                                let borderClass = 'border-gray-100 hover:border-teal-100';
+                                                let bgClass = 'bg-white';
+                                                let urgencyLabel = 'Routine';
+
+                                                if (score === 3) {
+                                                    urgencyLevel = 'emergency';
+                                                    badgeClass = 'bg-red-100 text-red-700 animate-pulse font-bold border border-red-200';
+                                                    borderClass = 'border-red-200 hover:border-red-300 shadow-sm';
+                                                    bgClass = 'bg-red-50';
+                                                    urgencyLabel = '🚨 EMERGENCY';
+                                                } else if (score === 2) {
+                                                    urgencyLevel = 'urgent';
+                                                    badgeClass = 'bg-orange-100 text-orange-700 font-bold border border-orange-200';
+                                                    borderClass = 'border-orange-200 hover:border-orange-300';
+                                                    bgClass = 'bg-orange-50';
+                                                    urgencyLabel = '⚠️ URGENT';
+                                                }
+
+                                                // Override if selected
+                                                const isSelected = selectedAppointment?.id === appt.id;
+                                                const finalContainerClass = isSelected
+                                                    ? 'bg-teal-50 border-teal-500 ring-1 ring-teal-500 shadow-md'
+                                                    : `${bgClass} ${borderClass} hover:shadow-md`;
+
+                                                return (
+                                                    <div
+                                                        key={appt.id}
+                                                        onClick={() => {
+                                                            setSelectedAppointment(appt);
+                                                            window.scrollTo({ top: 0, behavior: 'smooth' });
+                                                        }}
+                                                        className={`p-4 border rounded-xl transition-all flex justify-between items-center cursor-pointer group mb-3 ${finalContainerClass}`}
+                                                    >
+                                                        <div>
+                                                            <div className="flex items-center gap-2 mb-1">
+                                                                <span className={`font-bold ${isSelected ? 'text-teal-900' : 'text-gray-900'}`}>
+                                                                    {appt.slot}
+                                                                </span>
+                                                                <span className={`text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full ${badgeClass}`}>
+                                                                    {urgencyLabel}
+                                                                </span>
+                                                            </div>
+                                                            <p className="text-sm text-gray-600">
+                                                                Doctor: <span className="font-medium text-gray-800">{appt.doctorName}</span>
+                                                            </p>
+                                                            {isSelected && (
+                                                                <p className="text-xs text-teal-600 font-medium mt-1">
+                                                                    Viewing Details...
+                                                                </p>
+                                                            )}
+                                                            {!isSelected && appt.documents && appt.documents.length > 0 && (
+                                                                <div className="mt-2 flex gap-1">
+                                                                    <span className="text-[10px] bg-gray-100 text-gray-600 px-1.5 py-0.5 rounded flex items-center gap-1">
+                                                                        📎 {appt.documents.length} doc{appt.documents.length > 1 ? 's' : ''}
+                                                                    </span>
+                                                                </div>
+                                                            )}
+                                                        </div>
+                                                        <button className={`btn btn-sm ${isSelected ? 'btn-primary' : 'btn-secondary'}`}>
+                                                            {isSelected ? 'Open' : 'View'}
+                                                        </button>
+                                                    </div>
+                                                );
+                                            })
+                                        ) : (
+                                            <p className="text-gray-400 text-center text-sm py-4">No upcoming appointments.</p>
+                                        )}
+                                    </div>
+                                </div>
+
+
                             </div>
+
                         </div>
+
+
                     </div>
                 )}
 

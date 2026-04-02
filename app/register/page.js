@@ -428,6 +428,7 @@ function RegisterContent() {
     setIsBooking(true);
 
     const symptoms = localStorage.getItem("currentSymptoms") || "";
+    const documents = JSON.parse(localStorage.getItem("currentDocuments") || "[]");
 
     try {
       const response = await fetch("/api/appointments", {
@@ -442,6 +443,7 @@ function RegisterContent() {
             ? `${vaccinationDate} | ${vaccinationSlot}`
             : slot,
           symptoms,
+          documents, // ✅ Send documents
           urgency,
           appointmentType: isVaccination ? "vaccination" : "consultation",
           vaccines: isVaccination ? vaccinesDue : [],
@@ -456,6 +458,7 @@ function RegisterContent() {
 
       // Clear temporary data
       localStorage.removeItem("currentSymptoms");
+      localStorage.removeItem("currentDocuments");
       localStorage.removeItem("currentDoctorType");
 
       // Show Success Modal

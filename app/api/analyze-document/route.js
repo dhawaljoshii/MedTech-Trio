@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
 import { Mistral } from "@mistralai/mistralai";
+import fs from 'fs/promises';
+import path from 'path';
 const PDFParser = require("pdf2json");
 
 export async function POST(request) {
@@ -122,13 +124,24 @@ export async function POST(request) {
             );
         }
 
+        // Save file locally for doctor access
+        const buffer = Buffer.from(await file.arrayBuffer());
+        const filename = Date.now() + '_' + file.name.replace(/\s/g, '_');
+        const uploadDir = path.join(process.cwd(), 'public/uploads');
+        // Ensure directory exists (recursive: true ensures parent dirs exist)
+        await fs.mkdir(uploadDir, { recursive: true });
+        const filepath = path.join(uploadDir, filename);
+        await fs.writeFile(filepath, buffer);
+        const fileUrl = `/uploads/${filename}`;
+
         // Add disclaimer
         const formattedAnalysis = `🔬 **Medical Document Analysis**\n\n${analysisResult.analysis}\n\n---\n\n⚠️ **Important Disclaimer**: This AI analysis is for informational purposes only and is NOT a medical diagnosis. Please consult with a qualified healthcare professional.`;
 
         return NextResponse.json({
             success: true,
             analysis: formattedAnalysis,
-            specialist: analysisResult.specialist
+            specialist: analysisResult.specialist,
+            url: fileUrl
         });
 
     } catch (error) {

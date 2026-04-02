@@ -1089,6 +1089,7 @@ Level: ${level}
       localStorage.setItem("currentSymptoms", finalSymptoms);
       localStorage.removeItem("currentDoctorType");
       localStorage.setItem("currentDoctorType", safeDoctorType);
+      localStorage.setItem("currentDocuments", JSON.stringify(sessionDocuments || []));
 
 
       if (patient) {
@@ -1252,7 +1253,7 @@ Level: ${level}
         setSessionDocuments(prev => [...prev, {
           name: selectedFile.name,
           type: selectedFile.type.includes('pdf') ? 'pdf' : 'image',
-          url: '#' // Placeholder
+          url: data.url || '#'
         }]);
 
         if (data.specialist) {
@@ -2413,19 +2414,43 @@ ${plan.monitoring.map(m => `• ${m}`).join("\n")}`,
                 <button
                   onClick={async () => {
                     if (!selectedFile) return;
-                    // Just attach without AI analysis
-                    setSessionDocuments(prev => [...prev, {
-                      name: selectedFile.name,
-                      type: selectedFile.type.includes('pdf') ? 'pdf' : 'image',
-                      url: '#',
-                      attachedAt: new Date().toISOString()
-                    }]);
-                    setMessages(prev => [
-                      ...prev,
-                      { text: `📎 Attached: ${selectedFile.name}\n\nThis document will be shared with your doctor.`, sender: 'user' }
-                    ]);
-                    setShowUploadModal(false);
-                    setSelectedFile(null);
+
+                    setUploadingFile(true);
+                    try {
+                      const formData = new FormData();
+                      formData.append('file', selectedFile);
+
+                      const response = await fetch('/api/upload', {
+                        method: 'POST',
+                        body: formData
+                      });
+
+                      const data = await response.json();
+
+                      if (data.success) {
+                        setSessionDocuments(prev => [...prev, {
+                          name: selectedFile.name,
+                          type: selectedFile.type.includes('pdf') ? 'pdf' : 'image',
+                          url: data.url,
+                          attachedAt: new Date().toISOString()
+                        }]);
+
+                        setMessages(prev => [
+                          ...prev,
+                          { text: `📎 Attached: ${selectedFile.name}\n\nThis document will be shared with your doctor.`, sender: 'user' }
+                        ]);
+
+                        setShowUploadModal(false);
+                        setSelectedFile(null);
+                      } else {
+                        alert('Failed to upload file');
+                      }
+                    } catch (error) {
+                      console.error('Upload error', error);
+                      alert('Error uploading file');
+                    } finally {
+                      setUploadingFile(false);
+                    }
                   }}
                   className="upload-action-btn attach"
                   disabled={!selectedFile || uploadingFile}
@@ -2463,6 +2488,6 @@ ${plan.monitoring.map(m => `• ${m}`).join("\n")}`,
         onCancel={handleConsentCancel}
         userEmail={userEmail}
       />
-    </div>
+    </div >
   );
 }
